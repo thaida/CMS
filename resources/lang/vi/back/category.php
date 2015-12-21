@@ -4,9 +4,10 @@ return [
 	'dashboard' => 'Danh sách chuyên mục',
 	'creation' => 'Tạo',
 	'published' => 'Phát hành',
-	'title' => 'Tiêu đề',
+	'title' => 'Chuyên mục',
+	'location' => "Chuyên mục",
 	'permalink' => 'Địa chỉ đầy đủ :',
-	'summary' => 'Ghi chú',
+	'summary' => 'Tóm tắt nội dung',
 	'content' => 'Nội dung',
 	'tags' => 'Tags',
 	'edition' => 'Sửa',
@@ -25,5 +26,7 @@ return [
 	'stored' => 'Chuyên mục được tạo thành công.',
 	'updated' => 'Chuyên mục cập nhật thành công.',
 	'destroyed' => 'Xóa chuyên mục thành công',
-		'uri' => 'Link'
+	'uri' => 'Link',
+	'sublocation' => 'Chuyên mục con',
+	'sub_dashboard' => 'Chuyên mục con'
 ];

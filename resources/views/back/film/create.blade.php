@@ -1,5 +1,5 @@
-@extends('back.subcat.template')
+@extends('back.film.template')
 
 @section('form')
-	{!! Form::open(['url' => 'subcat', 'method' => 'post', 'class' => 'form-horizontal panel']) !!}	
+	{!! Form::open(['url' => 'film', 'method' => 'post', 'class' => 'form-horizontal panel']) !!}	
 @stop

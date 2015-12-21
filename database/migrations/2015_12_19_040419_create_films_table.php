@@ -11,6 +11,8 @@ class CreateFilmsTable extends Migration {
 		Schema::create ( 'films', function (Blueprint $table) {
 			$table->increments ( 'id' );
 			$table->string ( 'title', 100 );
+			$table->string ( 'filePath', 1000 );
+			$table->string ( 'posterPath', 1000 );
 			$table->string ( 'slug', 255 )->unique ();
 			$table->string ( 'summary', 1000 );
 			$table->boolean ( 'publish' )->default ( false );

@@ -28,7 +28,8 @@ class FilmRepository extends BaseRepository {
 		$film->title = $inputs ['title'];
 		$film->summary = $inputs ['summary'];
 		$film->slug = $inputs ['slug'];
-		$film->active = isset ( $inputs ['active'] );
+		$film->sub_cat_id = $inputs ['sub_cat_id'];
+		$film->publish = isset ( $inputs ['active'] );
 		//$cat->cat_id = $inputs ['cat_id'];
 		if ($user_id) {
 			$film->user_id = $user_id;
@@ -39,18 +40,18 @@ class FilmRepository extends BaseRepository {
 	}
 	
 	/**
-	 * Update "active" in post.
+	 * Update "Publish" in film
 	 *
 	 * @param array $inputs        	
 	 * @param int $id        	
 	 * @return void
 	 */
-	public function updateActive($inputs, $id) {
-		$cat = $this->getById ( $id );
+	public function updatePublish($inputs, $id) {
+		$film = $this->getById ( $id );
 		
-		$cat->active = $inputs ['active'] == 'true';
+		$film->publish = $inputs ['publish'] == 'true';
 		
-		$cat->save ();
+		$film->save ();
 	}
 	
 	/**
@@ -145,5 +146,27 @@ class FilmRepository extends BaseRepository {
 	 */
 	public function GetById($id) {
 		return $this->model->findOrFail ( $id );
+	}
+	
+	/**
+	 * Get film collection.
+	 *
+	 * @param  string  $slug
+	 * @return array
+	 */
+	public function show($slug)
+	{
+		$post = $this->model->with('user')->whereSlug($slug)->firstOrFail();
+	
+		/*$comments = $this->comment
+		->wherePost_id($post->id)
+		->with('user')
+		->whereHas('user', function($q) {
+			$q->whereValid(true);
+		})
+		->get();*/
+		$comments = [];
+	
+		return compact('post', 'comments');
 	}
 }

@@ -105,13 +105,13 @@ class FilmController extends Controller {
 	 * @return Response
 	 */
 	public function edit($id) {
-		$film = $this->film->getById ( $id );
+		$film = $this->film_gestion->getById ( $id );
 		
 		// $this->authorize('change', $post);
 		
 		$url = config ( 'medias.url' );
 		
-		return view ( 'back.film.edit', array_merge ( $this->film->edit ( $film ), compact ( 'url' ) ), $select = $this->sub_cat_gestion->getAllSelect () );
+		return view ( 'back.film.edit', array_merge ( $this->film_gestion->edit ( $film ), compact ( 'url' ) ), $select = $this->sub_cat_gestion->getAllByFilmSelect () );
 	}
 	
 	/**
@@ -154,7 +154,7 @@ class FilmController extends Controller {
 	 */
 	public function create() {
 		$url = config ( 'medias.url' );
-		return view ( 'back.film.create', array_merge ( compact ( 'url' ), $this->sub_cat_gestion->getAllSelect () ) );
+		return view ( 'back.film.create', array_merge ( compact ( 'url' ), $this->sub_cat_gestion->getAllByFilmSelect () ) );
 	}
 	/**
 	 * Store a newly created resource in storage.
@@ -162,7 +162,7 @@ class FilmController extends Controller {
 	 * @param App\Http\Requests\PostRequest $request        	
 	 * @return Response
 	 */
-	public function store(SubCategoryRequest $request) {
+	public function store(FilmRequest $request) {
 		$this->film_gestion->store ( $request->all (), $request->user ()->id );
 		
 		return redirect ( 'film' )->with ( 'ok', trans ( 'back/film.stored' ) );
@@ -175,10 +175,27 @@ class FilmController extends Controller {
 	 * @param int $id        	
 	 * @return Response
 	 */
-	public function updateActive(Request $request, $id) {
-		$this->film_gestion->updateActive ( $request->all (), $id );
+	public function updatePublish(Request $request, $id) {
+		$this->film_gestion->updatePublish ( $request->all (), $id );
 		
 		return response ()->json ();
+	}
+	
+	
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  Illuminate\Contracts\Auth\Guard $auth
+	 * @param  string $slug
+	 * @return Response
+	 */
+	public function show(
+			Guard $auth,
+			$slug)
+	{
+		$user = $auth->user();
+	
+		return view('front.film.show',  array_merge($this->film_gestion->show($slug), compact('user')));
 	}
 }
 

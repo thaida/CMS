@@ -7,10 +7,10 @@
 	<td>{!! Form::checkbox('active', $cat->id, $cat->active) !!}</td>
 	@if(session('statut') == 'admin')
 	<td>{{ $cat->username }}</td> @endif
-	<td>{!! link_to_route('cat.edit', trans('back/cat.edit'), [$cat->id],
+	<td>{!! link_to_route('cat.edit', trans('common.edit'), [$cat->id],
 		['class' => 'btn btn-warning btn-block']) !!}</td>
 	<td>{!! Form::open(['method' => 'DELETE', 'route' => ['cat.destroy',
-		$cat->id]]) !!} {!! Form::destroy(trans('back/cat.destroy'),
-		trans('back/cat.destroy-warning')) !!} {!! Form::close() !!}</td>
+		$cat->id]]) !!} {!! Form::destroy(trans('common.destroy'),
+		trans('common.destroy-warning')) !!} {!! Form::close() !!}</td>
 </tr>
 @endforeach

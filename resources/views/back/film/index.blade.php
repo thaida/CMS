@@ -1,9 +1,10 @@
 @extends('back.template') @section('main')
 
-@include('back.partials.entete', ['title' => trans('back/cat.dashboard')
-. link_to_route('cat.create', trans('back/blog.add'), [], ['class' =>
+@include('back.partials.entete', ['title' => trans('back/film.dashboard')
+. link_to_route('film.create', trans('common.add'), [], ['class' =>
 'btn btn-info pull-right']), 'icone' => 'pencil', 'fil' =>
-trans('back/blog.posts')]) @if(session()->has('ok'))
+trans('back/film.location')]) 
+@if(session()->has('ok'))
 @include('partials/error', ['type' => 'success', 'message' =>
 session('ok')]) @endif
 
@@ -16,24 +17,24 @@ session('ok')]) @endif
 		<table class="table">
 			<thead>
 				<tr>
-					<th>{{ trans('back/blog.title') }} <a href="#" name="title"
+					<th>{{ trans('common.title') }} <a href="#" name="title"
 						class="order"> <span
 							class="fa fa-fw fa-{{ $order->name == 'title' ? $order->sort : 'unsorted' }}">
 						</span>
 					</a>
 					</th>
-					<th>{{ trans('back/blog.date') }} <a href="#" name="created_at"
+					<th>{{ trans('common.create_date') }} <a href="#" name="created_at"
 						class="order"><span
 							class="fa fa-fw fa-{{  $order->name == 'created_at' ? $order->sort : 'unsorted' }}">
 						</span> </a>
 					</th>
-					<th>{{ trans('back/blog.published') }} <a href="#" name="active"
+					<th>{{ trans('common.published') }} <a href="#" name="publish"
 						class="order"> <span
-							class="fa fa-fw fa-{{  $order->name == 'active' ? $order->sort : 'unsorted' }}">
+							class="fa fa-fw fa-{{  $order->name == 'publish' ? $order->sort : 'unsorted' }}">
 						</span>
 					</a>
 					</th> @if(session('statut') == 'admin')
-					<th>{{ trans('back/blog.author') }} <a href="#" name="username"
+					<th>{{ trans('common.author') }} <a href="#" name="username"
 						class="order"> <span
 							class="fa fa-fw fa-{{  $order->name == 'username' ? $order->sort : 'unsorted' }}">
 						</span>
@@ -46,7 +47,7 @@ session('ok')]) @endif
 					</th> @endif
 				</tr>
 			</thead>
-			<tbody>@include('back.cat.table')
+			<tbody>@include('back.subcat.table')
 			</tbody>
 		</table>
 	</div>
@@ -63,21 +64,21 @@ session('ok')]) @endif
     $(function() {
      
       // Active gestion
-      $(document).on('change', ':checkbox[name="active"]', function() {
+      $(document).on('change', ':checkbox[name="publish"]', function() {
         $(this).hide().parent().append('<i class="fa fa-refresh fa-spin"></i>');
         var token = $('input[name="_token"]').val();
         $.ajax({
-          url: '{{ url('catactive') }}' + '/' + this.value,
+          url: '{{ url('filmpublish') }}' + '/' + this.value,
           type: 'PUT',
-          data: "active=" + this.checked + "&_token=" + token
+          data: "publish=" + this.checked + "&_token=" + token
         })
         .done(function() {
           $('.fa-spin').remove();
-          $('input:checkbox[name="active"]:hidden').show();
+          $('input:checkbox[name="publish"]:hidden').show();
         })
         .fail(function() {
           $('.fa-spin').remove();
-          chk = $('input:checkbox[name="active"]:hidden');
+          chk = $('input:checkbox[name="publish"]:hidden');
           chk.show().prop('checked', chk.is(':checked') ? null:'checked').parents('tr').toggleClass('warning');
           alert('{{ trans('back/blog.fail') }}');
         });
@@ -107,7 +108,7 @@ session('ok')]) @endif
         $('.breadcrumb li').append('<span id="tempo" class="fa fa-refresh fa-spin"></span>');       
         // Send ajax
         $.ajax({
-          url: '{{ url('cat/order') }}',
+          url: '{{ url('film/order') }}',
           type: 'GET',
           dataType: 'json',
           data: "name=" + $(this).attr('name') + "&sort=" + tri

@@ -157,9 +157,9 @@ class CategoryRepository extends BaseRepository {
 	
 	
 	/**
-	 * Get roles collection.
+	 * Get category collection.
 	 *
-	 * @param  App\Models\User
+	 * @param  App\Models\Category
 	 * @return Array
 	 */
 	public function getAllSelect()

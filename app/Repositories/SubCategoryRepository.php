@@ -148,4 +148,42 @@ class SubCategoryRepository extends BaseRepository {
 	public function GetById($id) {
 		return $this->model->findOrFail ( $id );
 	}
+	
+	/**
+	 * Get all category.
+	 *
+	 * @return Illuminate\Support\Collection
+	 */
+	public function all()
+	{
+		return $this->model->all();
+	}
+	
+	/**
+	 * Get sub category collection.
+	 *
+	 * @param  App\Models\SubCategory
+	 * @return Array
+	 */
+	public function getAllSelect()
+	{
+		$select = $this->all()->lists('title', 'id');
+	
+		return compact('select');
+	}
+	
+	/**
+	 * Get sub category collection.
+	 *
+	 * @param  App\Models\SubCategory
+	 * @return Array
+	 */
+	public function getAllByFilmSelect()
+	{
+		$select = $this->model->select('id', 'created_at', 'updated_at', 'title', 'slug', 'user_id', 'summary')
+						->where('cat_id', config('constants.FILM_CAT_ID'))
+		->lists('title', 'id');
+	
+		return compact('select');
+	}
 }

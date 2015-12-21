@@ -19,5 +19,7 @@ return [
 	'new-comments' => 'New comments !',
 	'category' => 'Chuyên mục',
 	'categorys' => 'Danh sách chuyên mục',
-	'child-category' => 'Danh sách chuyên mục con'
+	'child-category' => 'Danh sách chuyên mục con',
+		'film' =>'Phim' 
+		
 ];

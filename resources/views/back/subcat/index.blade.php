@@ -2,7 +2,7 @@
 
 @section('main')
 
-  @include('back.partials.entete', ['title' => trans('back/film.dashboard') . link_to_route('film.create', trans('back/film.add'), [], ['class' => 'btn btn-info pull-right']), 'icone' => 'pencil', 'fil' => trans('back/film.posts')])
+  @include('back.partials.entete', ['title' => trans('back/category.dashboard') . link_to_route('subcat.create', trans('common.add'), [], ['class' => 'btn btn-info pull-right']), 'icone' => 'pencil', 'fil' => trans('back/category.sublocation')])
 
 	@if(session()->has('ok'))
     @include('partials/error', ['type' => 'success', 'message' => session('ok')])
@@ -18,20 +18,20 @@
         <thead>
           <tr>
             <th>
-              {{ trans('back/film.title') }} 
+              {{ trans('common.title') }} 
               <a href="#" name="title" class="order"> <span
 							class="fa fa-fw fa-{{  $order->name == 'title' ? $order->sort : 'unsorted' }}"> </span>
 					</a>
 					</th>
              <th>
-              {{ trans('back/film.date') }}
+              {{ trans('common.create_date') }}
               <a href="#" name="created_at" class="order">
                  <span class="fa fa-fw fa-{{  $order->name == 'created_at' ? $order->sort : 'unsorted' }}">
                 </span>
               </a>
             </th>
             <th>
-              {{ trans('back/film.published') }}
+              {{ trans('common.published') }}
               <a href="#" name="active" class="order">
                <span class="fa fa-fw fa-{{ $order->name == 'active' ? $order->sort : 'unsorted' }}">
                 </span> 
@@ -39,7 +39,7 @@
             </th> 
             @if(session('statut') == 'admin')
               <th>
-                {{ trans('back/film.author') }}
+                {{ trans('common.author') }}
                 <a href="#" name="username" class="order">
                  <span class="fa fa-fw fa-{{ $order->name == 'username' ? $order->sort : 'unsorted' }}">
                 </span>
@@ -56,7 +56,7 @@
           </tr>
         </thead>
         <tbody>
-          @include('back.film.table')
+          @include('back.subcat.table')
         </tbody>
       </table>
     </div>
@@ -79,7 +79,7 @@
         $(this).hide().parent().append('<i class="fa fa-refresh fa-spin"></i>');
         var token = $('input[name="_token"]').val();
         $.ajax({
-          url: '{{ url('filmpublish') }}' + '/' + this.value,
+          url: '{{ url('subcategoryactive') }}' + '/' + this.value,
           type: 'PUT',
           data: "active=" + this.checked + "&_token=" + token
         })
@@ -119,7 +119,7 @@
         $('.breadcrumb li').append('<span id="tempo" class="fa fa-refresh fa-spin"></span>');       
         // Send ajax
         $.ajax({
-          url: '{{ url('film/order') }}',
+          url: '{{ url('subcategory/order') }}',
           type: 'GET',
           dataType: 'json',
           data: "name=" + $(this).attr('name') + "&sort=" + tri

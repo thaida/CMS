@@ -1,9 +1,9 @@
 @extends('back.template') @section('main')
 
-@include('back.partials.entete', ['title' => trans('back/cat.dashboard')
-. link_to_route('cat.create', trans('back/blog.add'), [], ['class' =>
+@include('back.partials.entete', ['title' => trans('back/category.dashboard')
+. link_to_route('cat.create', trans('common.add'), [], ['class' =>
 'btn btn-info pull-right']), 'icone' => 'pencil', 'fil' =>
-trans('back/blog.posts')]) @if(session()->has('ok'))
+trans('back/category.location')]) @if(session()->has('ok'))
 @include('partials/error', ['type' => 'success', 'message' =>
 session('ok')]) @endif
 
@@ -16,24 +16,24 @@ session('ok')]) @endif
 		<table class="table">
 			<thead>
 				<tr>
-					<th>{{ trans('back/blog.title') }} <a href="#" name="title"
+					<th>{{ trans('back/category.title') }} <a href="#" name="title"
 						class="order"> <span
 							class="fa fa-fw fa-{{ $order->name == 'title' ? $order->sort : 'unsorted' }}">
 						</span>
 					</a>
 					</th>
-					<th>{{ trans('back/blog.date') }} <a href="#" name="created_at"
+					<th>{{ trans('common.create_date') }} <a href="#" name="created_at"
 						class="order"><span
 							class="fa fa-fw fa-{{  $order->name == 'created_at' ? $order->sort : 'unsorted' }}">
 						</span> </a>
 					</th>
-					<th>{{ trans('back/blog.published') }} <a href="#" name="active"
+					<th>{{ trans('common.published') }} <a href="#" name="active"
 						class="order"> <span
 							class="fa fa-fw fa-{{  $order->name == 'active' ? $order->sort : 'unsorted' }}">
 						</span>
 					</a>
 					</th> @if(session('statut') == 'admin')
-					<th>{{ trans('back/blog.author') }} <a href="#" name="username"
+					<th>{{ trans('common.author') }} <a href="#" name="username"
 						class="order"> <span
 							class="fa fa-fw fa-{{  $order->name == 'username' ? $order->sort : 'unsorted' }}">
 						</span>

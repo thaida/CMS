@@ -9,7 +9,7 @@
 @section('main')
 
 	<!-- Entête de page -->
-	@include('back.partials.entete', ['title' => trans('back/blog.dashboard'), 'icone' => 'pencil', 'fil' => link_to('cat', trans('back/blog.posts')) . ' / ' . trans('back/cat.creation')])
+	@include('back.partials.entete', ['title' => trans('back/category.sub_dashboard'), 'icone' => 'pencil', 'fil' => link_to('subcat', trans('back/category.sublocation')) . ' / ' . trans('common.add')])
 
 	<div class="col-sm-12">
 		@yield('form')
@@ -17,21 +17,21 @@
 		<div class="form-group checkbox pull-right">
 			<label>
 				{!! Form::checkbox('active') !!}
-				{{ trans('back/blog.published') }}
+				{{ trans('common.published') }}
 			</label>
 		</div>
 
-		{!! Form::control('text', 0, 'title', $errors, trans('back/blog.title')) !!}
+		{!! Form::control('text', 0, 'title', $errors, trans('common.title')) !!}
 
 		<div class="form-group {!! $errors->has('slug') ? 'has-error' : '' !!}">
 			{!! Form::label('slug', trans('back/blog.permalink'), ['class' => 'control-label']) !!}
 			{!! url('/') . '/subcat/' . Form::text('slug', null, ['id' => 'permalien']) !!}
 			<small class="text-danger">{!! $errors->first('slug') !!}</small>
 		</div>
-		{!! Form::selection('cat_id', $select, null, trans('back/users.role')) !!}
-		{!! Form::control('textarea', 0, 'summary', $errors, trans('back/blog.summary')) !!}
+		{!! Form::selection('cat_id', $select, null, trans('back/category.title')) !!}
+		{!! Form::control('textarea', 0, 'summary', $errors, trans('common.summary')) !!}
 		
-		{!! Form::submit(trans('front/form.send')) !!}
+		{!! Form::submit(trans('common.save')) !!}
 
 		{!! Form::close() !!}
 	</div>
