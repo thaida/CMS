@@ -47,7 +47,7 @@ session('ok')]) @endif
 					</th> @endif
 				</tr>
 			</thead>
-			<tbody>@include('back.subcat.table')
+			<tbody>@include('back.film.table')
 			</tbody>
 		</table>
 	</div>
