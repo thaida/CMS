@@ -12,7 +12,8 @@ class UserCreateRequest extends Request {
 		return [
 			'username' => 'required|max:30|alpha|unique:users',
 			'email' => 'required|email|unique:users',
-			'password' => 'required|confirmed|min:8'
+			'password' => 'required|confirmed|min:8',
+			
 		];
 	}
 

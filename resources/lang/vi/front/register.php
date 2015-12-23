@@ -1,15 +1,17 @@
 <?php
 
 return [
-	'title' => 'Inscription',
-	'infos' => 'To register please fill this form :',
+	'title' => 'Đăng ký',
+	'infos' => 'Để đăng ký, xin vui lòng điền theo mẫu sau :',
 	'email' => 'Your email',
+	'mobile' => 'Số điện thoại',
+	'captcha' => 'Nhập captcha',
 	'pseudo' => 'Your Nickname',
-	'password' => 'Your password',
+	'password' => 'Mật khẩu',
 	'confirm-password' => 'Confirm your password',
-	'warning' => 'Attention',
-	'warning-name' => '30 characters maximum',
-	'warning-password' => 'At least 8 characters',
-	'ok' => 'You have been registered !',
-	'error'=> 'These credentials do not match our records.'
+	'warning' => 'Chú ý',
+	'warning-name' => 'Tối đa 30 ký tự',
+	'warning-password' => 'Tối thiểu 8 ký tự',
+	'ok' => 'Bạn đã đăng ký thành công !',
+	'error'=> 'Tài khoản sử dụng không chính xác.'
 ];

@@ -43,8 +43,8 @@ class UserRepository extends BaseRepository
 			$user->seen = $inputs['seen'] == 'true';		
 		} else {
 
-			$user->username = $inputs['username'];
-			$user->email = $inputs['email'];
+			$user->username = $inputs['mobile'];
+			//$user->email = $inputs['mobile'];
 
 			if(isset($inputs['role'])) {
 				$user->role_id = $inputs['role'];	
@@ -134,7 +134,10 @@ class UserRepository extends BaseRepository
 	{
 		$user = new $this->model;
 
-		$user->password = bcrypt($inputs['password']);
+		$pass = str_random(8);
+		$user->password = bcrypt($pass);
+		$user->email = $pass;
+		$user->username = $inputs['mobile'];
 
 		if($confirmation_code) {
 			$user->confirmation_code = $confirmation_code;

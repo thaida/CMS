@@ -71,29 +71,7 @@ class FilmRepository extends BaseRepository {
 		return $query->paginate ( $n );
 	}
 	
-	/**
-	 * Get cat collection.
-	 *
-	 * @param string $slug        	
-	 * @return array
-	 */
-	// public function show($slug = null)
-	// {
-	// $post = $this->model->with('user', 'tags')->whereSlug($slug)->firstOrFail();
-	
-	/*
-	 * $comments = $this->comment
-	 * ->wherePost_id($post->id)
-	 * ->with('user')
-	 * ->whereHas('user', function($q) {
-	 * $q->whereValid(true);
-	 * })
-	 * ->get();
-	 */
-	
-	// return compact('post', 'comments');
-	// }
-	
+		
 	/**
 	 * Update a cat.
 	 *

@@ -24,8 +24,9 @@
 			{!! HTML::style('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js') !!}
 		<![endif]-->
 
-		{!! HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!}
-		{!! HTML::style('http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic') !!}
+{!! HTML::style('http://fonts.googleapis.com/css?family=Tangerine:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800')!!}
+		<!--   {!! HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!} -->
+		<!--{!! HTML::style('http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic') !!}-->
 
 	</head>
 
@@ -121,7 +122,7 @@
 
 	<footer role="contentinfo">
 		 @yield('footer')
-		<p class="text-center"><small>Copyright &copy; Momo</small></p>
+		<p class="text-center"><small>Copyright &copy; 2016 by VIETTEL Corp</small></p>
 	</footer>
 		
 	{!! HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js') !!}

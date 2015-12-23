@@ -23,5 +23,6 @@ return [
 	'stored' => 'Lưu thành công.',
 	'updated' => 'Đã cập nhật.',
 	'destroyed' => 'Đã xóa thành công.',
-	'save' => 'Lưu'
+	'save' => 'Lưu',
+	'register' => 'Đăng ký'
 ];
