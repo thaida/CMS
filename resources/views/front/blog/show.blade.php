@@ -6,7 +6,32 @@
 
 @stop
 
+@section('slide')
+
+<!-- SlidesJS Required: These styles are required if you'd like a responsive slideshow -->
+ {!! HTML::style('css/slide.css') !!}
+<!-- SlidesJS Required: -->
+<!-- SlidesJS Required: Start Slides -->
+<!-- The container is used to define the width of the slideshow -->
+
+<div id="slides">
+	<img
+		src="http://c1.staticflickr.com/5/4147/5087404401_d24513119a_n.jpg"
+		alt="Photo by: Missy S Link: http://www.flickr.com/photos/listenmissy/5087404401/">
+	<img
+		src="http://c1.staticflickr.com/5/4132/5087985262_77003d3f70_n.jpg"
+		alt="Photo by: Daniel Parks Link: http://www.flickr.com/photos/parksdh/5227623068/">
+	<img
+		src="http://vtv1.vcmedia.vn/Uploaded/lanchi/2013_06_07/my%20khe%206.jpg"
+		alt="Photo by: Mike Ranweiler Link: http://www.flickr.com/photos/27874907@N04/4833059991/">
+	<img
+		src="https://vtv1.vcmedia.vn/thumb_w/650/Uploaded/lanchi/2013_06_07/my%20khe%205_635062082144361668.png"
+		alt="Photo by: Stuart SeegerLink: http://www.flickr.com/photos/stuseeger/97577796/">
+</div>
+
+@stop 
 @section('main')
+
 	<div class="row">
 		<div class="box">
 			<div class="col-lg-12">

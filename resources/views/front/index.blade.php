@@ -1,10 +1,11 @@
 @extends('front.template') @section('slide')
 
 <!-- SlidesJS Required: These styles are required if you'd like a responsive slideshow -->
- {!! HTML::style('css/slide.css') !!}
+{!! HTML::style('css/slide.css') !!}
 <!-- SlidesJS Required: -->
 <!-- SlidesJS Required: Start Slides -->
 <!-- The container is used to define the width of the slideshow -->
+{!! HTML::style('css/jquery.bxslider.css') !!}
 
 <div id="slides">
 	<img
@@ -22,6 +23,112 @@
 </div>
 
 @stop @section('main')
+<div class="row rowbox">
+	<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
+		<a class="category_title" title="Phim bộ HOT"
+			href="{!! url('articles') !!}"><span
+			class="pull-left">Truyền hình thực tế</span></a> <a
+			class="pull-left btn_arrow_right" title="Phim bộ HOT"
+			href="{!! url('articles') !!}"></a>
+	</div>
+	<div class="contentbox">
+		<ul class="bxslider">
+			<li><img title="Cảnh Sát Hình Sự: Câu Hỏi Số 5"
+				src="http://static1.fptplay.net.vn/static/img/share/video/13_08_2015/cau-hoi-so-5-len-song-tap-dau-tien-21h10-vtv313-08-2015_09g23-17.JPG?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static1.fptplay.net.vn/static/img/share/video/31_08_2015/wiaemqks31-08-2015_15g31-47.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static.fptplay.net.vn/static/img/share/video/10_02_2015/la10-02-2015_16g54-27.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static1.fptplay.net.vn/static/img/share/video/08_10_2015/rh18whn908-10-2015_16g43-05.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static.fptplay.net.vn/static/img/share/video/21_12_2015/hay-nham-mat-khi-anh-den21-12-2015_16g41-14.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static1.fptplay.net.vn/static/img/share/video/07_10_2015/a05eafe2e080146ee6cebc8a39689d30_144133558407-10-2015_09g59-53.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static1.fptplay.net.vn/static/img/share/video/12_10_2015/hdhs42yw12-10-2015_09g07-26.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static.fptplay.net.vn/static/img/share/video/06_04_2015/tgkcss06-04-2015_16g09-08.jpg?w=200&h=120&mode=scale" /></li>
+		</ul>
+	</div>
+</div>
+<section class="slider">
+	<div class="flexslider" id="sliderDN1">
+		<ul class="slides">
+			<li
+				style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;"
+				class="flex-active-slide"><a
+				href="https://viettelfamily.com/tin-tuc/ngoi-nha-chung/thi-viet-ve-nhung-chuyen-cong-tac-nuoc-ngoai-lam-thay-doi-nguoi-viettel"
+				target="_blank"> <img width="100%;"
+					src="https://viettelfamily.com/images/banners/for-the-better.jpg"
+					title="Cuộc thi viết For the better" draggable="false">
+			</a></li>
+		</ul>
+		<ul class="flex-direction-nav">
+			<li><a href="#" class="flex-prev"></a></li>
+			<li><a href="#" class="flex-next"></a></li>
+		</ul>
+	</div>
+</section>
+<div class="row rowbox">
+	<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
+		<a class="category_title" title="Phim bộ Hoa ngu"
+			href="{!! url('articles') !!}"><span
+			class="pull-left">Sao trả lời</span></a> <a
+			class="pull-left btn_arrow_right" title="Phim bộ HOT"
+			href="{!! url('articles') !!}"></a>
+	</div>
+	<div class="contentbox">
+		<ul class="bxslider">
+			<li><img title="Cảnh Sát Hình Sự: Câu Hỏi Số 5"
+				src="http://static1.fptplay.net.vn/static/img/share/video/13_08_2015/cau-hoi-so-5-len-song-tap-dau-tien-21h10-vtv313-08-2015_09g23-17.JPG?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static1.fptplay.net.vn/static/img/share/video/31_08_2015/wiaemqks31-08-2015_15g31-47.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static.fptplay.net.vn/static/img/share/video/10_02_2015/la10-02-2015_16g54-27.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static1.fptplay.net.vn/static/img/share/video/08_10_2015/rh18whn908-10-2015_16g43-05.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static.fptplay.net.vn/static/img/share/video/21_12_2015/hay-nham-mat-khi-anh-den21-12-2015_16g41-14.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static1.fptplay.net.vn/static/img/share/video/07_10_2015/a05eafe2e080146ee6cebc8a39689d30_144133558407-10-2015_09g59-53.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static1.fptplay.net.vn/static/img/share/video/12_10_2015/hdhs42yw12-10-2015_09g07-26.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static.fptplay.net.vn/static/img/share/video/06_04_2015/tgkcss06-04-2015_16g09-08.jpg?w=200&h=120&mode=scale" /></li>
+		</ul>
+	</div>
+</div>
+
+<div class="row rowbox">
+	<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
+		<a class="category_title" title="Phim bộ Hoa ngu"
+			href="{!! url('articles') !!}"><span
+			class="pull-left">Sao trả lời</span></a> <a
+			class="pull-left btn_arrow_right" title="Phim bộ HOT"
+			href="{!! url('articles') !!}"></a>
+	</div>
+	<div class="contentbox">
+		<ul class="bxslider2">
+			<li><img title="Cảnh Sát Hình Sự: Câu Hỏi Số 5"
+				src="http://static1.fptplay.net.vn/static/img/share/video/24_03_2015/thestandin24-03-2015_11g08-18.jpg?w=250&h=350&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static1.fptplay.net.vn/static/img/share/video/31_08_2015/wiaemqks31-08-2015_15g31-47.jpg?w=250&h=350&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static.fptplay.net.vn/static/img/share/video/10_02_2015/la10-02-2015_16g54-27.jpg?w=250&h=350&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static1.fptplay.net.vn/static/img/share/video/08_10_2015/rh18whn908-10-2015_16g43-05.jpg?w=250&h=350&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static.fptplay.net.vn/static/img/share/video/21_12_2015/hay-nham-mat-khi-anh-den21-12-2015_16g41-14.jpg?w=250&h=350&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static1.fptplay.net.vn/static/img/share/video/07_10_2015/a05eafe2e080146ee6cebc8a39689d30_144133558407-10-2015_09g59-53.jpg?w=250&h=350&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static1.fptplay.net.vn/static/img/share/video/12_10_2015/hdhs42yw12-10-2015_09g07-26.jpg?w=250&h=350&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around"
+				src="http://static.fptplay.net.vn/static/img/share/video/06_04_2015/tgkcss06-04-2015_16g09-08.jpg?w=250&h=350&mode=scale" /></li>
+		</ul>
+	</div>
+</div>
 <div class="row">
 	<div class="box">
 		<div class="col-lg-12">
@@ -104,7 +211,8 @@
 <div id="detail_article_content">
 	@stop @section('scripts')
 	<!-- SlidesJS Required: Link to jquery.slides.js -->
-	<script src="js/jquery.slides.min.js"></script>
+	{!! HTML::script('js/jquery.slides.min.js') !!} {!!
+	HTML::script('js/jquery.bxslider.min.js') !!}
 	<!-- End SlidesJS Required -->
 	<!-- SlidesJS Required: Initialize SlidesJS with a jQuery doc ready -->
 	<script>
@@ -120,6 +228,22 @@
         }
       });
     });
+    $('.bxslider').bxSlider({
+   	 autoControls: true,
+   	 captions: true,
+   	  minSlides: 2,
+   	  maxSlides: 5,
+   	  slideWidth: 200,
+   	  slideMargin: 10
+   	});
+    $('.bxslider2').bxSlider({
+      	 autoControls: true,
+      	 captions: true,
+      	  minSlides: 2,
+      	  maxSlides: 2,
+      	  slideWidth: 250,
+      	  slideMargin: 250,
+      	});
   </script>
 	<!-- End SlidesJS Required -->
 	@stop
