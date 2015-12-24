@@ -1,22 +1,125 @@
-@extends('front.template')
+@extends('front.template') @section('slide')
 
-@section('main')
-	<div class="row">
-		<div class="box">
-			<div class="col-lg-12">
-				<hr>
-				<h2 class="intro-text text-center"><strong>Comitem</strong></h2>
-				<hr>
-				<img class="img-responsive img-left" src="img/laravel-l-slant.png" alt="">
-				<p>Postremo ad id indignitatis est ventum, ut cum peregrini ob formidatam haut ita dudum alimentorum inopiam pellerentur ab urbe praecipites, sectatoribus disciplinarum liberalium inpendio paucis sine respiratione ulla extrusis, tenerentur minimarum adseclae veri, quique id simularunt ad tempus, et tria milia saltatricum ne interpellata quidem cum choris.</p>
-				<p>Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes.</p>
-				<p>Eminuit autem inter humilia supergressa iam impotentia fines mediocrium delictorum nefanda Clematii cuiusdam Alexandrini nobilis mors repentina; cuius socrus cum misceri sibi generum, flagrans eius amore, non impetraret, ut ferebatur, per palatii pseudothyrum introducta, oblato pretioso reginae monili id adsecuta est, ut ad Honoratum tum comitem orientis formula missa letali omnino scelere nullo contactus idem Clematius nec hiscere nec loqui permissus occideretur.</p>
-				<p>Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac Constantinus iunxerat pater, Megaera quaedam mortalis, inflammatrix saevientis adsidua, humani cruoris avida nihil mitius quam maritus; qui paulatim eruditiores facti processu temporis ad nocendum per clandestinos versutosque rumigerulos conpertis leviter addere quaedam male suetos falsa et placentia sibi discentes, adfectati regni vel artium nefandarum calumnias insontibus adfligebant.</p>
-				<p>Montius nos tumore inusitato quodam et novo ut rebellis et maiestati recalcitrantes Augustae per haec quae strepit incusat iratus nimirum quod contumacem praefectum, quid rerum ordo postulat ignorare dissimulantem formidine tenus iusserim custodiri.</p>
+<!-- SlidesJS Required: These styles are required if you'd like a responsive slideshow -->
+ {!! HTML::style('css/slide.css') !!}
+<!-- SlidesJS Required: -->
+<!-- SlidesJS Required: Start Slides -->
+<!-- The container is used to define the width of the slideshow -->
+
+<div id="slides">
+	<img
+		src="http://c1.staticflickr.com/5/4147/5087404401_d24513119a_n.jpg"
+		alt="Photo by: Missy S Link: http://www.flickr.com/photos/listenmissy/5087404401/">
+	<img
+		src="http://c1.staticflickr.com/5/4132/5087985262_77003d3f70_n.jpg"
+		alt="Photo by: Daniel Parks Link: http://www.flickr.com/photos/parksdh/5227623068/">
+	<img
+		src="http://vtv1.vcmedia.vn/Uploaded/lanchi/2013_06_07/my%20khe%206.jpg"
+		alt="Photo by: Mike Ranweiler Link: http://www.flickr.com/photos/27874907@N04/4833059991/">
+	<img
+		src="https://vtv1.vcmedia.vn/thumb_w/650/Uploaded/lanchi/2013_06_07/my%20khe%205_635062082144361668.png"
+		alt="Photo by: Stuart SeegerLink: http://www.flickr.com/photos/stuseeger/97577796/">
+</div>
+
+@stop @section('main')
+<div class="row">
+	<div class="box">
+		<div class="col-lg-12">
+			<hr>
+			<h2 class="intro-text text-center">
+				<strong>Comitem</strong>
+			</h2>
+			<hr>
+			<img class="img-responsive img-left" src="img/laravel-l-slant.png"
+				alt="">
+			<table cellspacing="0" cellpadding="3" border="0"
+				style="width: 100%;" class="table-image">
+				<tbody>
+					<tr>
+						<td style="text-align: center;"><img style="width: 100%;"
+							src="/uploads/ckfinder/images/NhomDSC_4919.jpg"
+							caption="Viettel chủ trương tăng cường những buổi trao đổi nhóm nhỏ."
+							alt="" _cke_saved_src="/uploads/ckfinder/images/NhomDSC_4919.jpg"></td>
+					</tr>
+					<tr>
+						<td style="text-align: center;" class="image-caption">Viettel chủ
+							trương tăng cường những buổi trao đổi nhóm nhỏ.</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p style="text-align: justify;">Tín hiệu khả quan đã đến sau cuộc
+				thảo luận kéo dài 3 buổi chiều liên tục theo hình thức nhóm nhỏ chỉ
+				gồm 2 thành viên ban TGĐ Tập đoàn, 2 thành viên ban TGĐ và 3 chuyên
+				viên Viettel Telecom.</p>
+
+			<p style="text-align: justify;">Bất cập của các gói cước từ trước tới
+				nay của Viettel đã được chỉ ra chi tiết như thiếu tường minh, chồng
+				chéo, gây khó nhớ cho chính nhân viên và điểm bán của Viettel… 4
+				nhóm cước chính đã được quy hoạch lại một cách tường minh gồm đại
+				trà, dùng càng nhiều càng rẻ, có bao nhiêu tiền dùng bấy nhiêu và
+				các gói cho thị trường ngách như đọc báo, Facebook, Youtube, nghe
+				nhạc, học tập… Trong đó, quan trong nhất là, các cuộc thảo luận nhóm
+				đã giúp chúng ta thống nhất được nhận thức mới là thay thế “dùng
+				càng nhiều data thì giá càng đắt” thành “dùng càng nhiều giá càng
+				rẻ”.</p>
+
+			<p style="text-align: justify;">Bên cạnh đó, việc định giá các dịch
+				vụ data 4G cũng là việc khó, nhưng những cuộc trao đổi chi tiết
+				trong một khoảng thời gian ngắn tại Tập đoàn cũng đã giúp chúng ta
+				tìm ra phương án, vừa có được sự khác biệt so với 3G mà vẫn bám sát
+				thị trường.</p>
+
+			<p style="text-align: justify;"></p>
+			<div class="embed-article-box">
+				<a
+					href="/tin-tuc/tu-nhan-thuc-den-hanh-dong/tai-sao-tap-doan-tam-dung-giao-ban-hang-ngay"><img
+					src="/cache/uploads//2c/23/32/5677df629fa41_780_auto.jpg"
+					class="thumbnail"></a>
+				<div class="title">
+					<a
+						href="/tin-tuc/tu-nhan-thuc-den-hanh-dong/tai-sao-tap-doan-tam-dung-giao-ban-hang-ngay">Tại
+						sao Tập đoàn tạm dừng Giao ban hàng ngày?</a>
+				</div>
+				<div class="header">
+					<a
+						href="/tin-tuc/tu-nhan-thuc-den-hanh-dong/tai-sao-tap-doan-tam-dung-giao-ban-hang-ngay">Liên
+						tiếp 3 tuần gần đây, Tập đoàn đã ngừng họp giao ban ngày, một hoạt
+						động vốn được duy trì suốt 15 năm qua.</a>
+				</div>
+				<div class="clearfix"></div>
 			</div>
+			<p></p>
+
+			<p style="text-align: justify;">Việc dù khó đến đâu, nhưng nếu chúng
+				ta tập trung làm đến cùng thì sẽ đều tìm được giải pháp.&nbsp; Điều
+				quan trọng là người đứng đầu phải cùng trăn trở và cùng tham gia
+				giải quyết việc khó. Những sản phẩm thiếu sự chỉ đạo của người đứng
+				đầu có thể sẽ không thể sử dụng được hoặc thậm chí còn gây ra nguy
+				hiểm cho tổ chức.</p>
 		</div>
 	</div>
-
-@stop
-
-
+</div>
+</div>
+<div id="detail_article_content">
+	@stop @section('scripts')
+	<!-- SlidesJS Required: Link to jquery.slides.js -->
+	<script src="js/jquery.slides.min.js"></script>
+	<!-- End SlidesJS Required -->
+	<!-- SlidesJS Required: Initialize SlidesJS with a jQuery doc ready -->
+	<script>
+    $(function() {
+      $('#slides').slidesjs({
+        width: 940,
+        height: 400,
+        play: {
+          active: true,
+          auto: true,
+          interval: 4000,
+          swap: true
+        }
+      });
+    });
+  </script>
+	<!-- End SlidesJS Required -->
+	@stop

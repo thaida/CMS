@@ -12,6 +12,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Repositories\UserRepository;
 use App\Jobs\SendMail;
+use App\Http\Requests\Auth\CaptchaImageRequest;
 
 class AuthController extends Controller
 {
@@ -27,7 +28,8 @@ class AuthController extends Controller
 	{
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
-
+	
+	
 	/**
 	 * Handle a login request to the application.
 	 *
@@ -40,8 +42,9 @@ class AuthController extends Controller
 		LoginRequest $request,
 		Guard $auth)
 	{
+		
 		$logValue = $request->input('log');
-
+		
 		$logAccess = filter_var($logValue, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
         $throttles = in_array(
@@ -107,10 +110,12 @@ class AuthController extends Controller
 			$confirmation_code = str_random(30)
 		);
 
-		$this->dispatch(new SendMail($user));
+		//$this->dispatch(new SendMail($user));
 
 		return redirect('/')->with('ok', trans('front/verify.message'));
 	}
+
+	
 
 	/**
 	 * Handle a confirmation request.
