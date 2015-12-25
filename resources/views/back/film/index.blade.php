@@ -57,7 +57,8 @@ session('ok')]) @endif
 	<div class="pull-right link">{!! $links !!}</div>
 </div>
 
-@stop @section('scripts')
+@stop 
+@section('scripts')
 
 <script>
     

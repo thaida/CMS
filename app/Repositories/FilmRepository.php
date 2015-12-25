@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Film;
 
+
 class FilmRepository extends BaseRepository {
 	
 	/**
@@ -30,6 +31,11 @@ class FilmRepository extends BaseRepository {
 		$film->slug = $inputs ['slug'];
 		$film->sub_cat_id = $inputs ['sub_cat_id'];
 		$film->publish = isset ( $inputs ['active'] );
+		
+		if(isset($inputs ['btnImage']))			
+			$film->poster_path = $inputs ['btnImage'];
+		
+		
 		//$cat->cat_id = $inputs ['cat_id'];
 		if ($user_id) {
 			$film->user_id = $user_id;
@@ -80,7 +86,7 @@ class FilmRepository extends BaseRepository {
 	 * @return void
 	 */
 	public function update($inputs, $post) {
-		$post = $this->savePost ( $post, $inputs );
+		$post = $this->savePost ( $post, $inputs, null);
 	}
 	/**
 	 * Destroy a post.
@@ -99,7 +105,7 @@ class FilmRepository extends BaseRepository {
 	 * @return void
 	 */
 	public function store($inputs, $user_id) {
-		$post = $this->savePost ( new $this->model (), $inputs, $user_id );
+		$post = $this->savePost ( new $this->model (), $inputs, $user_id);
 		
 		// Maybe purge orphan tags...
 	}

@@ -104,7 +104,7 @@
 	<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
 		<a class="category_title" title="Phim bộ Hoa ngu"
 			href="{!! url('articles') !!}"><span
-			class="pull-left">Sao trả lời</span></a> <a
+			class="pull-left">Phim nổi bật</span></a> <a
 			class="pull-left btn_arrow_right" title="Phim bộ HOT"
 			href="{!! url('articles') !!}"></a>
 	</div>

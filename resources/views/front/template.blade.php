@@ -14,8 +14,7 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@yield('head') 
-{!! HTML::style('css/main_front.css') !!}
+@yield('head') {!! HTML::style('css/main_front.css') !!}
 
 <!--[if (lt IE 9) & (!IEMobile)]>
 			{!! HTML::script('js/vendor/respond.min.js') !!}
@@ -25,7 +24,8 @@
 			{!! HTML::style('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js') !!}
 		<![endif]-->
 
-{!! HTML::style('http://fonts.googleapis.com/css?family=Tangerine:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800')!!}
+{!!
+HTML::style('http://fonts.googleapis.com/css?family=Tangerine:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800')!!}
 <!-- {!! HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!}    -->
 <!-- {!! HTML::style('http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic') !!} -->
 
@@ -41,20 +41,22 @@
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
 				<div class="navbar-header">
-					<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse"
+					<button aria-controls="navbar" aria-expanded="false"
+						data-target="#navbar" data-toggle="collapse"
 						class="navbar-toggle collapsed" type="button">
 						<span class="sr-only">Toggle navigation</span> <span
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a href="{!! url('/') !!}" class="navbar-brand">{{ trans('front/site.title') }}</a>
+					<a href="{!! url('/') !!}" class="navbar-brand">{{
+						trans('front/site.title') }}</a>
 				</div>
 				<div class="navbar-collapse collapse" id="navbar">
 					<div class="col-sm-4 col-lg-6">
 						<ul class="nav navbar-nav">
-							<li{!! classActivePath('/') !!}>
-							{!! link_to('/', trans('front/site.home')) !!}</li> 
-							@if(session('statut') == 'visitor' || session('statut') == 'user')
+							<li{!! classActivePath('/') !!}>{!! link_to('/',
+								trans('front/site.home')) !!}</li> @if(session('statut') ==
+							'visitor' || session('statut') == 'user')
 							<li{!! classActivePath('contact/create') !!}>{!!
 								link_to('contact/create', trans('front/site.contact')) !!}</li>
 							@endif
@@ -77,9 +79,8 @@
 							@endif
 							<li>{!! link_to('auth/logout', trans('front/site.logout')) !!}</li>
 							@endif @endif
-							<li class="dropdown">
-								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-								<img width="32" height="32"
+							<li class="dropdown"><a data-toggle="dropdown"
+								class="dropdown-toggle" href="#"> <img width="32" height="32"
 									alt="{{ session('locale') }}"
 									src="{!! asset('img/' . session('locale') . '-flag.png') !!}" />&nbsp;
 									<b class="caret"></b></a>
@@ -90,8 +91,7 @@
 										title="Vietnamese"><img width="32" height="32"
 											alt="{{ $user }}"
 											src="{!! asset('img/' . $user . '-flag.png') !!}"></a></li>
-									@endif 
-									@endforeach
+									@endif @endforeach
 								</ul></li>
 						</ul>
 					</div>
@@ -111,8 +111,7 @@
 									href="javascript:void(0)">Đăng nhập</a>
 							</div>
 							<div class="">
-								<a class="register" href="{!! url('signup') !!}">Đăng
-									ký</a>
+								<a class="register" href="{!! url('signup') !!}">Đăng ký </a>
 							</div>
 						</div>
 					</div>
@@ -127,11 +126,16 @@
 
 
 
-	<main role="main" class="container"> @if(session()->has('ok'))
-	@include('partials/error', ['type' => 'success', 'message' =>
-	session('ok')]) @endif @if(isset($info))
-	@include('partials/error',['type' => 'info', 'message' => $info])
-	@endif @yield('slide') @yield('main') </main>
+	<main role="main" class="container"> 
+		@if(session()->has('ok'))
+			@include('partials/error', ['type' => 'success', 'message' => session('ok')]) 
+		@endif 
+		@if(isset($info))
+			@include('partials/error',['type' => 'info', 'message' => $info])
+		@endif
+	 @yield('slide') 
+	 @yield('main') 
+	 </main>
 
 	<footer role="contentinfo">
 		@yield('footer')
@@ -147,9 +151,9 @@
 	{!! HTML::script('js/plugins.js') !!} {!! HTML::script('js/main.js')
 	!!}
 	<script>
-                                    $(document).ready(function(){
-                                        $("#btnSearch").click(function(){
-                                            var keyword_s = $("#search_keyword").val();
+  	$(document).ready(function(){
+             $("#btnSearch").click(function(){
+                         var keyword_s = $("#search_keyword").val();
                                             if(keyword_s.length > 3){
                                                 window.location.href = '/tim-kiem/' + keyword_s;
                                             }                                            

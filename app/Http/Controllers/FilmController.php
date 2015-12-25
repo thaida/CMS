@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Guard;
@@ -10,6 +9,8 @@ use App\Http\Requests\SearchRequest;
 use App\Repositories\FilmRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\SubCategoryRepository;
+use Input;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FilmController extends Controller {
 	
@@ -40,7 +41,7 @@ class FilmController extends Controller {
 	 * @param App\Repositories\CategoryRepository $blog_gestion        	
 	 * @return void
 	 */
-	public function __construct( FilmRepository $film_gestion, SubCategoryRepository $sub_cat_gestion) {
+	public function __construct(FilmRepository $film_gestion, SubCategoryRepository $sub_cat_gestion) {
 		$this->sub_cat_gestion = $sub_cat_gestion;
 		$this->film_gestion = $film_gestion;
 		
@@ -73,7 +74,7 @@ class FilmController extends Controller {
 	 */
 	public function indexOrder(Request $request) {
 		
-		//$statut = $this->user_gestion->getStatut();
+		// $statut = $this->user_gestion->getStatut();
 		$posts = $this->film_gestion->index ( 10, null, $request->name, $request->sort );
 		
 		$links = $posts->appends ( [ 
@@ -81,14 +82,14 @@ class FilmController extends Controller {
 				'sort' => $request->sort 
 		] );
 		
-		if($request->ajax()) {
-			return response()->json([
-					'view' => view('back.film.table', compact( 'posts'))->render(),
-					'links' => $links->setPath('order')->render()
-			]);
+		if ($request->ajax ()) {
+			return response ()->json ( [ 
+					'view' => view ( 'back.film.table', compact ( 'posts' ) )->render (),
+					'links' => $links->setPath ( 'order' )->render () 
+			] );
 		}
 		
-		$links->setPath('')->render();
+		$links->setPath ( '' )->render ();
 		
 		$order = ( object ) [ 
 				'name' => $request->name,
@@ -110,8 +111,8 @@ class FilmController extends Controller {
 		// $this->authorize('change', $post);
 		
 		$url = config ( 'medias.url' );
-		
-		return view ( 'back.film.edit', array_merge ( $this->film_gestion->edit ( $film ), compact ( 'url' ) ), $select = $this->sub_cat_gestion->getAllByFilmSelect () );
+		$img_host_url = config ( 'medias.image-host' );
+		return view ( 'back.film.edit', array_merge ( $this->film_gestion->edit ( $film ), compact ( 'url' ), compact('img_host_url') ), $select = $this->sub_cat_gestion->getAllByFilmSelect () );
 	}
 	
 	/**
@@ -163,6 +164,7 @@ class FilmController extends Controller {
 	 * @return Response
 	 */
 	public function store(FilmRequest $request) {
+
 		$this->film_gestion->store ( $request->all (), $request->user ()->id );
 		
 		return redirect ( 'film' )->with ( 'ok', trans ( 'back/film.stored' ) );
@@ -181,21 +183,17 @@ class FilmController extends Controller {
 		return response ()->json ();
 	}
 	
-	
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  Illuminate\Contracts\Auth\Guard $auth
-	 * @param  string $slug
+	 * @param Illuminate\Contracts\Auth\Guard $auth        	
+	 * @param string $slug        	
 	 * @return Response
 	 */
-	public function show(
-			Guard $auth,
-			$slug)
-	{
-		$user = $auth->user();
-	
-		return view('front.film.show',  array_merge($this->film_gestion->show($slug), compact('user')));
+	public function show(Guard $auth, $slug) {
+		$user = $auth->user ();
+		
+		return view ( 'front.film.show', array_merge ( $this->film_gestion->show ( $slug ), compact ( 'user' ) ) );
 	}
 }
 

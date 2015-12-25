@@ -1,7 +1,7 @@
 <?php
 
 return [
-	'connection' => 'Connection',
+	'connection' => 'Login',
 	'text' => 'To log on this site you must fill this form :',
 	'email' => 'Your email',
 	'password' => 'Your password',

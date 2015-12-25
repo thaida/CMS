@@ -8,7 +8,7 @@ return [
 	'blog' => 'Blog',
 	'register' => 'Register',
 	'forget-password' => 'Forgotten password',
-	'connection' => 'Connection',
+	'connection' => 'Login',
 	'administration' => 'Administration',
 	'redaction' => 'Redaction',
 	'logout' => 'Logout'

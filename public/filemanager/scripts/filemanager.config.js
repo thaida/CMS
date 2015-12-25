@@ -56,7 +56,8 @@
             "mp3",
             "wav",
             "zip",
-            "rar"
+            "rar",
+			"vtt"
         ]
     },
     "upload": {

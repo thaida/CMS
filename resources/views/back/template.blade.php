@@ -52,7 +52,7 @@
                     {!! link_to_route('blog.index', trans('back/admin.redaction'), [], ['class' => 'navbar-brand']) !!}
                 @endif
             </div>
-            <!-- Menu supérieur -->
+            <!-- Menu TOP -->
             <ul class="nav navbar-right top-nav">
                 <li>{!! link_to_route('home', trans('back/admin.home')) !!}</li>
                 <li class="dropdown">
@@ -64,7 +64,7 @@
                     </ul>
                 </li>
             </ul>
-            <!-- Menu de la barre latérale -->
+            <!-- Menu left -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     @if(session('statut') == 'admin')
