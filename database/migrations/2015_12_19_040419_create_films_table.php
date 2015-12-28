@@ -11,11 +11,12 @@ class CreateFilmsTable extends Migration {
 		Schema::create ( 'films', function (Blueprint $table) {
 			$table->increments ( 'id' );
 			$table->string ( 'title', 100 );
-			$table->string ( 'filePath', 1000 );
-			$table->string ( 'posterPath', 1000 );
+			$table->string ( 'film_path', 1000 );
+			$table->string ( 'poster_path', 1000 );
 			$table->string ( 'slug', 255 )->unique ();
 			$table->string ( 'summary', 1000 );
 			$table->boolean ( 'publish' )->default ( false );
+			$table->boolean ( 'isHot' )->default ( false );
 			$table->integer ( 'user_id' )->unsigned ();
 			$table->integer ( 'sub_cat_id' )->unsigned ();
 			$table->timestamps ();

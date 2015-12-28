@@ -65,7 +65,7 @@ class CatController extends Controller {
 	public function indexOrder(Request $request)
 	{
 		//$statut = $this->user_gestion->getStatut();
-		$posts = $this->cat_gestion->index(10, null, $request->name, $request->sort );
+		$posts = $this->cat_gestion->index( config("constants.LIMIT"), null, $request->name, $request->sort );
 		
 		$links = $posts->appends([
 				'name' => $request->name,

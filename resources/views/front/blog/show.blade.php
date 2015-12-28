@@ -9,7 +9,7 @@
 @section('slide')
 
 <!-- SlidesJS Required: These styles are required if you'd like a responsive slideshow -->
- {!! HTML::style('css/slide.css') !!}
+{!! HTML::style('css/slide.css') !!}
 <!-- SlidesJS Required: -->
 <!-- SlidesJS Required: Start Slides -->
 <!-- The container is used to define the width of the slideshow -->

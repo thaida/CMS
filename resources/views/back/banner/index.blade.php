@@ -1,12 +1,11 @@
-@extends('back.template') @section('main')
+@extends('back.template') 
+@section('main')
+@include('back.partials.entete', ['title' => trans('back/banner.dashboard') . link_to_route('banner.create', trans('common.add'), [], ['class' =>
+'btn btn-info pull-right']), 'icone' => 'pencil', 'fil' =>trans('back/banner.location')]) 
 
-@include('back.partials.entete', ['title' => trans('back/film.dashboard')
-. link_to_route('film.create', trans('common.add'), [], ['class' =>
-'btn btn-info pull-right']), 'icone' => 'pencil', 'fil' =>
-trans('back/film.location')]) 
 @if(session()->has('ok'))
-@include('partials/error', ['type' => 'success', 'message' =>
-session('ok')]) @endif
+	@include('partials/error', ['type' => 'success', 'message' =>session('ok')])
+@endif
 
 <div class="row col-lg-12">
 	<div class="pull-right link">{!! $links !!}</div>
@@ -48,7 +47,7 @@ session('ok')]) @endif
 					</th> @endif
 				</tr>
 			</thead>
-			<tbody>@include('back.film.table')
+			<tbody>@include('back.banner.table')
 			</tbody>
 		</table>
 	</div>
@@ -70,7 +69,7 @@ session('ok')]) @endif
         $(this).hide().parent().append('<i class="fa fa-refresh fa-spin"></i>');
         var token = $('input[name="_token"]').val();
         $.ajax({
-          url: '{{ url('filmpublish') }}' + '/' + this.value,
+          url: '{{ url('bannerpublish') }}' + '/' + this.value,
           type: 'PUT',
           data: "publish=" + this.checked + "&_token=" + token
         })
@@ -110,7 +109,7 @@ session('ok')]) @endif
         $('.breadcrumb li').append('<span id="tempo" class="fa fa-refresh fa-spin"></span>');       
         // Send ajax
         $.ajax({
-          url: '{{ url('film/order') }}',
+          url: '{{ url('banner/order') }}',
           type: 'GET',
           dataType: 'json',
           data: "name=" + $(this).attr('name') + "&sort=" + tri
@@ -122,7 +121,7 @@ session('ok')]) @endif
         })
         .fail(function() {
           $('#tempo').remove();
-          alert('{{ trans('back/cat.fail') }}');
+          alert('{{ trans('back/banner.fail') }}');
         });
       })
 

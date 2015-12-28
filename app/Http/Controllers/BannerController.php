@@ -4,29 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
-use App\Http\Requests\FilmRequest;
-use App\Http\Requests\SearchRequest;
-use App\Repositories\FilmRepository;
+use App\Http\Requests\BannerRequest;
+use App\Repositories\BannerRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\SubCategoryRepository;
-use Input;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class FilmController extends Controller {
+class BannerController extends Controller {
 	
 	/**
 	 * The BlogRepository instance.
 	 *
 	 * @var App\Repositories\SubCategoryRepository
 	 */
-	protected $sub_cat_gestion;
+	protected $banner_gestion;
 	
 	/**
 	 * The CategoryRepository instance.
 	 *
-	 * @var App\Repositories\FilmRepository
+	 * @var App\Repositories\SubCatRepository
 	 */
-	protected $film_gestion;
+	protected $sub_cat_gestion;
 	
 	/**
 	 * The pagination number.
@@ -41,10 +38,10 @@ class FilmController extends Controller {
 	 * @param App\Repositories\CategoryRepository $blog_gestion        	
 	 * @return void
 	 */
-	public function __construct(FilmRepository $film_gestion, SubCategoryRepository $sub_cat_gestion) {
-		$this->sub_cat_gestion = $sub_cat_gestion;
-		$this->film_gestion = $film_gestion;
+	public function __construct(BannerRepository $banner_gestion, SubCategoryRepository $sub_cat_gestion) {
 		
+		$this->banner_gestion = $banner_gestion;
+		$this->sub_cat_gestion = $sub_cat_gestion;
 		$this->nbrPages = 2;
 		
 		
@@ -59,7 +56,7 @@ class FilmController extends Controller {
 	 * @return Redirection
 	 */
 	public function index() {
-		return redirect ( route ( 'film.order', [ 
+		return redirect ( route ( 'banner.order', [ 
 				'name' => 'created_at',
 				'sort' => 'asc' 
 		] ) );
@@ -74,7 +71,7 @@ class FilmController extends Controller {
 	public function indexOrder(Request $request) {
 		
 		// $statut = $this->user_gestion->getStatut();
-		$posts = $this->film_gestion->index ( config("constants.LIMIT"), null, $request->name, $request->sort );
+		$posts = $this->banner_gestion->index ( config("constants.LIMIT"), null, $request->name, $request->sort );
 		
 		$links = $posts->appends ( [ 
 				'name' => $request->name,
@@ -83,7 +80,7 @@ class FilmController extends Controller {
 		
 		if ($request->ajax ()) {
 			return response ()->json ( [ 
-					'view' => view ( 'back.film.table', compact ( 'posts' ) )->render (),
+					'view' => view ( 'back.banner.table', compact ( 'posts' ) )->render (),
 					'links' => $links->setPath ( 'order' )->render () 
 			] );
 		}
@@ -95,7 +92,7 @@ class FilmController extends Controller {
 				'sort' => 'sort-' . $request->sort 
 		];
 		
-		return view ( 'back.film.index', compact ( 'posts', 'links', 'order' ) );
+		return view ( 'back.banner.index', compact ( 'posts', 'links', 'order' ) );
 	}
 	
 	/**
@@ -105,13 +102,13 @@ class FilmController extends Controller {
 	 * @return Response
 	 */
 	public function edit($id) {
-		$film = $this->film_gestion->getById ( $id );
+		$film = $this->banner_gestion->getById ( $id );
 		
 		// $this->authorize('change', $post);
 		
 		$url = config ( 'medias.url' );
 		$img_host_url = config ( 'medias.image-host' );
-		return view ( 'back.film.edit', array_merge ( $this->film_gestion->edit ( $film ), compact ( 'url' ), compact('img_host_url') ), $select = $this->sub_cat_gestion->getAllByFilmSelect () );
+		return view ( 'back.banner.edit', array_merge ( $this->banner_gestion->edit ( $film ), compact ( 'url' ), compact('img_host_url') ), $select = $this->sub_cat_gestion->getAllByFilmSelect () );
 	}
 	
 	/**
@@ -121,14 +118,14 @@ class FilmController extends Controller {
 	 * @param int $id        	
 	 * @return Response
 	 */
-	public function update(FilmRequest $request, $id) {
-		$film = $this->film_gestion->getById ( $id );
+	public function update(BannerRequest $request, $id) {
+		$banner = $this->banner_gestion->getById ( $id );
 		
 		// $this->authorize('change', $post);
 		
-		$this->film_gestion->update ( $request->all (), $film );
+		$this->banner_gestion->update ( $request->all (), $banner );
 		
-		return redirect ( 'film' )->with ( 'ok', trans ( 'back/film.updated' ) );
+		return redirect ( 'banner' )->with ( 'ok', trans ( 'back/banner.updated' ) );
 	}
 	
 	/**
@@ -138,13 +135,13 @@ class FilmController extends Controller {
 	 * @return Response
 	 */
 	public function destroy($id) {
-		$film = $this->film_gestion->getById ( $id );
+		$film = $this->banner_gestion->getById ( $id );
 		
 		// $this->authorize('change', $post);
 		
-		$this->film_gestion->destroy ( $film );
+		$this->banner_gestion->destroy ( $film );
 		
-		return redirect ( 'film' )->with ( 'ok', trans ( 'back/film.destroyed' ) );
+		return redirect ( 'banner' )->with ( 'ok', trans ( 'back/banner.destroyed' ) );
 	}
 	
 	/**
@@ -154,7 +151,7 @@ class FilmController extends Controller {
 	 */
 	public function create() {
 		$url = config ( 'medias.url' );
-		return view ( 'back.film.create', array_merge ( compact ( 'url' ), $this->sub_cat_gestion->getAllByFilmSelect () ) );
+		return view ( 'back.banner.create', array_merge ( compact ( 'url' ), $this->sub_cat_gestion->getAllByFilmSelect () ) );
 	}
 	/**
 	 * Store a newly created resource in storage.
@@ -162,11 +159,11 @@ class FilmController extends Controller {
 	 * @param App\Http\Requests\PostRequest $request        	
 	 * @return Response
 	 */
-	public function store(FilmRequest $request) {
+	public function store(BannerRequest $request) {
 
-		$this->film_gestion->store ( $request->all (), $request->user ()->id );
+		$this->banner_gestion->store ( $request->all (), $request->user ()->id );
 		
-		return redirect ( 'film' )->with ( 'ok', trans ( 'back/film.stored' ) );
+		return redirect ( 'banner' )->with ( 'ok', trans ( 'back/banner.stored' ) );
 	}
 	
 	/**
@@ -177,7 +174,7 @@ class FilmController extends Controller {
 	 * @return Response
 	 */
 	public function updatePublish(Request $request, $id) {
-		$this->film_gestion->updatePublish ( $request->all (), $id );
+		$this->banner_gestion->updatePublish ( $request->all (), $id );
 		
 		return response ()->json ();
 	}
@@ -192,7 +189,7 @@ class FilmController extends Controller {
 	public function show(Guard $auth, $slug) {
 		$user = $auth->user ();
 		
-		return view ( 'front.film.show', array_merge ( $this->film_gestion->show ( $slug ), compact ( 'user' ) ) );
+		return view ( 'front.banner.show', array_merge ( $this->banner_gestion->show ( $slug ), compact ( 'user' ) ) );
 	}
 }
 

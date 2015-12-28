@@ -1,4 +1,6 @@
-@extends('front.template') @section('slide')
+@extends('front.template') 
+
+@section('slide')
 
 <!-- SlidesJS Required: These styles are required if you'd like a responsive slideshow -->
 {!! HTML::style('css/slide.css') !!}
@@ -22,7 +24,9 @@
 		alt="Photo by: Stuart SeegerLink: http://www.flickr.com/photos/stuseeger/97577796/">
 </div>
 
-@stop @section('main')
+@stop
+
+@section('main')
 <div class="row rowbox">
 	<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
 		<a class="category_title" title="Phim bộ HOT"
@@ -33,21 +37,21 @@
 	</div>
 	<div class="contentbox">
 		<ul class="bxslider">
-			<li><img title="Cảnh Sát Hình Sự: Câu Hỏi Số 5"
+			<li><img title="Cảnh Sát Hình Sự: Câu Hỏi Số 5" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static1.fptplay.net.vn/static/img/share/video/13_08_2015/cau-hoi-so-5-len-song-tap-dau-tien-21h10-vtv313-08-2015_09g23-17.JPG?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static1.fptplay.net.vn/static/img/share/video/31_08_2015/wiaemqks31-08-2015_15g31-47.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static.fptplay.net.vn/static/img/share/video/10_02_2015/la10-02-2015_16g54-27.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static1.fptplay.net.vn/static/img/share/video/08_10_2015/rh18whn908-10-2015_16g43-05.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static.fptplay.net.vn/static/img/share/video/21_12_2015/hay-nham-mat-khi-anh-den21-12-2015_16g41-14.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static1.fptplay.net.vn/static/img/share/video/07_10_2015/a05eafe2e080146ee6cebc8a39689d30_144133558407-10-2015_09g59-53.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static1.fptplay.net.vn/static/img/share/video/12_10_2015/hdhs42yw12-10-2015_09g07-26.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static.fptplay.net.vn/static/img/share/video/06_04_2015/tgkcss06-04-2015_16g09-08.jpg?w=200&h=120&mode=scale" /></li>
 		</ul>
 	</div>
@@ -80,25 +84,57 @@
 	</div>
 	<div class="contentbox">
 		<ul class="bxslider">
-			<li><img title="Cảnh Sát Hình Sự: Câu Hỏi Số 5"
+			<li><img title="Cảnh Sát Hình Sự: Câu Hỏi Số 5" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static1.fptplay.net.vn/static/img/share/video/13_08_2015/cau-hoi-so-5-len-song-tap-dau-tien-21h10-vtv313-08-2015_09g23-17.JPG?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static1.fptplay.net.vn/static/img/share/video/31_08_2015/wiaemqks31-08-2015_15g31-47.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static.fptplay.net.vn/static/img/share/video/10_02_2015/la10-02-2015_16g54-27.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static1.fptplay.net.vn/static/img/share/video/08_10_2015/rh18whn908-10-2015_16g43-05.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static.fptplay.net.vn/static/img/share/video/21_12_2015/hay-nham-mat-khi-anh-den21-12-2015_16g41-14.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static1.fptplay.net.vn/static/img/share/video/07_10_2015/a05eafe2e080146ee6cebc8a39689d30_144133558407-10-2015_09g59-53.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static1.fptplay.net.vn/static/img/share/video/12_10_2015/hdhs42yw12-10-2015_09g07-26.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static.fptplay.net.vn/static/img/share/video/06_04_2015/tgkcss06-04-2015_16g09-08.jpg?w=200&h=120&mode=scale" /></li>
 		</ul>
 	</div>
 </div>
+
+<!-- PHIM HANH DONG -->
+<div class="row rowbox">
+	<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
+		<a class="category_title" title="Hành động"
+			href="{!! url('articles') !!}"><span
+			class="pull-left">Hành động</span></a> <a
+			class="pull-left btn_arrow_right" title="Hành động"
+			href="{!! url('articles') !!}"></a>
+	</div>
+	<div class="contentbox">
+		<ul class="bxslider">
+			<li><img title="Cảnh Sát Hình Sự: Câu Hỏi Số 5" data-tooltip="phim565c82b317dc130a16f4e7ec"
+				src="http://static1.fptplay.net.vn/static/img/share/video/13_08_2015/cau-hoi-so-5-len-song-tap-dau-tien-21h10-vtv313-08-2015_09g23-17.JPG?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
+				src="http://static1.fptplay.net.vn/static/img/share/video/31_08_2015/wiaemqks31-08-2015_15g31-47.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
+				src="http://static.fptplay.net.vn/static/img/share/video/10_02_2015/la10-02-2015_16g54-27.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
+				src="http://static1.fptplay.net.vn/static/img/share/video/08_10_2015/rh18whn908-10-2015_16g43-05.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
+				src="http://static.fptplay.net.vn/static/img/share/video/21_12_2015/hay-nham-mat-khi-anh-den21-12-2015_16g41-14.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
+				src="http://static1.fptplay.net.vn/static/img/share/video/07_10_2015/a05eafe2e080146ee6cebc8a39689d30_144133558407-10-2015_09g59-53.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
+				src="http://static1.fptplay.net.vn/static/img/share/video/12_10_2015/hdhs42yw12-10-2015_09g07-26.jpg?w=200&h=120&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
+				src="http://static.fptplay.net.vn/static/img/share/video/06_04_2015/tgkcss06-04-2015_16g09-08.jpg?w=200&h=120&mode=scale" /></li>
+		</ul>
+	</div>
+</div>
+<!-- END PHIM HANH DONG -->
 
 <div class="row rowbox">
 	<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
@@ -109,22 +145,22 @@
 			href="{!! url('articles') !!}"></a>
 	</div>
 	<div class="contentbox">
-		<ul class="bxslider2">
-			<li><img title="Cảnh Sát Hình Sự: Câu Hỏi Số 5"
+		<ul class="bxslider2"> 
+			<li><img title="Cảnh Sát Hình Sự: Câu Hỏi Số 5" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static1.fptplay.net.vn/static/img/share/video/24_03_2015/thestandin24-03-2015_11g08-18.jpg?w=250&h=350&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static1.fptplay.net.vn/static/img/share/video/31_08_2015/wiaemqks31-08-2015_15g31-47.jpg?w=250&h=350&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static.fptplay.net.vn/static/img/share/video/10_02_2015/la10-02-2015_16g54-27.jpg?w=250&h=350&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static1.fptplay.net.vn/static/img/share/video/08_10_2015/rh18whn908-10-2015_16g43-05.jpg?w=250&h=350&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static.fptplay.net.vn/static/img/share/video/21_12_2015/hay-nham-mat-khi-anh-den21-12-2015_16g41-14.jpg?w=250&h=350&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static1.fptplay.net.vn/static/img/share/video/07_10_2015/a05eafe2e080146ee6cebc8a39689d30_144133558407-10-2015_09g59-53.jpg?w=250&h=350&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static1.fptplay.net.vn/static/img/share/video/12_10_2015/hdhs42yw12-10-2015_09g07-26.jpg?w=250&h=350&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around"
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static.fptplay.net.vn/static/img/share/video/06_04_2015/tgkcss06-04-2015_16g09-08.jpg?w=250&h=350&mode=scale" /></li>
 		</ul>
 	</div>
@@ -208,13 +244,29 @@
 	</div>
 </div>
 </div>
-<div id="detail_article_content">
-	@stop @section('scripts')
+	@stop
+	
+	@section('tooltip')
+	<!-- begin tooltip-->
+	<div id="vtstickytooltip" class="stickytooltip">
+	<div id="phim565c82b317dc130a16f4e7ec" class="atip">
+            <div class="content_tooltip" >
+                <h3 class="text_h3_tootip">Mị Nguyệt Truyện (Thuyết minh) - The Legend Of Miyue</h3>
+                <span class="text_content_tootip">Bộ phim Mị Nguyệt Truyện kể về cuộc đời của n&agrave;ng Mị Nguyệt từ l&uacute;c c&ograve;n l&agrave; c&ocirc;ng ch&uacute;a đến khi đăng cơ th&agrave;nh th&aacute;i hậu. Bộ phim được chuyển thể từ tiểu thuyết c&ugrave;ng t&ecirc;n (t&ecirc;n gọi trước l&agrave; &ldquo;Đại Tần Tuy&ecirc;n th&aacute;i hậu&rdquo;) của nh&agrave; văn Tưởng Thắng Nam. Tiểu thuyết kể về cuộc đời đầy ly kỳ của Mị B&aacute;t Tử &ndash; mẫu th&acirc;n của Tần Chi&ecirc;u Vương. Từ c&aacute;i t&ecirc;n &ldquo;Mị Nguyệt&rdquo; được t&igrave;m thấy trong những t&agrave;n t&iacute;ch ở Binh M&atilde; Dũng v&agrave; cả danh hiệu phi tử của Tần Huệ Vương Mị Nguyệt được thấy khắc tr&ecirc;n miếng ng&oacute;i của cung A Ph&ograve;ng người ta phỏng đo&aacute;n Mị B&aacute;t Tử ch&iacute;nh l&agrave; Mị Nguyệt. Mị B&aacute;t Tử l&agrave; con g&aacute;i của Sở vương, do một vị thiếp của Sở vương sinh ra. Mị B&aacute;t Tử cũng được gọi l&agrave; Tuy&ecirc;n th&aacute;i hậu. Tương truyền Mị B&aacute;t Tử th&ocirc;ng minh kh&eacute;o l&eacute;o, mưu lược hơn người, ở Đại Tần nắm hết triều ch&iacute;nh, h&ocirc; phong ho&aacute;n vũ gần 40 năm. Trong lịch sử Trung Quốc, tước hiệu th&aacute;i hậu bắt đầu từ xuất hiện từ b&agrave;, th&aacute;i hậu chuy&ecirc;n quyền cũng bắt đầu từ thời b&agrave; mới c&oacute;.</span>
+            </div>
+    </div>
+    </div>
+	<!-- end tooltip -->
+	@stop
+	
+	@section('scripts')
 	<!-- SlidesJS Required: Link to jquery.slides.js -->
-	{!! HTML::script('js/jquery.slides.min.js') !!} {!!
-	HTML::script('js/jquery.bxslider.min.js') !!}
+	{!! HTML::script('js/jquery.slides.min.js') !!} 
+	{!!	HTML::script('js/jquery.bxslider.min.js') !!}
 	<!-- End SlidesJS Required -->
 	<!-- SlidesJS Required: Initialize SlidesJS with a jQuery doc ready -->
+	{!! HTML::style('css/stickytooltip.css') !!}
+	{!! HTML::script('js/stickytooltip.js') !!}
 	<script>
     $(function() {
       $('#slides').slidesjs({

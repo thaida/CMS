@@ -1,0 +1,44 @@
+.stickytooltip{
+    /*box-shadow: 5px 5px 8px #818181; shadow for CSS3 capable browsers.
+    -webkit-box-shadow: 5px 5px 8px #818181;
+    -moz-box-shadow: 5px 5px 8px #818181;*/
+    display:none;
+    position:absolute;
+    display:none;
+    /*border:5px solid black; Border around tooltip*/
+    /*background:white;*/
+    z-index:3000;
+    max-width: 270px;
+    margin-top: -50px;
+  
+    /*background-color:    window;*/  
+}
+.content_tooltip
+{
+    padding: 20px 25px;
+    background-color:  #ffffff;
+    border:1px solid #C7C7C7; 
+    position: relative;
+    border-radius: 6px;
+    max-height: 390px;
+    overflow:    hidden;
+}
+.text_content_tootip{
+    /* font-family:  "OpenSans-Light"; */
+    font-size: 18px;
+    word-wrap: break-word;
+
+}
+.text_h3_tootip{
+    margin-top: 5px;
+   /*  font-family:  "OpenSans-Semibold"; */
+    font-size: 22px;
+    word-wrap: break-word;
+}
+.stickytooltip .stickystatus{ /*Style for footer bar within tooltip*/
+    background:black;
+    color:white;
+    padding-top:5px;
+    text-align:center;
+    font:bold 11px Arial;
+}

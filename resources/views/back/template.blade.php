@@ -102,8 +102,9 @@
                         <a href="#" data-toggle="collapse" data-target="#categorymenu"><span class="fa fa-fw fa-pencil"></span> {{ trans('back/admin.category') }} <span class="fa fa-fw fa-caret-down"></a>
                         <ul id="categorymenu" class="collapse">
                             <li><a href="{!! url('cat') !!}">{{ trans('back/admin.categorys') }}</a></li>
-                             <li><a href="{!! url('subcat') !!}">{{ trans('back/admin.child-category') }}</a></li>
-                              <li><a href="{!! url('film') !!}">{{ trans('back/admin.film') }}</a></li>
+                            <li><a href="{!! url('subcat') !!}">{{ trans('back/admin.child-category') }}</a></li>
+                            <li><a href="{!! url('film') !!}">{{ trans('back/admin.film') }}</a></li>
+                            <li><a href="{!! url('banner') !!}">{{ trans('back/admin.banner') }}</a></li>
                             <li><a href="{!! url('category/create') !!}">{{ trans('back/admin.child-category') }}</a></li>
                         </ul>
                     </li>

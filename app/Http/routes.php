@@ -55,6 +55,11 @@ Route::get('film/order', ['uses' => 'FilmController@indexOrder', 'as' => 'film.o
 Route::put('filmpublish/{id}', 'FilmController@updatePublish');
 
 Route::resource('film', 'FilmController');
+// Banner
+Route::get('banner/order', ['uses' => 'BannerController@indexOrder', 'as' => 'banner.order']);
+Route::put('bannerpublish/{id}', 'BannerController@updatePublish');
+
+Route::resource('banner', 'BannerController');
 
 // Comment
 Route::resource('comment', 'CommentController', [

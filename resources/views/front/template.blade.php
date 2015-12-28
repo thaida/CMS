@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -14,7 +13,8 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@yield('head') {!! HTML::style('css/main_front.css') !!}
+@yield('head') 
+{!! HTML::style('css/main_front.css') !!}
 
 <!--[if (lt IE 9) & (!IEMobile)]>
 			{!! HTML::script('js/vendor/respond.min.js') !!}
@@ -72,8 +72,7 @@ HTML::style('http://fonts.googleapis.com/css?family=Tangerine:300italic,400itali
 							<li{!! classActivePath('auth/login') !!}>{!!
 								link_to('auth/login', trans('front/site.connection')) !!}</li>
 							@else @if(session('statut') == 'admin')
-							<li>{!! link_to_route('admin',
-								trans('front/site.administration')) !!}</li>
+							<li>{!! link_to_route('admin',	trans('front/site.administration')) !!}</li>
 							@elseif(session('statut') == 'redac')
 							<li>{!! link_to('blog', trans('front/site.redaction')) !!}</li>
 							@endif
@@ -135,6 +134,7 @@ HTML::style('http://fonts.googleapis.com/css?family=Tangerine:300italic,400itali
 		@endif
 	 @yield('slide') 
 	 @yield('main') 
+	 @yield('tooltip')
 	 </main>
 
 	<footer role="contentinfo">
@@ -144,12 +144,10 @@ HTML::style('http://fonts.googleapis.com/css?family=Tangerine:300italic,400itali
 		</p>
 	</footer>
 
-	{!!
-	HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
-	!!}
+	{!!	HTML::script('js/jquery.min.js')	!!}
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-	{!! HTML::script('js/plugins.js') !!} {!! HTML::script('js/main.js')
-	!!}
+	{!! HTML::script('js/plugins.js') !!} 
+	{!! HTML::script('js/main.js')	!!}
 	<script>
   	$(document).ready(function(){
              $("#btnSearch").click(function(){

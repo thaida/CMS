@@ -1,27 +1,22 @@
-@extends('back.template') @section('head') {!!
-HTML::style('ckeditor/plugins/codesnippet/lib/highlight/styles/default.css')
-!!} @stop @section('main')
+@extends('back.template')
+ @section('head') 
+ {!!HTML::style('ckeditor/plugins/codesnippet/lib/highlight/styles/default.css')!!} 
+ @stop 
+ @section('main')
 
 <!-- Entête de page -->
-@include('back.partials.entete', ['title' =>
-trans('back/film.dashboard'), 'icone' => 'pencil', 'fil' =>
-link_to('film', trans('back/film.location')) . ' / ' .
+@include('back.partials.entete', ['title' => trans('back/banner.dashboard'), 'icone' => 'pencil', 'fil' => link_to('banner', trans('back/banner.location')) . ' / ' .
 trans('common.add')])
 
 <div class="col-sm-12">
 	@yield('form')
 
 	<div class="form-group checkbox pull-right">
-		<label> {!! Form::checkbox('publish') !!} {{ trans('common.published')
-			}} </label>
+		<label> {!! Form::checkbox('publish') !!} {{ trans('common.published')	}} </label>
 	</div>
 
 	{!! Form::control('text', 0, 'title', $errors, trans('common.title'))	!!}
-	<div class="form-group {!! $errors->has('slug') ? 'has-error' : '' !!}">
-		{!! Form::label('slug', trans('back/blog.permalink'), ['class' => 'control-label']) !!} 
-		{!! url('/') . '/film/' . Form::text('slug', null, ['id' => 'permalien']) !!} 
-		<small class="text-danger">	{!!	$errors->first('slug') !!}</small>
-	</div>
+	{!! Form::control('text', 0, 'link', $errors, trans('common.link'))	!!}
 	<div class="form-group">
 		<label class="control-label" for="sub_cat_id">Poster</label>
 		<input type="text" id="btnImage"  name="btnImage"/>
@@ -29,19 +24,6 @@ trans('common.add')])
 		
 		{!! isset($post) ? "<img src='$img_host_url$post->poster_path' width='100' height='100' />" : "" !!}
 	</div>
-
-	<div class="form-group">
-		<label class="control-label" for="sub_cat_id">Phụ đề</label> 
-		<input type="text" id="btnSubTitle" name="btnSubTitle" />
-		<button type="button" onclick="BrowseServer('btnSubTitle');">Pick sub file</button>
-		
-	</div>
-
-	<div class="form-group">
-		<label class="control-label" for="sub_cat_id">Phim</label> 
-		<input type="text" id="btnfilm" name="btnfilm" />
-		<button type="button" onclick="BrowseServer('btnfilm');">Pick film</button>
-	</div> 	
 	
 	
 	{!! Form::selection('sub_cat_id', $select, null, trans('back/cat.subcat')) !!} 

@@ -1,20 +1,22 @@
-@extends('front.template') @section('head') {!!
-HTML::style('ckeditor/plugins/codesnippet/lib/highlight/styles/monokai.css')!!}
-<!-- Chang URLs to wherever Video.js files will be hosted -->
-<!-- Default URLs assume the examples folder is included alongside video.js -->
-{!! HTML::style('js/video/video-js.min.css') !!}
-<!-- Include ES5 shim, sham and html5 shiv for ie8 support  -->
-<!-- Exclude this if you don't need ie8 support -->
-{!! HTML::script('js/video/ie8/videojs-ie8.min.js') !!}
-<!-- video.js must be in the <head> for older IEs to work. -->
-{!! HTML::script('js/video/video.min.js') !!} {!!
-HTML::script('js/video/videojs-resolution-switcher.js') !!} {!!
-HTML::style('js/video/videojs-resolution-switcher.css') !!}
-<!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
-<script>
+@extends('front.template') 
+@section('head') 
+	{!! HTML::style('ckeditor/plugins/codesnippet/lib/highlight/styles/monokai.css')!!}
+	<!-- Chang URLs to wherever Video.js files will be hosted -->
+	<!-- Default URLs assume the examples folder is included alongside video.js -->
+	{!! HTML::style('js/video/video-js.min.css') !!}
+	<!-- Include ES5 shim, sham and html5 shiv for ie8 support  -->
+	<!-- Exclude this if you don't need ie8 support -->
+	{!! HTML::script('js/video/ie8/videojs-ie8.min.js') !!}
+	<!-- video.js must be in the <head> for older IEs to work. -->
+	{!! HTML::script('js/video/video.min.js') !!} 
+	{!! HTML::script('js/video/videojs-resolution-switcher.js') !!} 
+	{!! HTML::style('js/video/videojs-resolution-switcher.css') !!}
+	<!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
+	<script>
 	    videojs.options.flash.swf = "js/video/video-js.swf";
 	</script>
-@stop @section('main')
+@stop 
+@section('main')
 <div class="row">
 	<div class="box">
 		<div class="col-lg-12">
@@ -34,14 +36,14 @@ HTML::style('js/video/videojs-resolution-switcher.css') !!}
 					class="video-js vjs-default-skin  vjs-big-play-centered" controls
 					preload="none" width="600" height="264" data-setup="{}">
 					<source
-						src="http://localhost/film/Transformers.Age.of.Extinction.2014.1080p.BluRay.x264.YIFY.mp4"
+						src="http://192.168.202.87/film/Transformers.Age.of.Extinction.2014.1080p.BluRay.x264.YIFY.mp4"
 						type='video/mp4' label="SD" />
 					<source
-						src="http://localhost/film/Transformers.Age.of.Extinction.2014.1080p.BluRay.x264.YIFY.mp4"
+						src="http://192.168.202.87/film/Transformers.Age.of.Extinction.2014.1080p.BluRay.x264.YIFY.mp4"
 						type='video/mp4' label="HD" />
 
 					<track kind="captions"
-						src="http://localhost/film/video-subtitles-en.vtt" srclang="en"
+						src="http://192.168.202.87/film/video-subtitles-en.vtt" srclang="en"
 						label="English"></track>
 					<!-- Tracks need an ending tag thanks to IE9 -->
 					<p class="vjs-no-js">
