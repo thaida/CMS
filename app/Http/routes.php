@@ -53,6 +53,7 @@ Route::resource('subcat', 'SubCatController');
 // Film
 Route::get('film/order', ['uses' => 'FilmController@indexOrder', 'as' => 'film.order']);
 Route::put('filmpublish/{id}', 'FilmController@updatePublish');
+Route::put('filmhot/{id}', 'FilmController@updateFront');
 
 Route::resource('film', 'FilmController');
 // Banner

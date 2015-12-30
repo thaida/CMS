@@ -1,7 +1,7 @@
 <?php
 
 return [
-	'title' => 'Phim Hàn Xẻng - Viettel',
+	'title' => 'Phim Hàn',
 	'sub-title' => 'An awesome PHP framework',
 	'home' => 'Trang chủ',
 	'contact' => 'Liên hệ',

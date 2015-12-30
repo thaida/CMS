@@ -34,17 +34,16 @@
 				<!-- Player -->
 				<video id="example_video_1"
 					class="video-js vjs-default-skin  vjs-big-play-centered" controls
-					preload="none" width="600" height="264" data-setup="{}">
+					preload="none" width="600" height="264" data-setup="{}" poster="{{$img_url.$post->poster_path}}?w=600&h=264">
 					<source
-						src="http://192.168.202.87/film/Transformers.Age.of.Extinction.2014.1080p.BluRay.x264.YIFY.mp4"
+						src="http://192.168.202.87/film/Mission.Impossible.Rogue.Nation.2015.m720p.HDTV.X264.ACC-TiN(1).mp4"
 						type='video/mp4' label="SD" />
 					<source
 						src="http://192.168.202.87/film/Transformers.Age.of.Extinction.2014.1080p.BluRay.x264.YIFY.mp4"
 						type='video/mp4' label="HD" />
 
 					<track kind="captions"
-						src="http://192.168.202.87/film/video-subtitles-en.vtt" srclang="en"
-						label="English"></track>
+						src="http://192.168.202.87/film/video-subtitles-en.vtt" srclang="en" label="English" default></track>
 					<!-- Tracks need an ending tag thanks to IE9 -->
 					<p class="vjs-no-js">
 						To view this video please enable JavaScript, and consider
@@ -70,8 +69,18 @@
 			    }, function(){
 			      // this is player
 			    })
+			    
+			      var player = videojs("example_video_1");
+// player.za is the minified name of textTracks_ 
+ var track = player.za.length && player.za[0];
+ player.on('play', function(){
+    if (track) {
+       track.show();
+    }
+ });
 			</script>
 			<!-- end Player -->
+			
 		</div>
 	</div>
 </div>

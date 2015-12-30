@@ -24,5 +24,6 @@ return [
 	'updated' => 'Đã cập nhật.',
 	'destroyed' => 'Đã xóa thành công.',
 	'save' => 'Lưu',
-	'register' => 'Đăng ký'
+	'register' => 'Đăng ký',
+	'isFront' => 'Trang chủ'
 ];

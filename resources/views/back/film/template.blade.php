@@ -14,6 +14,9 @@ trans('common.add')])
 	<div class="form-group checkbox pull-right">
 		<label> {!! Form::checkbox('publish') !!} {{ trans('common.published')
 			}} </label>
+			
+			<label> {!! Form::checkbox('isHot') !!} {{ trans('common.isFront')
+			}} </label>
 	</div>
 
 	{!! Form::control('text', 0, 'title', $errors, trans('common.title'))	!!}
@@ -22,12 +25,15 @@ trans('common.add')])
 		{!! url('/') . '/film/' . Form::text('slug', null, ['id' => 'permalien']) !!} 
 		<small class="text-danger">	{!!	$errors->first('slug') !!}</small>
 	</div>
+	<input name="multi_url" type="text" id="multi_url" maxlength="255" value="" />
+<a id="browse_server" href="{!! url($url) !!}?langCode=vi&field_name=multi_url"><span>Browse server</span></a>
+
 	<div class="form-group">
 		<label class="control-label" for="sub_cat_id">Poster</label>
 		<input type="text" id="btnImage"  name="btnImage"/>
 		<button type="button" onclick="BrowseServer('btnImage');">Pick Image</button>
 		
-		{!! isset($post) ? "<img src='$img_host_url$post->poster_path' width='100' height='100' />" : "" !!}
+		{!! isset($post) ? "<img src='$img_host_url$post->poster_path?w=100&h=100' width='100' height='100' />" : "" !!}
 	</div>
 
 	<div class="form-group">
@@ -120,7 +126,11 @@ trans('common.add')])
 			str = str.replace(/\s/g,'-');
 			$("#permalien").val(str);        
 		});
-
+	
+	$(document).ready(function(){
+		  $("#browse_server").colorbox({iframe:true, innerWidth:"80%", innerHeight:"80%" });
+		});
+		
   </script>
 
 @stop

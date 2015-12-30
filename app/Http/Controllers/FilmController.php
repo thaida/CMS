@@ -183,6 +183,20 @@ class FilmController extends Controller {
 	}
 	
 	/**
+	 * Update "active" for the specified resource in storage.
+	 *
+	 * @param Illuminate\Http\Request $request
+	 * @param int $id
+	 * @return Response
+	 */
+	public function updateFront(Request $request, $id) {
+		$this->film_gestion->updateFront ( $request->all (), $id );
+	
+		return response ()->json ();
+	}
+	
+	
+	/**
 	 * Display the specified resource.
 	 *
 	 * @param Illuminate\Contracts\Auth\Guard $auth        	
@@ -191,8 +205,8 @@ class FilmController extends Controller {
 	 */
 	public function show(Guard $auth, $slug) {
 		$user = $auth->user ();
-		
-		return view ( 'front.film.show', array_merge ( $this->film_gestion->show ( $slug ), compact ( 'user' ) ) );
+		$img_url = config('medias.image-host');
+		return view ( 'front.film.show', array_merge ( $this->film_gestion->show ( $slug ), compact ( 'user' ), compact('img_url') ) );
 	}
 }
 

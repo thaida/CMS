@@ -30,10 +30,10 @@ class FilmRepository extends BaseRepository {
 		$film->summary = $inputs ['summary'];
 		$film->slug = $inputs ['slug'];
 		$film->sub_cat_id = $inputs ['sub_cat_id'];
-		$film->publish = isset ( $inputs ['active'] );
-		
+		$film->publish = isset ( $inputs ['publish'] );
+		$film->isHot = isset ( $inputs ['isHot'] );
 		if(isset($inputs ['btnImage']))			
-			$film->poster_path = $inputs ['btnImage'];
+			$film->poster_path = str_replace("/filemanager", "", $inputs ['btnImage']);
 		
 		
 		//$cat->cat_id = $inputs ['cat_id'];
@@ -61,13 +61,28 @@ class FilmRepository extends BaseRepository {
 	}
 	
 	/**
+	 * Update "Publish" in film
+	 *
+	 * @param array $inputs
+	 * @param int $id
+	 * @return void
+	 */
+	public function updateFront($inputs, $id) {
+		$film = $this->getById ( $id );
+	
+		$film->isHot = $inputs ['ishot'] == 'true';
+	
+		$film->save ();
+	}
+	
+	/**
 	 * Get Sub Categorys collection.
 	 *
 	 * @return Illuminate\Support\Collection
 	 */
 	public function index($n, $user_id = null, $orderby = 'created_at', $direction = 'desc') {
 		$query = $this->model->select ( config ( "constants.FILM_TABLE" ) . '.id', config ( "constants.FILM_TABLE" ) . '.created_at as created_at', config ( "constants.FILM_TABLE" ) . '.title as title', config ( "constants.FILM_TABLE" ) . '.summary', 
-										config ( "constants.FILM_TABLE" ) . '.slug', 'username', config ( "constants.FILM_TABLE" ) . '.publish' )
+										config ( "constants.FILM_TABLE" ) . '.slug', 'username', config ( "constants.FILM_TABLE" ) . '.publish', 'isHot' )
 										->join ( 'users', 'users.id', '=', config ( "constants.FILM_TABLE" ) . '.user_id' )
 							->orderBy ( $orderby, $direction );
 			

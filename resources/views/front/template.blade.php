@@ -135,6 +135,8 @@ HTML::style('http://fonts.googleapis.com/css?family=Tangerine:300italic,400itali
 	 @yield('slide') 
 	 @yield('main') 
 	 @yield('tooltip')
+	 
+	 
 	 </main>
 
 	<footer role="contentinfo">

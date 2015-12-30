@@ -115,22 +115,14 @@
 	</div>
 	<div class="contentbox">
 		<ul class="bxslider">
-			<li><img title="Cảnh Sát Hình Sự: Câu Hỏi Số 5" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static1.fptplay.net.vn/static/img/share/video/13_08_2015/cau-hoi-so-5-len-song-tap-dau-tien-21h10-vtv313-08-2015_09g23-17.JPG?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static1.fptplay.net.vn/static/img/share/video/31_08_2015/wiaemqks31-08-2015_15g31-47.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static.fptplay.net.vn/static/img/share/video/10_02_2015/la10-02-2015_16g54-27.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static1.fptplay.net.vn/static/img/share/video/08_10_2015/rh18whn908-10-2015_16g43-05.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static.fptplay.net.vn/static/img/share/video/21_12_2015/hay-nham-mat-khi-anh-den21-12-2015_16g41-14.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static1.fptplay.net.vn/static/img/share/video/07_10_2015/a05eafe2e080146ee6cebc8a39689d30_144133558407-10-2015_09g59-53.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static1.fptplay.net.vn/static/img/share/video/12_10_2015/hdhs42yw12-10-2015_09g07-26.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static.fptplay.net.vn/static/img/share/video/06_04_2015/tgkcss06-04-2015_16g09-08.jpg?w=200&h=120&mode=scale" /></li>
+		 @foreach ($films as $film)
+	  		<li>
+	  		<a href="{{$film_url.$film->slug}}">
+	  			<img title="{{$film->title}}" data-tooltip="phim565c82b317dc130a16f4e7ec" src="{{$url.$film->poster_path}}?w=200&h=120&crop-to-fit" />
+	  		</a>
+	  			</li>
+		
+	  	@endforeach
 		</ul>
 	</div>
 </div>
