@@ -107,20 +107,30 @@
 <!-- PHIM HANH DONG -->
 <div class="row rowbox">
 	<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
-		<a class="category_title" title="Hành động"
-			href="{!! url('articles') !!}"><span
-			class="pull-left">Hành động</span></a> <a
-			class="pull-left btn_arrow_right" title="Hành động"
-			href="{!! url('articles') !!}"></a>
+		<a class="category_title" title="Hành động"	href="{!! url('articles') !!}">
+			<span class="pull-left">Hành động</span>
+		</a>
+		<a class="pull-left btn_arrow_right" title="Hành động" href="{!! url('articles') !!}"></a>
 	</div>
 	<div class="contentbox">
 		<ul class="bxslider">
 		 @foreach ($films as $film)
 	  		<li>
-	  		<a href="{{$film_url.$film->slug}}">
-	  			<img title="{{$film->title}}" data-tooltip="phim565c82b317dc130a16f4e7ec" src="{{$url.$film->poster_path}}?w=200&h=120&crop-to-fit" />
-	  		</a>
-	  			</li>
+	  			<div class="boxTitle">
+	  			<a href="{{$film_url.$film->slug}}">
+					<div class="caption">
+						<h4>{{$film->title}}</h4>
+						<p>Đạo diễn: <br/>
+						Diễn viên: <br/>
+						Thể loại: <br />
+						<p>Thời lượng: </p>
+						<p class="">{!! $film->summary !!}</p>
+					</div>
+		  		
+		  			<img title="{{$film->title}}"  src="{{$url.$film->poster_path}}?w=250&h=350&crop-to-fit" />
+		  		</a>
+		  		</div>
+	  		</li>
 		
 	  	@endforeach
 		</ul>
@@ -138,8 +148,12 @@
 	</div>
 	<div class="contentbox">
 		<ul class="bxslider2"> 
-			<li><img title="Cảnh Sát Hình Sự: Câu Hỏi Số 5" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static1.fptplay.net.vn/static/img/share/video/24_03_2015/thestandin24-03-2015_11g08-18.jpg?w=250&h=350&mode=scale" /></li>
+			<li>
+				
+				<img title="Cảnh Sát Hình Sự: Câu Hỏi Số 5" data-tooltip="phim565c82b317dc130a16f4e7ec"
+					src="http://static1.fptplay.net.vn/static/img/share/video/24_03_2015/thestandin24-03-2015_11g08-18.jpg?w=250&h=350&mode=scale" />
+				
+			</li>
 			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
 				src="http://static1.fptplay.net.vn/static/img/share/video/31_08_2015/wiaemqks31-08-2015_15g31-47.jpg?w=250&h=350&mode=scale" /></li>
 			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
@@ -276,9 +290,10 @@
    	 autoControls: true,
    	 captions: true,
    	  minSlides: 2,
-   	  maxSlides: 5,
-   	  slideWidth: 200,
-   	  slideMargin: 10
+   	  maxSlides: 4,
+   	  slideWidth: 250,
+   	  
+   	  slideMargin: 20
    	});
     $('.bxslider2').bxSlider({
       	 autoControls: true,
@@ -288,6 +303,17 @@
       	  slideWidth: 250,
       	  slideMargin: 250,
       	});
+
+    $(document).ready(function() {
+    	$('.boxTitle').hover(function(){
+    			$(this).find('.caption').slideDown();
+    		},
+    		function(){
+    			$(this).find('.caption').slideUp();
+    		}
+    	);	
+    	});
+      	
   </script>
 	<!-- End SlidesJS Required -->
 	@stop

@@ -5,16 +5,19 @@
 	<!-- Default URLs assume the examples folder is included alongside video.js -->
 	{!! HTML::style('js/video/video-js.min.css') !!}
 	<!-- Include ES5 shim, sham and html5 shiv for ie8 support  -->
-	<!-- Exclude this if you don't need ie8 support -->
-	{!! HTML::script('js/video/ie8/videojs-ie8.min.js') !!}
+	
 	<!-- video.js must be in the <head> for older IEs to work. -->
 	{!! HTML::script('js/video/video.min.js') !!} 
+	<!-- Exclude this if you don't need ie8 support -->
+	{!! HTML::script('js/video/ie8/videojs-ie8.min.js') !!}
 	{!! HTML::script('js/video/videojs-resolution-switcher.js') !!} 
 	{!! HTML::style('js/video/videojs-resolution-switcher.css') !!}
 	<!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
 	<script>
 	    videojs.options.flash.swf = "js/video/video-js.swf";
 	</script>
+	
+	{!! HTML::style('css/jquery.bxslider.css') !!}
 @stop 
 @section('main')
 <div class="row">
@@ -34,7 +37,7 @@
 				<!-- Player -->
 				<video id="example_video_1"
 					class="video-js vjs-default-skin  vjs-big-play-centered" controls
-					preload="none" width="600" height="264" data-setup="{}" poster="{{$img_url.$post->poster_path}}?w=600&h=264">
+					preload="auto" width="600" height="264" data-setup="{ }" autoplay poster="{{$img_url.$post->poster_path}}?w=600&h=264">
 					<source
 						src="http://192.168.202.87/film/Mission.Impossible.Rogue.Nation.2015.m720p.HDTV.X264.ACC-TiN(1).mp4"
 						type='video/mp4' label="SD" />
@@ -68,16 +71,11 @@
 			      }
 			    }, function(){
 			      // this is player
+				      
 			    })
 			    
-			      var player = videojs("example_video_1");
-// player.za is the minified name of textTracks_ 
- var track = player.za.length && player.za[0];
- player.on('play', function(){
-    if (track) {
-       track.show();
-    }
- });
+			     var player = videojs("example_video_1");
+			player.isFullscreen(true)
 			</script>
 			<!-- end Player -->
 			
@@ -129,6 +127,40 @@
 
 		<!-- Giá  -->
 		
+		
+		<!-- PHIM DE XUAT -->
+		<div class="row rowbox">
+			<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
+				<a class="category_title" title="Phim đề xuất"	href="{!! url('articles') !!}">
+					<span class="pull-left">Phim đề xuất</span>
+				</a>
+				<a class="pull-left btn_arrow_right" title="Phim đề xuất" href="{!! url('articles') !!}"></a>
+			</div>
+			<div class="contentbox">
+				<ul class="bxslider">
+				 @foreach ($films as $film)
+			  		<li>
+			  			<div class="boxTitle">
+			  			<a href="{{$film_url.$film->slug}}">
+							<div class="caption">
+								<h4>{{$film->title}}</h4>
+								<p>Đạo diễn: <br/>
+								Diễn viên: <br/>
+								Thể loại: <br />
+								<p>Thời lượng: </p>
+								<p class="">{!! $film->summary !!}</p>
+							</div>
+				  		
+				  			<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=250&h=350&crop-to-fit" />
+				  		</a>
+				  		</div>
+			  		</li>
+				
+			  	@endforeach
+				</ul>
+			</div>
+		</div>
+		<!-- END PHIM DE XUAT -->
 		<!--Tong hop-->
 		<div class="row">
 			<div
@@ -379,13 +411,38 @@
 
 </div>
 
-@stop @section('scripts') {!!
-HTML::script('ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js')
-!!} @if(session('statut') != 'visitor') {!!
-HTML::script('ckeditor/ckeditor.js') !!} @endif
+@stop 
+@section('scripts') 
+{!! HTML::script('ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js') !!} 
+@if(session('statut') != 'visitor') 
+{!! HTML::script('ckeditor/ckeditor.js') !!} 
+@endif
 
-<script>	  
+{!!	HTML::script('js/jquery.bxslider.min.js') !!}
+<script>
 
+/* SLIDER */
+$('.bxslider').bxSlider({
+  	 autoControls: true,
+  	 captions: true,
+  	  minSlides: 2,
+  	  maxSlides: 4,
+  	  slideWidth: 250,
+  	  
+  	  slideMargin: 20
+  	});
+
+$(document).ready(function() {
+	$('.boxTitle').hover(function(){
+			$(this).find('.caption').slideDown();
+		},
+		function(){
+			$(this).find('.caption').slideUp();
+		}
+	);	
+	});
+
+/* END SLIDER */
 		@if(session('statut') != 'visitor')
 
 			CKEDITOR.replace('comments', {

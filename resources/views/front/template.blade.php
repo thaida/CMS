@@ -54,29 +54,45 @@ HTML::style('http://fonts.googleapis.com/css?family=Tangerine:300italic,400itali
 				<div class="navbar-collapse collapse" id="navbar">
 					<div class="col-sm-4 col-lg-6">
 						<ul class="nav navbar-nav">
-							<li{!! classActivePath('/') !!}>{!! link_to('/',
-								trans('front/site.home')) !!}</li> @if(session('statut') ==
-							'visitor' || session('statut') == 'user')
-							<li{!! classActivePath('contact/create') !!}>{!!
-								link_to('contact/create', trans('front/site.contact')) !!}</li>
+							<li{!! classActivePath('/') !!}>
+								{!! link_to('/', trans('front/site.home')) !!}
+							</li>
+							<li{!! classActivePath('film') !!}>
+								{!! link_to('/film', trans('front/site.home')) !!}
+							</li>
+							@if(session('statut') == 'visitor' || session('statut') == 'user')
+							<li{!! classActivePath('contact/create') !!}>
+								{!!	link_to('contact/create', trans('front/site.contact')) !!}
+							</li>
 							@endif
-							<li{!! classActiveSegment(1, ['articles', 'blog']) !!}>{!!
-								link_to('articles', trans('front/site.blog')) !!}</li>
+							<li{!! classActiveSegment(1, ['articles', 'blog']) !!}>
+								{!!	link_to('articles', trans('front/site.blog')) !!}
+							</li>
 							@if(Request::is('auth/register'))
-							<li class="active">{!! link_to('auth/register',
-								trans('front/site.register')) !!}</li>
+							<li class="active">
+								{!! link_to('auth/register', trans('front/site.register')) !!}
+							</li>
 							@elseif(Request::is('password/email'))
-							<li class="active">{!! link_to('password/email',
-								trans('front/site.forget-password')) !!}</li> @else
+							<li class="active">
+								{!! link_to('password/email', trans('front/site.forget-password')) !!}
+							</li> 
+							@else
 							@if(session('statut') == 'visitor')
-							<li{!! classActivePath('auth/login') !!}>{!!
-								link_to('auth/login', trans('front/site.connection')) !!}</li>
+							<li{!! classActivePath('auth/login') !!}>
+								{!!	link_to('auth/login', trans('front/site.connection')) !!}
+							</li>
 							@else @if(session('statut') == 'admin')
-							<li>{!! link_to_route('admin',	trans('front/site.administration')) !!}</li>
+							<li>
+								{!! link_to_route('admin',	trans('front/site.administration')) !!}
+							</li>
 							@elseif(session('statut') == 'redac')
-							<li>{!! link_to('blog', trans('front/site.redaction')) !!}</li>
+							<li>
+								{!! link_to('blog', trans('front/site.redaction')) !!}
+							</li>
 							@endif
-							<li>{!! link_to('auth/logout', trans('front/site.logout')) !!}</li>
+							<li>
+								{!! link_to('auth/logout', trans('front/site.logout')) !!}
+							</li>
 							@endif @endif
 							<li class="dropdown"><a data-toggle="dropdown"
 								class="dropdown-toggle" href="#"> <img width="32" height="32"

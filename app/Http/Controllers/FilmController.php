@@ -206,7 +206,13 @@ class FilmController extends Controller {
 	public function show(Guard $auth, $slug) {
 		$user = $auth->user ();
 		$img_url = config('medias.image-host');
-		return view ( 'front.film.show', array_merge ( $this->film_gestion->show ( $slug ), compact ( 'user' ), compact('img_url') ) );
+		$film_url = config('medias.film-host');
+		$post = $this->film_gestion->show ( $slug );
+		
+		//tim nhung film lien quan toi film nay de dua vao muc de xuat
+		$films = $this->film_gestion->filmRelated($slug);
+		
+		return view ( 'front.film.show', array_merge ( $this->film_gestion->show($slug), $this->film_gestion->filmRelated($slug), compact ( 'user' ), compact('img_url'), compact('film_url') ) );
 	}
 }
 

@@ -20,7 +20,6 @@ class HomeController extends Controller
 			Film $film)
 	{
 		$this->film = $film;
-	//	$this->comment = $comment;
 	}
 	
 	

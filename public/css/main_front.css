@@ -114,7 +114,7 @@
     white-space: pre-wrap;
     word-wrap: break-word;
 }
-
+.video-js.vjs-default-skin.vjs-paused .vjs-big-play-button {display:block !important;}
 
 .title-detail-header {
     width: 100%;
@@ -137,3 +137,4 @@ hr.title-detail {
     border: 1.5px solid #eee;
     max-width: 1200px;
 }
+

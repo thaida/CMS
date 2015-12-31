@@ -147,6 +147,29 @@ class FilmRepository extends BaseRepository {
 		return $this->model->findOrFail ( $id );
 	}
 	
+	
+	/**
+	 * Get film related.
+	 *
+	 * @param  string  $slug
+	 * @return array
+	 */
+	public function filmRelated($slug)
+	{
+		$post = $this->model->whereSlug($slug)->firstOrFail();
+	
+		//lay ra 15 phim co so luong xem nhieu nhat cung chuyen muc voi film nay, theo thu tu film moi nhat va khong mien phi
+		$condition = array('sub_cat_id' => $post->sub_cat_id, 'isFree' => 0);
+		$order = array('counter' => 'desc', 'created_at' => 'desc');
+		$films = $this->model->where($condition)
+						->whereNotIn('id', array($post->id))
+						->orderBy('counter', 'desc')
+						->orderBy('created_at', 'desc')
+						->take(15)->get();
+			
+		return compact('films');
+	}
+	
 	/**
 	 * Get film collection.
 	 *
@@ -164,6 +187,13 @@ class FilmRepository extends BaseRepository {
 			$q->whereValid(true);
 		})
 		->get();*/
+		//do khi xem phim thi film tu dong chay nen moi lan goi ham nay thi update bien dem luon
+		if(!empty($post))
+		{
+			$post->counter = $post->counter + 1;
+			$post->save();
+		}
+		
 		$comments = [];
 	
 		return compact('post', 'comments');

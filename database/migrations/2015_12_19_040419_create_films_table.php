@@ -17,7 +17,9 @@ class CreateFilmsTable extends Migration {
 			$table->string ( 'summary', 1000 );
 			$table->boolean ( 'publish' )->default ( false );
 			$table->boolean ( 'isHot' )->default ( false );
+			$table->boolean ( 'isFree' )->default ( true );
 			$table->integer ( 'user_id' )->unsigned ();
+			$table->integer ( 'counter' )->unsigned ();
 			$table->integer ( 'sub_cat_id' )->unsigned ();
 			$table->timestamps ();
 		} );
