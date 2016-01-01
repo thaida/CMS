@@ -71,9 +71,26 @@
 	padding-left: 0px;
 }
 
+/* image text corner */
+.top{
+    top: 0; 
+}
+ 
+.right{
+    right: 0;
+}
+.img{    
+    /*background-color: #000;*/
+}
+.img span{
+    position: absolute;
+    color: red;
+}
+
+/* DROPDOWN MENU HOVER */
+ul.nav li.dropdown:hover ul.dropdown-menu{display: block;}
 
 /* FILM PAGE */
-
 #wrap_content {
     position: relative;
 }
@@ -109,7 +126,7 @@
     border: 0 none;
     color: gray;
     font-size: 15px;
-        font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
     padding: 0;
     white-space: pre-wrap;
     word-wrap: break-word;

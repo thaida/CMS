@@ -48,7 +48,7 @@ class FilmController extends Controller {
 		$this->nbrPages = 2;
 		
 		
-		 $this->middleware('redac', ['except' => ['indexFront', 'show', 'tag', 'search']]);
+		 $this->middleware('redac', ['except' => ['indexFront', 'show', 'tag', 'search', 'series', 'filmbycat', 'single']]);
 		 $this->middleware('admin', ['only' => ['updateSeen', 'updateActive']]);
 		 $this->middleware('ajax', ['only' => ['updateSeen', 'updateActive']]);
 	}
@@ -210,9 +210,46 @@ class FilmController extends Controller {
 		$post = $this->film_gestion->show ( $slug );
 		
 		//tim nhung film lien quan toi film nay de dua vao muc de xuat
-		$films = $this->film_gestion->filmRelated($slug);
+		//$films = $this->film_gestion->filmRelated($slug);
+		//$films_free = $this->film_gestion->filmFree($slug);
 		
-		return view ( 'front.film.show', array_merge ( $this->film_gestion->show($slug), $this->film_gestion->filmRelated($slug), compact ( 'user' ), compact('img_url'), compact('film_url') ) );
+		return view ( 'front.film.show', array_merge ( $this->film_gestion->show($slug), $this->film_gestion->filmRelated($slug), $this->film_gestion->filmFree($slug), compact ( 'user' ), compact('img_url'), compact('film_url') ) );
+	}
+	
+	
+	/**
+	 * Hien thi danh sach phim bo
+	 * Phim bo la nhung phim co so tap > 1 (num > 1)
+	 * @param Illuminate\Contracts\Auth\Guard $auth
+	 * @param string $slug
+	 * @return Response
+	 */
+	public function series() {
+		$img_url = config('medias.image-host');
+		$film_url = config('medias.film-host');
+		//return "hello";		
+		return view ( 'front.film.list', array_merge ( $this->film_gestion->series(),  compact('img_url'), compact('film_url') ) );
+	}
+	
+	
+	/* Hien thi danh sach phim theo subcat */
+	public function filmbycat($cat) {
+		$img_url = config('medias.image-host');
+		$film_url = config('medias.film-host');
+		return view ( 'front.film.list', array_merge ( $this->film_gestion->filmBySubCatSlug($cat), compact('img_url'), compact('film_url') ) );
+	}
+	/**
+	 * Hien thi danh sach phim bo
+	 * Phim bo la nhung phim co so tap > 1
+	 * @param Illuminate\Contracts\Auth\Guard $auth
+	 * @param string $slug
+	 * @return Response
+	 */
+	public function single() {
+		$img_url = config('medias.image-host');
+		$film_url = config('medias.film-host');
+		//return "hello";
+		return view ( 'front.film.list', array_merge ( $this->film_gestion->single(),  compact('img_url'), compact('film_url') ) );
 	}
 }
 

@@ -1,4 +1,5 @@
-@extends('front.template') @section('slide')
+@extends('front.template')
+@section('slide')
 
 <!-- SlidesJS Required: These styles are required if you'd like a responsive slideshow -->
 {!! HTML::style('css/slide.css') !!}
@@ -97,10 +98,11 @@
 
 </div>
 
-@stop @section('scripts')
+@stop
+@section('scripts')
 <!-- SlidesJS Required: Link to jquery.slides.js -->
-<script src="js/jquery.bxslider.min.js"></script>
-<script src="js/jquery.slides.min.js"></script>
+<script src="{{ url('js/jquery.bxslider.min.js')}}"></script>
+<script src="{{ url('js/jquery.slides.min.js') }}"></script>
 
 <!-- End SlidesJS Required -->
 <!-- SlidesJS Required: Initialize SlidesJS with a jQuery doc ready -->

@@ -37,7 +37,7 @@
 				<!-- Player -->
 				<video id="example_video_1"
 					class="video-js vjs-default-skin  vjs-big-play-centered" controls
-					preload="auto" width="600" height="264" data-setup="{ }" autoplay poster="{{$img_url.$post->poster_path}}?w=600&h=264">
+					preload="auto" width="600" height="264" data-setup="{ }" autoplay  poster="{{$img_url.$post->poster_path}}?w=600&h=264">
 					<source
 						src="http://192.168.202.87/film/Mission.Impossible.Rogue.Nation.2015.m720p.HDTV.X264.ACC-TiN(1).mp4"
 						type='video/mp4' label="SD" />
@@ -74,8 +74,7 @@
 				      
 			    })
 			    
-			     var player = videojs("example_video_1");
-			player.isFullscreen(true)
+			    
 			</script>
 			<!-- end Player -->
 			
@@ -131,10 +130,10 @@
 		<!-- PHIM DE XUAT -->
 		<div class="row rowbox">
 			<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
-				<a class="category_title" title="Phim đề xuất"	href="{!! url('articles') !!}">
+				<a class="category_title" title="Phim đề xuất"	href="{!! url('free') !!}">
 					<span class="pull-left">Phim đề xuất</span>
 				</a>
-				<a class="pull-left btn_arrow_right" title="Phim đề xuất" href="{!! url('articles') !!}"></a>
+				<a class="pull-left btn_arrow_right" title="Phim đề xuất" href="{!! url('free') !!}"></a>
 			</div>
 			<div class="contentbox">
 				<ul class="bxslider">
@@ -161,224 +160,41 @@
 			</div>
 		</div>
 		<!-- END PHIM DE XUAT -->
-		<!--Tong hop-->
-		<div class="row">
-			<div
-				class="col-xs-6 col-sm-5 col-md-4 box_header title-detail-header Regular">
-				<span class="pull-left title-detail">Video liên quan</span>
-				<hr class="title-detail">
+		
+		<!-- PHIM MIEN PHI -->
+		<div class="row rowbox">
+			<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
+				<a class="category_title" title="Phim đề xuất"	href="{!! url('articles') !!}">
+					<span class="pull-left">Phim miễn phí</span>
+				</a>
+				<a class="pull-left btn_arrow_right" title="Phim đề xuất" href="{!! url('articles') !!}"></a>
 			</div>
-			<div class="row fix_slider sliderTH"
-				id="box_530d59c0c969281a9600bd8b_new">
-				<div class="wrap_item_tonghop">
-					<a class="col-xs-0 col-sm-1 bx-prev"></a> <a
-						class="col-xs-12 bx-prev_mobile"></a>
-					<div class="col-xs-12 col-sm-11">
-						<div class="bx-wrapper"
-							style="max-width: 1350px; margin: 0px auto;">
-							<div class="bx-viewport"
-								style="width: 100%; overflow: hidden; position: relative; height: 160px;">
-								<ul class="slider_tonghop"
-									style="width: 715%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-
-									<li class="col-xs-12 col-sm-3 col-md-4 col-lg-4"
-										style="float: left; list-style: outside none none; position: relative; width: 382px;">
-										<div class="col-xs-12">
-											<div data-tooltip="phim55c80db417dc1344d30130f7"
-												class="col-xs-6 small_tonghop_item">
-												<a class="item_image" title=""
-													href="http://fptplay.net/xem-video/bay-vien-ngoc-rong-sieu-cap-dragon-ball-super-2015-55c80db417dc1344d30130f7.html"><img
-													alt="Bảy Viên Ngọc Rồng Siêu Cấp - Dragon Ball Super 2015"
-													src="http://static1.fptplay.net.vn/static/img/share/video/21_12_2015/ivf18a9221-12-2015_17g36-14.jpg?w=200&amp;h=120&amp;mode=scale"
-													data-original="http://static1.fptplay.net.vn/static/img/share/video/21_12_2015/ivf18a9221-12-2015_17g36-14.jpg?w=200&amp;h=120&amp;mode=scale"
-													class="lazy" style="height: auto; display: block;"
-													isloaded="true"></a>
-												<div class="title Regular">
-													<a
-														href="http://fptplay.net/xem-video/bay-vien-ngoc-rong-sieu-cap-dragon-ball-super-2015-55c80db417dc1344d30130f7.html">Bảy
-														Viên Ngọc Rồng Siêu Cấp - Dragon Ball Super 2015</a>
-												</div>
-											</div>
-											<div data-tooltip="phim55e7f83317dc1312a1a53b14"
-												class="col-xs-6 small_tonghop_item">
-												<a class="item_image" title=""
-													href="http://fptplay.net/xem-video/moi-tinh-ky-la-iss-pyaar-ko-kya-naam-doon-55e7f83317dc1312a1a53b14.html"><img
-													alt="Mối Tình Kỳ Lạ - Iss Pyaar Ko Kya Naam Doon"
-													src="http://static1.fptplay.net.vn/static/img/share/video/03_09_2015/zozjglw03-09-2015_14g29-53.jpg?w=200&amp;h=120&amp;mode=scale"
-													data-original="http://static1.fptplay.net.vn/static/img/share/video/03_09_2015/zozjglw03-09-2015_14g29-53.jpg?w=200&amp;h=120&amp;mode=scale"
-													class="lazy" style="height: auto; display: block;"
-													isloaded="true"></a>
-												<div class="title Regular">
-													<a
-														href="http://fptplay.net/xem-video/moi-tinh-ky-la-iss-pyaar-ko-kya-naam-doon-55e7f83317dc1312a1a53b14.html">Mối
-														Tình Kỳ Lạ - Iss Pyaar Ko Kya Naam Doon</a>
-												</div>
-											</div>
-										</div>
-									</li>
-
-									<li class="col-xs-12 col-sm-3 col-md-4 col-lg-4"
-										style="float: left; list-style: outside none none; position: relative; width: 382px;">
-										<div class="col-xs-12">
-											<div data-tooltip="phim566a4fcc17dc134fe148f711"
-												class="col-xs-6 small_tonghop_item">
-												<a class="item_image" title=""
-													href="http://fptplay.net/xem-video/sinh-tu-chien-the-king-of-fighters-566a4fcc17dc134fe148f711.html"><img
-													alt="Sinh Tử Chiến - The King Of Fighters"
-													src="http://static.fptplay.net.vn/static/img/share/video/download/11-12-2015/6xtjjfcz3a7jzb4wwx2e178v2c8_11-12-2015_11g23-35.jpg?w=200&amp;h=120&amp;mode=scale"
-													data-original="http://static.fptplay.net.vn/static/img/share/video/download/11-12-2015/6xtjjfcz3a7jzb4wwx2e178v2c8_11-12-2015_11g23-35.jpg?w=200&amp;h=120&amp;mode=scale"
-													class="lazy" style="height: auto; display: block;"
-													isloaded="true"></a>
-												<div class="title Regular">
-													<a
-														href="http://fptplay.net/xem-video/sinh-tu-chien-the-king-of-fighters-566a4fcc17dc134fe148f711.html">Sinh
-														Tử Chiến - The King Of Fighters</a>
-												</div>
-											</div>
-											<div data-tooltip="phim544e257b17dc13291c541b42"
-												class="col-xs-6 small_tonghop_item">
-												<a class="item_image" title=""
-													href="http://fptplay.net/xem-video/vua-hai-tac-one-piece-544e257b17dc13291c541b42.html"><img
-													alt="Vua Hải Tặc - One Piece"
-													src="http://static.fptplay.net.vn/static/img/share/video/10_09_2015/one-piece-backdrop10-09-2015_09g15-02.jpg?w=200&amp;h=120&amp;mode=scale"
-													data-original="http://static.fptplay.net.vn/static/img/share/video/10_09_2015/one-piece-backdrop10-09-2015_09g15-02.jpg?w=200&amp;h=120&amp;mode=scale"
-													class="lazy" style="height: auto; display: block;"
-													isloaded="true"></a>
-												<div class="title Regular">
-													<a
-														href="http://fptplay.net/xem-video/vua-hai-tac-one-piece-544e257b17dc13291c541b42.html">Vua
-														Hải Tặc - One Piece</a>
-												</div>
-											</div>
-										</div>
-									</li>
-
-									<li class="col-xs-12 col-sm-3 col-md-4 col-lg-4"
-										style="float: left; list-style: outside none none; position: relative; width: 382px;">
-										<div class="col-xs-12">
-											<div data-tooltip="phim565369a117dc13731260f703"
-												class="col-xs-6 small_tonghop_item">
-												<a class="item_image" title=""
-													href="http://fptplay.net/xem-video/tan-thoi-minh-nguyet-thuyet-minh-the-legend-of-qin-565369a117dc13731260f703.html"><img
-													alt="Tần Thời Minh Nguyệt (Thuyết minh) - The Legend Of Qin"
-													src="http://static.fptplay.net.vn/static/img/share/video/21_12_2015/tan-thoi21-12-2015_16g41-59.jpg?w=200&amp;h=120&amp;mode=scale"
-													data-original="http://static.fptplay.net.vn/static/img/share/video/21_12_2015/tan-thoi21-12-2015_16g41-59.jpg?w=200&amp;h=120&amp;mode=scale"
-													class="lazy" style="height: auto; display: block;"
-													isloaded="true"></a>
-												<div class="title Regular">
-													<a
-														href="http://fptplay.net/xem-video/tan-thoi-minh-nguyet-thuyet-minh-the-legend-of-qin-565369a117dc13731260f703.html">Tần
-														Thời Minh Nguyệt (Thuyết minh) - The Legend Of Qin</a>
-												</div>
-											</div>
-											<div data-tooltip="phim5159602bc96928703a603b31"
-												class="col-xs-6 small_tonghop_item">
-												<a class="item_image" title=""
-													href="http://fptplay.net/xem-video/sinh-nhat-thay-5159602bc96928703a603b31.html"><img
-													alt="Sinh nhật thầy"
-													src="http://static.fptplay.net.vn/static/img/share/video/sinh_nhat_thay_hai_huoc.jpg?w=200&amp;h=120&amp;mode=scale"
-													data-original="http://static.fptplay.net.vn/static/img/share/video/sinh_nhat_thay_hai_huoc.jpg?w=200&amp;h=120&amp;mode=scale"
-													class="lazy" style="height: auto; display: block;"
-													isloaded="true"></a>
-												<div class="title Regular">
-													<a
-														href="http://fptplay.net/xem-video/sinh-nhat-thay-5159602bc96928703a603b31.html">Sinh
-														nhật thầy</a>
-												</div>
-											</div>
-										</div>
-									</li>
-
-									<li class="col-xs-12 col-sm-3 col-md-4 col-lg-4"
-										style="float: left; list-style: outside none none; position: relative; width: 382px;">
-										<div class="col-xs-12">
-											<div data-tooltip="phim51b5480bc9692876d9fd5c0c"
-												class="col-xs-6 small_tonghop_item">
-												<a class="item_image" title=""
-													href="http://fptplay.net/xem-video/masterchef-us-season-03-51b5480bc9692876d9fd5c0c.html"><img
-													alt="MasterChef US (Season 03)"
-													src="http://static.fptplay.net.vn/static/img/share/video/masterchef_us_03_tap_14.jpg?w=200&amp;h=120&amp;mode=scale"
-													data-original="http://static.fptplay.net.vn/static/img/share/video/masterchef_us_03_tap_14.jpg?w=200&amp;h=120&amp;mode=scale"
-													class="lazy" style="height: auto; display: block;"
-													isloaded="true"></a>
-												<div class="title Regular">
-													<a
-														href="http://fptplay.net/xem-video/masterchef-us-season-03-51b5480bc9692876d9fd5c0c.html">MasterChef
-														US (Season 03)</a>
-												</div>
-											</div>
-											<div data-tooltip="phim55f7cd3517dc130c376403b0"
-												class="col-xs-6 small_tonghop_item">
-												<a class="item_image" title=""
-													href="http://fptplay.net/xem-video/dual-parallel-trouble-adventure-55f7cd3517dc130c376403b0.html"><img
-													alt="Dual Parallel Trouble Adventure"
-													src="http://static1.fptplay.net.vn/static/img/share/video/15_09_2015/137673270299215-09-2015_14g46-28.jpg?w=200&amp;h=120&amp;mode=scale"
-													data-original="http://static1.fptplay.net.vn/static/img/share/video/15_09_2015/137673270299215-09-2015_14g46-28.jpg?w=200&amp;h=120&amp;mode=scale"
-													class="lazy" style="height: auto; display: block;"
-													isloaded="true"></a>
-												<div class="title Regular">
-													<a
-														href="http://fptplay.net/xem-video/dual-parallel-trouble-adventure-55f7cd3517dc130c376403b0.html">Dual
-														Parallel Trouble Adventure</a>
-												</div>
-											</div>
-										</div>
-									</li>
-
-									<li class="col-xs-12 col-sm-3 col-md-4 col-lg-4"
-										style="float: left; list-style: outside none none; position: relative; width: 382px;">
-										<div class="col-xs-12">
-											<div data-tooltip="phim53b4ae68c9692847db80d6ee"
-												class="col-xs-6 small_tonghop_item">
-												<a class="item_image" title=""
-													href="http://fptplay.net/xem-video/nguoi-nhen-sieu-dang-2-53b4ae68c9692847db80d6ee.html"><img
-													alt="Người Nhện Siêu Đẳng 2"
-													src="http://static1.fptplay.net.vn/static/img/share/video/03_07_2014/nguoi-nhen-sieu-dang-203-07-2014_08g14-12.jpg?w=200&amp;h=120&amp;mode=scale"
-													data-original="http://static1.fptplay.net.vn/static/img/share/video/03_07_2014/nguoi-nhen-sieu-dang-203-07-2014_08g14-12.jpg?w=200&amp;h=120&amp;mode=scale"
-													class="lazy" style="height: auto; display: block;"
-													isloaded="true"></a>
-												<div class="title Regular">
-													<a
-														href="http://fptplay.net/xem-video/nguoi-nhen-sieu-dang-2-53b4ae68c9692847db80d6ee.html">Người
-														Nhện Siêu Đẳng 2</a>
-												</div>
-											</div>
-											<div data-tooltip="phim5577d0ed17dc1328679cf25e"
-												class="col-xs-6 small_tonghop_item">
-												<a class="item_image" title=""
-													href="http://fptplay.net/xem-video/7-vien-ngoc-rong-dragon-ball-5577d0ed17dc1328679cf25e.html"><img
-													alt="7 Viên Ngọc Rồng - Dragon Ball"
-													src="http://static1.fptplay.net.vn/static/img/share/video/download/10-06-2015/maxresdefault_10-06-2015_13g54-48.jpg?w=200&amp;h=120&amp;mode=scale"
-													data-original="http://static1.fptplay.net.vn/static/img/share/video/download/10-06-2015/maxresdefault_10-06-2015_13g54-48.jpg?w=200&amp;h=120&amp;mode=scale"
-													class="lazy" style="height: auto; display: block;"
-													isloaded="true"></a>
-												<div class="title Regular">
-													<a
-														href="http://fptplay.net/xem-video/7-vien-ngoc-rong-dragon-ball-5577d0ed17dc1328679cf25e.html">7
-														Viên Ngọc Rồng - Dragon Ball</a>
-												</div>
-											</div>
-										</div>
-									</li>
-								</ul>
+			<div class="contentbox">
+				<ul class="bxslider">
+				 @foreach ($films_free as $film)
+			  		<li>
+			  			<div class="boxTitle">
+			  			<a href="{{$film_url.$film->slug}}">
+							<div class="caption">
+								<h4>{{$film->title}}</h4>
+								<p>Đạo diễn: <br/>
+								Diễn viên: <br/>
+								Thể loại: <br />
+								<p>Thời lượng: </p>
+								<p class="">{!! $film->summary !!}</p>
 							</div>
-							<div class="bx-controls bx-has-controls-direction">
-								<div class="bx-controls-direction">
-									<a href="" class="bx-prev disabled"><img alt=""
-										src="http://fptplay.net/img/icon_left_c.png"
-										class="img-reponsive"></a><a href="" class="bx-next"><img
-										alt="" src="http://fptplay.net/img/icon_right_c.png"
-										class="img-reponsive"></a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<a class="col-xs-0 col-sm-1 bx-next"></a> <a
-						class="col-xs-12 bx-next_mobile"></a>
-				</div>
+				  		
+				  			<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=250&h=350&crop-to-fit" />
+				  		</a>
+				  		</div>
+			  		</li>
+				
+			  	@endforeach
+				</ul>
 			</div>
 		</div>
-
+		<!-- END PHIM MIEN PHI -->
+	
 	</div>
 
 	<div class="row">
@@ -390,17 +206,19 @@
 					<hr>
 
 					<div class="row" id="formcreate">
-						@if(session()->has('warning')) @include('partials/error', ['type'
-						=> 'warning', 'message' => session('warning')]) @endif
-						@if(session('statut') != 'visitor') {!! Form::open(['url' =>
-						'comment']) !!} {!! Form::hidden('post_id', $post->id) !!} {!!
-						Form::control('textarea', 12, 'comments', $errors,
-						trans('front/blog.comment')) !!} {!!
-						Form::submit(trans('front/form.send'), ['col-lg-12']) !!} {!!
-						Form::close() !!} @else
-						<div class="text-center">
-							<i class="text-center">{{ trans('front/blog.info-comment') }}</i>
-						</div>
+						@if(session()->has('warning')) 
+							@include('partials/error', ['type'=> 'warning', 'message' => session('warning')]) 
+						@endif
+						@if(session('statut') != 'visitor') 
+							{!! Form::open(['url' =>'comment']) !!}
+							{!! Form::hidden('post_id', $post->id) !!}
+							{!!	Form::control('textarea', 12, 'comments', $errors, trans('front/blog.comment')) !!} 
+							{!!	Form::submit(trans('front/form.send'), ['col-lg-12']) !!} 
+							{!!	Form::close() !!} 
+						@else
+							<div class="text-center">
+								<i class="text-center">{{ trans('front/blog.info-comment') }}</i>
+							</div>
 						@endif
 					</div>
 
@@ -439,7 +257,20 @@ $(document).ready(function() {
 		function(){
 			$(this).find('.caption').slideUp();
 		}
-	);	
+	);
+
+	//kiem tra user chua login thi dua ra trang thong bao
+	 var player = videojs("example_video_1");
+	 player.on("play", function(){
+		 @if(!Auth::check())
+			 player.pause();
+			 if(confirm("Bạn cần đăng ký gói cước để xem phim thỏa thích")){
+				 console.log("Được cho phép");
+				 //player.play();
+			 }
+		 @endif
+		}); 
+	
 	});
 
 /* END SLIDER */

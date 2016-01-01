@@ -11,5 +11,7 @@ return [
 	'connection' => 'Đăng nhập',
 	'administration' => 'Quản trị',
 	'redaction' => 'Redaction',
-	'logout' => 'Đăng xuất'
+	'logout' => 'Đăng xuất',
+	'series' => 'Phim bộ',
+	'single' => 'Phim lẻ'
 ];

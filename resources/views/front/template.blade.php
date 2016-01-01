@@ -51,15 +51,26 @@ HTML::style('http://fonts.googleapis.com/css?family=Tangerine:300italic,400itali
 					<a href="{!! url('/') !!}" class="navbar-brand">{{
 						trans('front/site.title') }}</a>
 				</div>
+				
 				<div class="navbar-collapse collapse" id="navbar">
 					<div class="col-sm-4 col-lg-6">
 						<ul class="nav navbar-nav">
-							<li{!! classActivePath('/') !!}>
+							<!-- <li{!! classActivePath('/') !!}>
 								{!! link_to('/', trans('front/site.home')) !!}
+							</li> -->
+							<!-- DROPDOWN MENU FILM -->
+							<li class="dropdown">
+								<a data-toggle="dropdown" class="dropdown-toggle" href="#">Phim</a>
+								<ul class="dropdown-menu">
+									<li>
+									{!! link_to('film/phim-bo', trans('front/site.series')) !!}
+									</li>									
+									<li>
+									{!! link_to('film/phim-le', trans('front/site.single')) !!}
+									</li>
+								</ul>
 							</li>
-							<li{!! classActivePath('film') !!}>
-								{!! link_to('/film', trans('front/site.home')) !!}
-							</li>
+							
 							@if(session('statut') == 'visitor' || session('statut') == 'user')
 							<li{!! classActivePath('contact/create') !!}>
 								{!!	link_to('contact/create', trans('front/site.contact')) !!}
@@ -94,20 +105,23 @@ HTML::style('http://fonts.googleapis.com/css?family=Tangerine:300italic,400itali
 								{!! link_to('auth/logout', trans('front/site.logout')) !!}
 							</li>
 							@endif @endif
-							<li class="dropdown"><a data-toggle="dropdown"
-								class="dropdown-toggle" href="#"> <img width="32" height="32"
-									alt="{{ session('locale') }}"
-									src="{!! asset('img/' . session('locale') . '-flag.png') !!}" />&nbsp;
-									<b class="caret"></b></a>
+							<li class="dropdown">
+								<a data-toggle="dropdown" class="dropdown-toggle" href="#"> 
+									<img width="32" height="32"	alt="{{ session('locale') }}" src="{!! asset('img/' . session('locale') . '-flag.png') !!}" />&nbsp;
+									<b class="caret"></b>
+								</a>
 								<ul class="dropdown-menu">
-									@foreach ( config('app.languages') as $user) @if($user !==
-									config('app.locale'))
-									<li><a href="{!! url('language') !!}/{{ $user }}"
-										title="Vietnamese"><img width="32" height="32"
-											alt="{{ $user }}"
-											src="{!! asset('img/' . $user . '-flag.png') !!}"></a></li>
-									@endif @endforeach
-								</ul></li>
+									@foreach ( config('app.languages') as $user) 
+										@if($user !== config('app.locale'))
+										<li>
+											<a href="{!! url('language') !!}/{{ $user }}" title="Vietnamese">
+												<img width="32" height="32"	alt="{{ $user }}" src="{!! asset('img/' . $user . '-flag.png') !!}">
+											</a>
+										</li>
+										@endif
+									@endforeach
+								</ul>
+							</li>
 						</ul>
 					</div>
 					<div class="col-sm-4 col-lg-2">

@@ -52,10 +52,16 @@ Route::resource('subcat', 'SubCatController');
 
 // Film
 Route::get('film/order', ['uses' => 'FilmController@indexOrder', 'as' => 'film.order']);
+Route::get('film/phim-bo', ['uses' => 'FilmController@series', 'as' => 'film.series']);
+Route::get('film/phim-le', ['uses' => 'FilmController@series', 'as' => 'film.single']);
+
 Route::put('filmpublish/{id}', 'FilmController@updatePublish');
 Route::put('filmhot/{id}', 'FilmController@updateFront');
 
+Route::get('phim/{cat}', ['uses' => 'FilmController@filmbycat', 'as' => 'film.filmbycat']);
+
 Route::resource('film', 'FilmController');
+
 // Banner
 Route::get('banner/order', ['uses' => 'BannerController@indexOrder', 'as' => 'banner.order']);
 Route::put('bannerpublish/{id}', 'BannerController@updatePublish');

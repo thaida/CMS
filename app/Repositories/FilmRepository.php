@@ -3,9 +3,17 @@
 namespace App\Repositories;
 
 use App\Models\Film;
+use App\Models\SubCategory;
 
 
 class FilmRepository extends BaseRepository {
+	
+	/**
+	 * The Tag instance.
+	 *
+	 * @var App\Models\SubCategory
+	 */
+	protected $subCat;
 	
 	/**
 	 * Create a new FilmRepository instance.
@@ -13,8 +21,9 @@ class FilmRepository extends BaseRepository {
 	 * @param App\Models\Film $film        	
 	 * @return void
 	 */
-	public function __construct(Film $film) {
+	public function __construct(Film $film, SubCategory $subCat) {
 		$this->model = $film;
+		$this->subCat = $subCat;
 	}
 	
 	/**
@@ -171,6 +180,68 @@ class FilmRepository extends BaseRepository {
 	}
 	
 	/**
+	 * Get film free.
+	 *
+	 * @param  string  $slug
+	 * @return array
+	 */
+	public function filmFree($slug)
+	{
+		$post = $this->model->whereSlug($slug)->firstOrFail();
+	
+		//lay ra 15 phim co so luong xem nhieu nhat cung chuyen muc voi film nay, theo thu tu film moi nhat va khong mien phi
+		$condition = array('sub_cat_id' => $post->sub_cat_id, 'isFree' => 1);
+		//$order = array('counter' => 'desc', 'created_at' => 'desc');
+		$films_free = $this->model->where($condition)
+		->whereNotIn('id', array($post->id))
+		->orderBy('counter', 'desc')
+		->orderBy('created_at', 'desc')
+		->take(15)->get();
+			
+		return compact('films_free');
+	}
+	
+	/**
+	 * Get series film most view.(film bo la nhung film co so tap > 1, 
+	 * lay ra theo so luong view sap xep theo thoi gian tu moi nhat dong thoi khong hien thi tu tap 2
+	 * (co van de neu film duoc xem nhieu la nhung tap khac khong phai tap 1)
+	 *
+	 * @return array
+	 */
+	public function series()
+	{
+		$condition = array('publish' => '1');
+		$films = $this->model->where($condition)
+							->where('num', '>', '1')
+							->where('episode', '<', '2')
+							->orderBy('counter', 'desc')
+							->orderBy('created_at', 'desc')
+							->take(15)
+							->get();
+	
+		return compact('films');
+	}
+	
+	/**
+	 * Get single film most view.(film le la nhung film co so tap <= 1,
+	 * lay ra theo so luong view sap xep theo thoi gian tu moi nhat 
+	 *
+	 * @return array
+	 */
+	public function single()
+	{
+		$condition = array('publish' => '1');
+		$films = $this->model->where($condition)
+		->where('num', '<', '2')
+		->orderBy('counter', 'desc')
+		->orderBy('created_at', 'desc')
+		->take(15)
+		->get();
+	
+		return compact('films');
+	}
+	
+	/**
 	 * Get film collection.
 	 *
 	 * @param  string  $slug
@@ -198,4 +269,25 @@ class FilmRepository extends BaseRepository {
 	
 		return compact('post', 'comments');
 	}
+	
+	/**
+	 * Lay ra danh sach phim trong tung chuyen muc theo slug
+	 *
+	 * @param string $slug
+	 * @return array
+	 */
+	public function filmBySubCatSlug($slug)
+	{
+		$subCat = $this->subCat->whereSlug($slug)->firstOrFail();
+		
+		$condition = array('publish' => '1', 'sub_cat_id' => $subCat->id);
+		$films = $this->model->where($condition)
+		->orderBy('created_at', 'desc')
+		->take(15)
+		->get();
+	
+		return array_merge(compact('films'), compact('subCat'));
+	}
+	
+	
 }

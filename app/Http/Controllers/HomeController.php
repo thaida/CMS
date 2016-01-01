@@ -32,8 +32,11 @@ class HomeController extends Controller
 	{
 		$url = config('medias.image-host');
 		$film_url = config('medias.film-host');
+		//hien thi film hot, sap xep moi nhat len tren
 		$filmCondition = ['publish' => 1, 'isHot' => 1];
-		$films = $this->film->where($filmCondition)->get();
+		$films = $this->film->where($filmCondition)
+						->orderBy('created_at', 'desc')
+						->get();
 		
 		return view('front.index', array_merge(compact('films'), compact('url'), compact('film_url')));
 	}
