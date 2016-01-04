@@ -1,12 +1,9 @@
-@extends('back.template') @section('main')
-
-@include('back.partials.entete', ['title' => trans('back/film.dashboard')
-. link_to_route('film.create', trans('common.add'), [], ['class' =>
-'btn btn-info pull-right']), 'icone' => 'pencil', 'fil' =>
-trans('back/film.location')]) 
-@if(session()->has('ok'))
-@include('partials/error', ['type' => 'success', 'message' =>
-session('ok')]) @endif
+@extends('back.template') 
+@section('main')
+	@include('back.partials.entete', ['title' => trans('back/film.dashboard'). link_to_route('film.create', trans('common.add'), [], ['class' =>'btn btn-info pull-right']), 'icone' => 'pencil', 'fil' => trans('back/film.location')]) 
+	@if(session()->has('ok'))
+		@include('partials/error', ['type' => 'success', 'message' => session('ok')]) 
+	@endif
 
 <div class="panel panel-primary ">
 	<div class="panel-heading">

@@ -101,6 +101,26 @@ class FilmRepository extends BaseRepository {
 		return $query->paginate ( $n );
 	}
 	
+	/**
+	 * Get film collection by subCat slug.
+	 *
+	 * @return Illuminate\Support\Collection
+	 */
+	public function getAllFilmBySubCat($n, $sub_cat_slug, $user_id = null) {
+		$query = $this->model->select ( config ( "constants.FILM_TABLE" ) . '.id', config ( "constants.FILM_TABLE" ) . '.created_at as created_at', config ( "constants.FILM_TABLE" ) . '.title as title', config ( "constants.FILM_TABLE" ) . '.summary',
+				'sub_categories.title as subCat', 'sub_categories.slug as catSlug', 'films.release_date','films.running_time',
+				 config ( "constants.FILM_TABLE" ) . '.poster_path', config ( "constants.FILM_TABLE" ) . '.slug', 'username', config ( "constants.FILM_TABLE" ) . '.publish', 'isHot' )
+				->leftjoin ( 'sub_categories', function ($join) {
+				$join->on('sub_categories.id' ,'=', 'films.sub_cat_id');
+				})
+				->join ( 'users', 'users.id', '=', config ( "constants.FILM_TABLE" ) . '.user_id' )
+				->where('sub_categories.slug', '=', $sub_cat_slug);
+					
+		if ($user_id) {
+			$query->where ( 'user_id', $user_id );
+		}
+		return $query->paginate ( $n );
+	}
 		
 	/**
 	 * Update a cat.
@@ -202,6 +222,25 @@ class FilmRepository extends BaseRepository {
 	}
 	
 	/**
+	 * Get film most view.(tat ca cac phim - bo va le,
+	 * lay ra theo so luong view sap xep theo thoi gian tu moi nhat dong thoi khong hien thi tu tap 2
+	 *
+	 * @return array
+	 */
+	public function allFilm()
+	{
+		$condition = array('publish' => '1');
+		$films_most_view = $this->model->where($condition)
+		->where('episode', '<', '2')
+		->orderBy('counter', 'desc')
+		->orderBy('created_at', 'desc')
+		->take(15);
+		//->get();
+	
+		return $films_most_view->paginate(5);//compact('films_most_view');
+	}
+	
+	/**
 	 * Get series film most view.(film bo la nhung film co so tap > 1, 
 	 * lay ra theo so luong view sap xep theo thoi gian tu moi nhat dong thoi khong hien thi tu tap 2
 	 * (co van de neu film duoc xem nhieu la nhung tap khac khong phai tap 1)
@@ -211,15 +250,15 @@ class FilmRepository extends BaseRepository {
 	public function series()
 	{
 		$condition = array('publish' => '1');
-		$films = $this->model->where($condition)
+		$films_most_view = $this->model->where($condition)
 							->where('num', '>', '1')
 							->where('episode', '<', '2')
 							->orderBy('counter', 'desc')
 							->orderBy('created_at', 'desc')
-							->take(15)
-							->get();
+							->take(15);
+							//->get();
 	
-		return compact('films');
+		return $films_most_view->paginate(5);//compact('films_most_view');
 	}
 	
 	/**
@@ -235,10 +274,10 @@ class FilmRepository extends BaseRepository {
 		->where('num', '<', '2')
 		->orderBy('counter', 'desc')
 		->orderBy('created_at', 'desc')
-		->take(15)
-		->get();
+		->take(15);
+		//->get();
 	
-		return compact('films');
+		return  $films->paginate(5);
 	}
 	
 	/**
@@ -278,15 +317,23 @@ class FilmRepository extends BaseRepository {
 	 */
 	public function filmBySubCatSlug($slug)
 	{
-		$subCat = $this->subCat->whereSlug($slug)->firstOrFail();
+		//$subCat = $this->subCat->whereSlug($slug)->firstOrFail();
 		
-		$condition = array('publish' => '1', 'sub_cat_id' => $subCat->id);
-		$films = $this->model->where($condition)
-		->orderBy('created_at', 'desc')
-		->take(15)
-		->get();
+		$condition = array('publish' => '1');
+		$films = $this->model->select( config ( "constants.FILM_TABLE" ) . '.id', config ( "constants.FILM_TABLE" ) . '.created_at as created_at', config ( "constants.FILM_TABLE" ) . '.title as title', config ( "constants.FILM_TABLE" ) . '.summary',
+				'sub_categories.title as subCat', 'sub_categories.slug as catSlug', 'films.release_date','films.running_time',
+				 config ( "constants.FILM_TABLE" ) . '.poster_path', config ( "constants.FILM_TABLE" ) . '.slug',  config ( "constants.FILM_TABLE" ) . '.publish', 'isHot' )
+		->leftjoin('sub_categories', 'sub_categories.id', '=', 'films.sub_cat_id')
+		->where('sub_categories.slug', $slug)
+		->orderBy('films.created_at', 'desc')
+		->orderBy('counter', 'desc')
+		->take(16);
+		//->get();
 	
-		return array_merge(compact('films'), compact('subCat'));
+		/* $links = $films -> append([]);
+		
+		$links->setPath ( '' )->render (); */
+		return $films->paginate(5);
 	}
 	
 	

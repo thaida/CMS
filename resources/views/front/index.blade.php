@@ -27,90 +27,15 @@
 @stop
 
 @section('main')
-<div class="row rowbox">
-	<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
-		<a class="category_title" title="Phim bộ HOT"
-			href="{!! url('articles') !!}"><span
-			class="pull-left">Truyền hình thực tế</span></a> <a
-			class="pull-left btn_arrow_right" title="Phim bộ HOT"
-			href="{!! url('articles') !!}"></a>
-	</div>
-	<div class="contentbox">
-		<ul class="bxslider">
-			<li><img title="Cảnh Sát Hình Sự: Câu Hỏi Số 5" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static1.fptplay.net.vn/static/img/share/video/13_08_2015/cau-hoi-so-5-len-song-tap-dau-tien-21h10-vtv313-08-2015_09g23-17.JPG?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static1.fptplay.net.vn/static/img/share/video/31_08_2015/wiaemqks31-08-2015_15g31-47.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static.fptplay.net.vn/static/img/share/video/10_02_2015/la10-02-2015_16g54-27.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static1.fptplay.net.vn/static/img/share/video/08_10_2015/rh18whn908-10-2015_16g43-05.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static.fptplay.net.vn/static/img/share/video/21_12_2015/hay-nham-mat-khi-anh-den21-12-2015_16g41-14.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static1.fptplay.net.vn/static/img/share/video/07_10_2015/a05eafe2e080146ee6cebc8a39689d30_144133558407-10-2015_09g59-53.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static1.fptplay.net.vn/static/img/share/video/12_10_2015/hdhs42yw12-10-2015_09g07-26.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static.fptplay.net.vn/static/img/share/video/06_04_2015/tgkcss06-04-2015_16g09-08.jpg?w=200&h=120&mode=scale" /></li>
-		</ul>
-	</div>
-</div>
-<section class="slider">
-	<div class="flexslider" id="sliderDN1">
-		<ul class="slides">
-			<li
-				style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;"
-				class="flex-active-slide"><a
-				href="https://viettelfamily.com/tin-tuc/ngoi-nha-chung/thi-viet-ve-nhung-chuyen-cong-tac-nuoc-ngoai-lam-thay-doi-nguoi-viettel"
-				target="_blank"> <img width="100%;"
-					src="https://viettelfamily.com/images/banners/for-the-better.jpg"
-					title="Cuộc thi viết For the better" draggable="false">
-			</a></li>
-		</ul>
-		<ul class="flex-direction-nav">
-			<li><a href="#" class="flex-prev"></a></li>
-			<li><a href="#" class="flex-next"></a></li>
-		</ul>
-	</div>
-</section>
-<div class="row rowbox">
-	<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
-		<a class="category_title" title="Phim bộ Hoa ngu"
-			href="{!! url('articles') !!}"><span
-			class="pull-left">Sao trả lời</span></a> <a
-			class="pull-left btn_arrow_right" title="Phim bộ HOT"
-			href="{!! url('articles') !!}"></a>
-	</div>
-	<div class="contentbox">
-		<ul class="bxslider">
-			<li><img title="Cảnh Sát Hình Sự: Câu Hỏi Số 5" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static1.fptplay.net.vn/static/img/share/video/13_08_2015/cau-hoi-so-5-len-song-tap-dau-tien-21h10-vtv313-08-2015_09g23-17.JPG?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static1.fptplay.net.vn/static/img/share/video/31_08_2015/wiaemqks31-08-2015_15g31-47.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static.fptplay.net.vn/static/img/share/video/10_02_2015/la10-02-2015_16g54-27.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static1.fptplay.net.vn/static/img/share/video/08_10_2015/rh18whn908-10-2015_16g43-05.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static.fptplay.net.vn/static/img/share/video/21_12_2015/hay-nham-mat-khi-anh-den21-12-2015_16g41-14.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static1.fptplay.net.vn/static/img/share/video/07_10_2015/a05eafe2e080146ee6cebc8a39689d30_144133558407-10-2015_09g59-53.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static1.fptplay.net.vn/static/img/share/video/12_10_2015/hdhs42yw12-10-2015_09g07-26.jpg?w=200&h=120&mode=scale" /></li>
-			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
-				src="http://static.fptplay.net.vn/static/img/share/video/06_04_2015/tgkcss06-04-2015_16g09-08.jpg?w=200&h=120&mode=scale" /></li>
-		</ul>
-	</div>
-</div>
+
 
 <!-- PHIM HANH DONG -->
 <div class="row rowbox">
 	<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
-		<a class="category_title" title="Hành động"	href="{!! url('articles') !!}">
-			<span class="pull-left">Hành động</span>
+		<a class="category_title" title="Phim"	href="{!! url('phim') !!}">
+			<span class="pull-left">Phim</span>
 		</a>
-		<a class="pull-left btn_arrow_right" title="Hành động" href="{!! url('articles') !!}"></a>
+		<a class="pull-left btn_arrow_right" title="Phim" href="{!! url('phim') !!}"></a>
 	</div>
 	<div class="contentbox">
 		<ul class="bxslider">
@@ -126,17 +51,72 @@
 						<p>Thời lượng: </p>
 						<p class="">{!! $film->summary !!}</p>
 					</div>
-		  		
-		  			<img title="{{$film->title}}"  src="{{$url.$film->poster_path}}?w=250&h=350&crop-to-fit" />
+					<!-- IMAGE -->
+			  		<div class="img">
+			  			<img title="{{$film->title}}"  src="{{$url.$film->poster_path}}?w=250&h=350&crop-to-fit" />
+			  			@if($film->isFree)
+			  			<span class="top right" >Miễn phí</span >
+			  			@endif
+			  		</div>
+		  			<!-- end IMAGE -->
 		  		</a>
 		  		</div>
+    
 	  		</li>
 		
 	  	@endforeach
 		</ul>
 	</div>
 </div>
-<!-- END PHIM HANH DONG -->
+<style>
+.top{
+    top: 0; 
+}
+ 
+.right{
+    right: 0;
+}
+.img{
+    
+    /*background-color: #000;*/
+}
+.img span{
+    position: absolute;
+    color: red;
+}
+</style>
+<!-- END PHIM  -->
+<!-- NHAC -->
+<div class="row rowbox">
+	<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
+		<a class="category_title" title="nhạc"
+			href="{!! url('music') !!}"><span
+			class="pull-left">Nhạc</span></a> <a
+			class="pull-left btn_arrow_right" title="Nhạc"
+			href="{!! url('music') !!}"></a>
+	</div>
+	<div class="contentbox">
+		<ul class="bxslider">
+			<li><img title="Cảnh Sát Hình Sự: Câu Hỏi Số 5" data-tooltip="phim565c82b317dc130a16f4e7ec"
+				src="http://static1.fptplay.net.vn/static/img/share/video/13_08_2015/cau-hoi-so-5-len-song-tap-dau-tien-21h10-vtv313-08-2015_09g23-17.JPG?w=200&h=350&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
+				src="http://static1.fptplay.net.vn/static/img/share/video/31_08_2015/wiaemqks31-08-2015_15g31-47.jpg?w=200&h=350&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
+				src="http://static.fptplay.net.vn/static/img/share/video/10_02_2015/la10-02-2015_16g54-27.jpg?w=200&h=350&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
+				src="http://static1.fptplay.net.vn/static/img/share/video/08_10_2015/rh18whn908-10-2015_16g43-05.jpg?w=200&h=350&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
+				src="http://static.fptplay.net.vn/static/img/share/video/21_12_2015/hay-nham-mat-khi-anh-den21-12-2015_16g41-14.jpg?w=200&h=350&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
+				src="http://static1.fptplay.net.vn/static/img/share/video/07_10_2015/a05eafe2e080146ee6cebc8a39689d30_144133558407-10-2015_09g59-53.jpg?w=200&h=350&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
+				src="http://static1.fptplay.net.vn/static/img/share/video/12_10_2015/hdhs42yw12-10-2015_09g07-26.jpg?w=200&h=350&mode=scale" /></li>
+			<li><img title="Tình Yêu Quanh Ta - Love Around" data-tooltip="phim565c82b317dc130a16f4e7ec"
+				src="http://static.fptplay.net.vn/static/img/share/video/06_04_2015/tgkcss06-04-2015_16g09-08.jpg?w=200&h=350&mode=scale" /></li>
+		</ul>
+	</div>
+</div>
+<!-- END NHAC -->
 
 <div class="row rowbox">
 	<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
@@ -170,85 +150,6 @@
 				src="http://static.fptplay.net.vn/static/img/share/video/06_04_2015/tgkcss06-04-2015_16g09-08.jpg?w=250&h=350&mode=scale" /></li>
 		</ul>
 	</div>
-</div>
-<div class="row">
-	<div class="box">
-		<div class="col-lg-12">
-			<hr>
-			<h2 class="intro-text text-center">
-				<strong>Comitem</strong>
-			</h2>
-			<hr>
-			<img class="img-responsive img-left" src="img/laravel-l-slant.png"
-				alt="">
-			<table cellspacing="0" cellpadding="3" border="0"
-				style="width: 100%;" class="table-image">
-				<tbody>
-					<tr>
-						<td style="text-align: center;"><img style="width: 100%;"
-							src="/uploads/ckfinder/images/NhomDSC_4919.jpg"
-							caption="Viettel chủ trương tăng cường những buổi trao đổi nhóm nhỏ."
-							alt="" _cke_saved_src="/uploads/ckfinder/images/NhomDSC_4919.jpg"></td>
-					</tr>
-					<tr>
-						<td style="text-align: center;" class="image-caption">Viettel chủ
-							trương tăng cường những buổi trao đổi nhóm nhỏ.</td>
-					</tr>
-				</tbody>
-			</table>
-
-			<p style="text-align: justify;">Tín hiệu khả quan đã đến sau cuộc
-				thảo luận kéo dài 3 buổi chiều liên tục theo hình thức nhóm nhỏ chỉ
-				gồm 2 thành viên ban TGĐ Tập đoàn, 2 thành viên ban TGĐ và 3 chuyên
-				viên Viettel Telecom.</p>
-
-			<p style="text-align: justify;">Bất cập của các gói cước từ trước tới
-				nay của Viettel đã được chỉ ra chi tiết như thiếu tường minh, chồng
-				chéo, gây khó nhớ cho chính nhân viên và điểm bán của Viettel… 4
-				nhóm cước chính đã được quy hoạch lại một cách tường minh gồm đại
-				trà, dùng càng nhiều càng rẻ, có bao nhiêu tiền dùng bấy nhiêu và
-				các gói cho thị trường ngách như đọc báo, Facebook, Youtube, nghe
-				nhạc, học tập… Trong đó, quan trong nhất là, các cuộc thảo luận nhóm
-				đã giúp chúng ta thống nhất được nhận thức mới là thay thế “dùng
-				càng nhiều data thì giá càng đắt” thành “dùng càng nhiều giá càng
-				rẻ”.</p>
-
-			<p style="text-align: justify;">Bên cạnh đó, việc định giá các dịch
-				vụ data 4G cũng là việc khó, nhưng những cuộc trao đổi chi tiết
-				trong một khoảng thời gian ngắn tại Tập đoàn cũng đã giúp chúng ta
-				tìm ra phương án, vừa có được sự khác biệt so với 3G mà vẫn bám sát
-				thị trường.</p>
-
-			<p style="text-align: justify;"></p>
-			<div class="embed-article-box">
-				<a
-					href="/tin-tuc/tu-nhan-thuc-den-hanh-dong/tai-sao-tap-doan-tam-dung-giao-ban-hang-ngay"><img
-					src="/cache/uploads//2c/23/32/5677df629fa41_780_auto.jpg"
-					class="thumbnail"></a>
-				<div class="title">
-					<a
-						href="/tin-tuc/tu-nhan-thuc-den-hanh-dong/tai-sao-tap-doan-tam-dung-giao-ban-hang-ngay">Tại
-						sao Tập đoàn tạm dừng Giao ban hàng ngày?</a>
-				</div>
-				<div class="header">
-					<a
-						href="/tin-tuc/tu-nhan-thuc-den-hanh-dong/tai-sao-tap-doan-tam-dung-giao-ban-hang-ngay">Liên
-						tiếp 3 tuần gần đây, Tập đoàn đã ngừng họp giao ban ngày, một hoạt
-						động vốn được duy trì suốt 15 năm qua.</a>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<p></p>
-
-			<p style="text-align: justify;">Việc dù khó đến đâu, nhưng nếu chúng
-				ta tập trung làm đến cùng thì sẽ đều tìm được giải pháp.&nbsp; Điều
-				quan trọng là người đứng đầu phải cùng trăn trở và cùng tham gia
-				giải quyết việc khó. Những sản phẩm thiếu sự chỉ đạo của người đứng
-				đầu có thể sẽ không thể sử dụng được hoặc thậm chí còn gây ra nguy
-				hiểm cho tổ chức.</p>
-		</div>
-	</div>
-</div>
 </div>
 	@stop
 	
@@ -291,8 +192,7 @@
    	 captions: true,
    	  minSlides: 2,
    	  maxSlides: 4,
-   	  slideWidth: 250,
-   	  
+   	  slideWidth: 250,   	  
    	  slideMargin: 20
    	});
     $('.bxslider2').bxSlider({
@@ -303,13 +203,21 @@
       	  slideWidth: 250,
       	  slideMargin: 250,
       	});
+    $('.bxslider3').bxSlider({
+     	 autoControls: true,
+     	 captions: true,
+     	  minSlides: 2,
+     	  maxSlides: 4,
+     	  slideWidth: 200,
+     	  slideMargin: 25,
+     	});
 
     $(document).ready(function() {
     	$('.boxTitle').hover(function(){
-    			$(this).find('.caption').slideDown();
+    			$(this).find('.caption').delay(200).slideDown();
     		},
     		function(){
-    			$(this).find('.caption').slideUp();
+    			$(this).find('.caption').delay(200).slideUp();
     		}
     	);	
     	});

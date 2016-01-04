@@ -48,7 +48,7 @@ class FilmController extends Controller {
 		$this->nbrPages = 2;
 		
 		
-		 $this->middleware('redac', ['except' => ['indexFront', 'show', 'tag', 'search', 'series', 'filmbycat', 'single']]);
+		 $this->middleware('redac', ['except' => ['indexFront', 'show', 'tag', 'search', 'series', 'allfilm', 'filmbycat', 'single']]);
 		 $this->middleware('admin', ['only' => ['updateSeen', 'updateActive']]);
 		 $this->middleware('ajax', ['only' => ['updateSeen', 'updateActive']]);
 	}
@@ -213,7 +213,8 @@ class FilmController extends Controller {
 		//$films = $this->film_gestion->filmRelated($slug);
 		//$films_free = $this->film_gestion->filmFree($slug);
 		
-		return view ( 'front.film.show', array_merge ( $this->film_gestion->show($slug), $this->film_gestion->filmRelated($slug), $this->film_gestion->filmFree($slug), compact ( 'user' ), compact('img_url'), compact('film_url') ) );
+		return view ( 'front.film.show', array_merge ( $this->film_gestion->show($slug), $this->film_gestion->filmRelated($slug), $this->film_gestion->filmFree($slug), 
+						compact ( 'user' ,'img_url', 'film_url') ) );
 	}
 	
 	
@@ -227,8 +228,33 @@ class FilmController extends Controller {
 	public function series() {
 		$img_url = config('medias.image-host');
 		$film_url = config('medias.film-host');
+		$films_most_view = $this->film_gestion->series();
+		$films = $this->film_gestion->filmBySubCatSlug('tam-ly');
+		$links = $films->appends ( [] );
+		
+		$links->setPath ( '' )->render ();
 		//return "hello";		
-		return view ( 'front.film.list', array_merge ( $this->film_gestion->series(),  compact('img_url'), compact('film_url') ) );
+		return view ( 'front.film.list', compact('films_most_view','img_url','film_url', 'films', 'links'));
+		//return view ( 'front.film.list', array_merge ( $this->film_gestion->series(),compact($this->film_gestion->filmBySubCatSlug(4, 'tam-ly', null)),  compact('img_url','film_url') ) );
+	}
+	/**
+	 * Hien thi danh sach phim (ca phim le va phim bo
+	 * Phim bo la nhung phim co so tap > 1 (num > 1)
+	 * @param Illuminate\Contracts\Auth\Guard $auth
+	 * @param string $slug
+	 * @return Response
+	 */
+	public function allfilm() {
+		$img_url = config('medias.image-host');
+		$film_url = config('medias.film-host');
+		$films_most_view = $this->film_gestion->allFilm();
+		$films = $this->film_gestion->filmBySubCatSlug('tam-ly');
+		$links = $films->appends ( [] );
+	
+		$links->setPath ( '' )->render ();
+		//return "hello";
+		return view ( 'front.film.list', compact('films_most_view','img_url','film_url', 'films', 'links'));
+		//return view ( 'front.film.list', array_merge ( $this->film_gestion->series(),compact($this->film_gestion->filmBySubCatSlug(4, 'tam-ly', null)),  compact('img_url','film_url') ) );
 	}
 	
 	
@@ -236,7 +262,14 @@ class FilmController extends Controller {
 	public function filmbycat($cat) {
 		$img_url = config('medias.image-host');
 		$film_url = config('medias.film-host');
-		return view ( 'front.film.list', array_merge ( $this->film_gestion->filmBySubCatSlug($cat), compact('img_url'), compact('film_url') ) );
+		
+		$films = $this->film_gestion->getAllFilmBySubCat ( 4, $cat, null);
+		
+		$links = $films->appends ( [] );
+						
+		$links->setPath ( '' )->render ();
+			//return view ( 'back.film.index', compact ( 'posts', 'links', 'order' ) );
+		return view ( 'front.film.index', ( compact('img_url', 'film_url', 'films', 'links') ) );
 	}
 	/**
 	 * Hien thi danh sach phim bo
@@ -249,7 +282,12 @@ class FilmController extends Controller {
 		$img_url = config('medias.image-host');
 		$film_url = config('medias.film-host');
 		//return "hello";
-		return view ( 'front.film.list', array_merge ( $this->film_gestion->single(),  compact('img_url'), compact('film_url') ) );
+		$films_most_view = $this->film_gestion->single();
+		$films = $this->film_gestion->filmBySubCatSlug('tinh-cam');
+		$links = $films->appends ( [] );
+		
+		$links->setPath ( '' )->render ();
+		return view ( 'front.film.list', compact('img_url','film_url', 'links', 'films_most_view', 'films') );
 	}
 }
 

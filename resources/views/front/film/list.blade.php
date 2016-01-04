@@ -24,19 +24,19 @@
 @stop 
 
 @section('main')
-
     <!-- PHIM XEM NHIEU NHAT -->
 	<div class="row rowbox">
 		<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
 			<a class="category_title" title="Phim xem nhiều nhất"	href="{!! url('film/phim-bo') !!}">
-				<span class="pull-left">{{ isset($subCat) ? $subCat->title : 'Phim xem nhiều nhất' }}</span>
+				<span class="pull-left">{{ 'Phim bộ xem nhiều nhất' }}</span>
 			</a>
 			<a class="pull-left btn_arrow_right" title="Phim xem nhiều nhất" href="{!! url('film/phim-bo') !!}"></a>
 		</div>
+		
 		<div class="contentbox">
 			<ul class="bxslider">
 			
-			 @foreach ($films as $film)
+			 @foreach ($films_most_view as $film)
 		  		<li>
 		  			<div class="boxTitle">
 		  			<a href="{{$film_url.$film->slug}}">
@@ -59,18 +59,18 @@
 		</div>
 	</div>
 	<!-- END XEM NHIEU NHAT -->
-@if(isset($films_tam_ly))
+@if(isset($films))
 	<!-- PHIM TAM LY -->
 	<div class="row rowbox">
 		<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
-			<a class="category_title" title="Phim tâm lý"	href="{!! url('phim/tam-ly') !!}">
-				<span class="pull-left">Phim tâm lý</span>
+			<a class="category_title" title="{{ $films->get(0)->subCat}}"	href="{!! url('phim/'. $films->get(0)->catSlug) !!}">
+				<span class="pull-left">{{ $films->get(0)->subCat}}</span>
 			</a>
-			<a class="pull-left btn_arrow_right" title="Phim tâm lý" href="{!! url('film/tam-ly') !!}"></a>
+			<a class="pull-left btn_arrow_right" title="{{ $films->get(0)->subCat}}" href="{!! url('film/'.$films->get(0)->catSlug) !!}"></a>
 		</div>
 		<div class="contentbox">
 			<ul class="bxslider">
-			 @foreach ($films_tam_ly as $film)
+			 @foreach ($films as $film)
 		  		<li>
 		  			<div class="boxTitle">
 		  			<a href="{{$film_url.$film->slug}}">
@@ -121,8 +121,8 @@
     	 autoControls: true,
     	 captions: true,
     	  minSlides: 2,
-    	  maxSlides: 5,
-    	  slideWidth: 200,
+    	  maxSlides: 4,
+    	  slideWidth: 250,
     	  slideMargin: 10
     	});
   </script>

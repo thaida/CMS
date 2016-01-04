@@ -13,5 +13,9 @@ return [
 	'redaction' => 'Redaction',
 	'logout' => 'Đăng xuất',
 	'series' => 'Phim bộ',
-	'single' => 'Phim lẻ'
+	'single' => 'Phim lẻ',
+	'music'  => 'Nhạc',
+	'tvshow' => 'TV Show',
+	'news' => 'Tin giải trí'
+		
 ];

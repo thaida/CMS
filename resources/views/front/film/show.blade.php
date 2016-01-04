@@ -262,13 +262,13 @@ $(document).ready(function() {
 	//kiem tra user chua login thi dua ra trang thong bao
 	 var player = videojs("example_video_1");
 	 player.on("play", function(){
-		 @if(!Auth::check())
+		 /* @if(!Auth::check())
 			 player.pause();
 			 if(confirm("Bạn cần đăng ký gói cước để xem phim thỏa thích")){
 				 console.log("Được cho phép");
 				 //player.play();
 			 }
-		 @endif
+		 @endif */
 		}); 
 	
 	});

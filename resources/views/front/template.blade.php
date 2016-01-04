@@ -24,8 +24,7 @@
 			{!! HTML::style('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js') !!}
 		<![endif]-->
 
-{!!
-HTML::style('http://fonts.googleapis.com/css?family=Tangerine:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800')!!}
+{!! HTML::style('http://fonts.googleapis.com/css?family=Tangerine:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!}
 <!-- {!! HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') !!}    -->
 <!-- {!! HTML::style('http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic') !!} -->
 
@@ -60,7 +59,8 @@ HTML::style('http://fonts.googleapis.com/css?family=Tangerine:300italic,400itali
 							</li> -->
 							<!-- DROPDOWN MENU FILM -->
 							<li class="dropdown">
-								<a data-toggle="dropdown" class="dropdown-toggle" href="#">Phim</a>
+								<a data-toggle="dropdown" class="dropdown-toggle disabled" href="{!! url('phim') !!}">
+								Phim</a>
 								<ul class="dropdown-menu">
 									<li>
 									{!! link_to('film/phim-bo', trans('front/site.series')) !!}
@@ -71,14 +71,25 @@ HTML::style('http://fonts.googleapis.com/css?family=Tangerine:300italic,400itali
 								</ul>
 							</li>
 							
-							@if(session('statut') == 'visitor' || session('statut') == 'user')
+							<!-- @if(session('statut') == 'visitor' || session('statut') == 'user')
 							<li{!! classActivePath('contact/create') !!}>
 								{!!	link_to('contact/create', trans('front/site.contact')) !!}
 							</li>
-							@endif
-							<li{!! classActiveSegment(1, ['articles', 'blog']) !!}>
-								{!!	link_to('articles', trans('front/site.blog')) !!}
+							@endif -->
+							<li {!! classActiveSegment(1, ['music']) !!}>
+								{!!	link_to('music', trans('front/site.music')) !!}
 							</li>
+							
+							<li {!! classActiveSegment(1, ['tvshow']) !!}>
+								{!!	link_to('tvshow', trans('front/site.tvshow')) !!}
+							</li>
+							
+							<li {!! classActiveSegment(1, ['news']) !!}>
+								{!!	link_to('news', trans('front/site.news')) !!}
+							</li>
+							<!-- <li{!! classActiveSegment(1, ['articles', 'blog']) !!}>
+								{!!	link_to('articles', trans('front/site.blog')) !!}
+							</li> -->
 							@if(Request::is('auth/register'))
 							<li class="active">
 								{!! link_to('auth/register', trans('front/site.register')) !!}
@@ -88,23 +99,8 @@ HTML::style('http://fonts.googleapis.com/css?family=Tangerine:300italic,400itali
 								{!! link_to('password/email', trans('front/site.forget-password')) !!}
 							</li> 
 							@else
-							@if(session('statut') == 'visitor')
-							<li{!! classActivePath('auth/login') !!}>
-								{!!	link_to('auth/login', trans('front/site.connection')) !!}
-							</li>
-							@else @if(session('statut') == 'admin')
-							<li>
-								{!! link_to_route('admin',	trans('front/site.administration')) !!}
-							</li>
-							@elseif(session('statut') == 'redac')
-							<li>
-								{!! link_to('blog', trans('front/site.redaction')) !!}
-							</li>
+							
 							@endif
-							<li>
-								{!! link_to('auth/logout', trans('front/site.logout')) !!}
-							</li>
-							@endif @endif
 							<li class="dropdown">
 								<a data-toggle="dropdown" class="dropdown-toggle" href="#"> 
 									<img width="32" height="32"	alt="{{ session('locale') }}" src="{!! asset('img/' . session('locale') . '-flag.png') !!}" />&nbsp;
@@ -137,7 +133,25 @@ HTML::style('http://fonts.googleapis.com/css?family=Tangerine:300italic,400itali
 						<div class="auth">
 							<div class="">
 								<a class="login" onclick="showLogin('auth/login')"
-									href="javascript:void(0)">Đăng nhập</a>
+									href="javascript:void(0)">
+									@if(session('statut') == 'visitor')
+									<li{!! classActivePath('auth/login') !!}>
+										{!!	link_to('auth/login', trans('front/site.connection')) !!}
+									</li>
+									@else @if(session('statut') == 'admin')
+									<li>
+										{!! link_to_route('admin',	trans('front/site.administration')) !!}
+									</li>
+									@elseif(session('statut') == 'redac')
+									<li>
+										{!! link_to('blog', trans('front/site.redaction')) !!}
+									</li>
+									@endif
+									<li>
+										{!! link_to('auth/logout', trans('front/site.logout')) !!}
+									</li>
+									@endif 
+								</a>
 							</div>
 							<div class="">
 								<a class="register" href="{!! url('signup') !!}">Đăng ký </a>
