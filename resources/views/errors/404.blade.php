@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Erreur 404</title>
+    <title>ERROR 404</title>
 
     {!! HTML::style('css/main_front.css') !!}
 

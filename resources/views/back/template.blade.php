@@ -99,11 +99,11 @@
                     </li>
                     
                     <li {!! classActiveSegment(1, 'blog1') !!}>
-                        <a href="#" data-toggle="collapse" data-target="#categorymenu"><span class="fa fa-fw fa-pencil"></span> {{ trans('back/admin.category') }} <span class="fa fa-fw fa-caret-down"></a>
+                        <a href="#" data-toggle="collapse" data-target="#categorymenu"><span class="glyphicon glyphicon-th-list"></span> {{ trans('back/admin.category') }} <span class="fa fa-fw fa-caret-down"></a>
                         <ul id="categorymenu" class="collapse">
-                            <li><a href="{!! url('cat') !!}">{{ trans('back/admin.categorys') }}</a></li>
-                            <li><a href="{!! url('subcat') !!}">{{ trans('back/admin.child-category') }}</a></li>
-                            <li><a href="{!! url('film') !!}">{{ trans('back/admin.film') }}</a></li>
+                            <li><a href="{!! url('cat') !!}" ><i class="glyphicon glyphicon-list-alt">&nbsp; </i>{{ trans('back/admin.categorys') }}</a></li>
+                            <li><a href="{!! url('subcat') !!}"><i class="glyphicon glyphicon-tasks">&nbsp;</i>{{ trans('back/admin.child-category') }}</a></li>
+                            <li><a href="{!! url('film') !!}"><i class="glyphicon glyphicon-facetime-video">&nbsp;</i>{{ trans('back/admin.film') }}</a></li>
                             <li><a href="{!! url('banner') !!}">{{ trans('back/admin.banner') }}</a></li>
                             <li><a href="{!! url('category/create') !!}">{{ trans('back/admin.child-category') }}</a></li>
                         </ul>
@@ -128,7 +128,7 @@
     </div>
     <!-- /.wrapper -->
 
-    	{!! HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js') !!}
+    	{!! HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js') !!}
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
     	{!! HTML::script('js/plugins.js') !!}
     	{!! HTML::script('js/main.js') !!}

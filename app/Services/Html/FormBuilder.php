@@ -17,6 +17,11 @@ class FormBuilder extends \Collective\Html\FormBuilder {
 	{
 		return parent::submit($text, ['class' => 'btn btn-danger btn-block ' . ($class? $class:''), 'onclick' => 'return confirm(\'' . $message . '\')']);
 	}
+	public function destroy2($text, $message, $class = null)
+	{
+		return parent::submit($text, ['class' => 'btn btn-danger ' . ($class? $class:''), 'onclick' => 'return confirm(\'' . $message . '\')']);
+	}
+	
 
 	public function control($type, $colonnes, $nom, $errors, $label = null, $valeur = null, $pop = null, $placeholder = '')
 	{

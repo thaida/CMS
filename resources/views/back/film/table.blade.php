@@ -8,8 +8,9 @@ $counter = 1;
 	<td>{{ date(config('constants.DATE_FORMAT'),
 		strtotime($film->created_at)) }} GMT </td>
 		
-	<td>{!! Form::checkbox('publish', $film->id, $film->publish) !!}</td>
-	<td>{!! Form::checkbox('isHot', $film->id, $film->isHot) !!}</td>
+	<td>{!! Form::checkbox('publish', $film->id, $film->publish) !!} <a href=""></a><i class="fa {{$film->publish ?  'fa-star' : 'fa-star-o'}}"></i></a></td>
+	<td>{!! Form::checkbox('isHot', $film->id, $film->isHot) !!}
+	</td>
 	@if(session('statut') == 'admin')
 	<td>{{ $film->username }}</td> 
 	@endif
@@ -17,7 +18,8 @@ $counter = 1;
 {!! link_to_route('film.edit', trans('common.edit'), [$film->id], ['class' => 'glyphicon glyphicon-pencil']) !!}
 		
 	{!! Form::open(['method' => 'DELETE', 'route' => ['film.destroy', $film->id]]) !!} 
-		{!! Form::destroy(trans('common.destroy'), trans('common.destroy-warning')) !!} 
+		{!! Form::destroy2(trans('common.destroy'), trans('common.destroy-warning')) !!}
+		 <!--  <button type="submit" class="btn btn-danger glyphicon glyphicon-remove" onclick="return confirm(\''{{trans('common.destroy-warning') }}\'')"></button> --> 
 		{!! Form::close() !!}</td>
 </tr>
 @endforeach
