@@ -27,6 +27,36 @@ input[type="file"]{
 	color:transparent;	
 }
 
+/* Hiding the checkbox, but allowing it to be focused */
+.badgebox
+{
+    opacity: 0;
+}
+
+.badgebox + .badge
+{
+    /* Move the check mark away when unchecked */
+    text-indent: -999999px;
+    /* Makes the badge's width stay the same checked and unchecked */
+	width: 27px;
+}
+
+.badgebox:focus + .badge
+{
+    /* Set something to make the badge looks focused */
+    /* This really depends on the application, in my case it was: */
+    
+    /* Adding a light border */
+    box-shadow: inset 0px 0px 5px;
+    /* Taking the difference out of the padding */
+}
+
+.badgebox:checked + .badge
+{
+    /* Move the check mark back when checked */
+	text-indent: 0;
+}
+
 </style>
 <div class="col-sm-9 nopadding">
 	@yield('form')
@@ -53,18 +83,19 @@ input[type="file"]{
 	  <!-- choose poster -->
 		<div style="position:relative;">
 		<div class=" col-sm-2">
-	        <a class='btn btn-primary wrap'  href="javascript:BrowseServer('btnImage', 'info-poster');">
+	        <a class='btn btn-primary wrap'  href="javascript:BrowseServer('poster_path', 'info-poster');">
 	            poster...
 	            <!-- <input type="file" name="file_poster" size="40"  onchange='$("#btnImage1").html($(this).val());'> -->
 	       </a>
 	       </div>
 	        <div class=" col-sm-10">
 	        <span class='label label-info' id="info-poster"></span> 
-	        <input type="hidden" name="btnImage" id="btnImage" />
+	        <input type="hidden" name="poster_path" id="poster_path" />
 	        </div>
 		</div>
 	<!-- end choose poster -->
 	</div>
+	
 	<!-- 	<input name="multi_url" type="text" id="multi_url" maxlength="255" value="" /> -->
 		
 	<!-- <a id="browse_server" href="{!! url($url) !!}?langCode=vi&field_name=multi_url"><span>Browse server</span></a> -->
@@ -97,7 +128,7 @@ input[type="file"]{
 		<!-- choose film -->
 		<div style="position:relative;">
 			<div class="col-sm-2">
-		        <a class='btn btn-primary wrap' href="javascript:BrowseServer('btnfilm', 'info-film');">
+		        <a class='btn btn-primary wrap' href="javascript:BrowseServer('film_path', 'info-film');">
 		            film...
 		           <!--  <input type="file" name="file_film" size="40"  onchange='$("#btnfilm").html($(this).val());'> -->
 		        </a>
@@ -105,7 +136,7 @@ input[type="file"]{
 	        
 	        <div class=" col-sm-10">
 		        <span class='label label-info' id="info-film"></span>		        
-		         <input type="hidden" name="btnfilm" id="btnfilm" />
+		         <input type="hidden" name="film_path" id="film_path" />
 	         </div>
 		</div>
 		<!-- end choose film -->
@@ -128,13 +159,48 @@ input[type="file"]{
 	  <div class="panel-heading"><b>Thông tin khác</b></div>
 	  <div class="panel-body">
 	  	<div class="form-group checkbox pull-left">
-	  
-			<label> {!! Form::checkbox('publish') !!} {{ trans('common.published')	}} </label> <br/>
-			<label> {!! Form::checkbox('isHot') !!} {{ trans('common.isFront')	}} </label>
+	  <div class="container">
+	<!-- <div class="row text-center">
+        
+		<label for="default" class="btn btn-default">Default <input type="checkbox" id="default" class="badgebox"><span class="badge">&check;</span></label>
+        <label for="primary" class="btn btn-primary">Primary <input type="checkbox" id="primary" class="badgebox"><span class="badge">&check;</span></label>
+        
+        <label for="success" class="btn btn-success">Success <input type="checkbox" id="success" class="badgebox"><span class="badge">&check;</span></label>
+        <label for="warning" class="btn btn-warning">Warning <input type="checkbox" id="warning" class="badgebox"><span class="badge">&check;</span></label>
+        <label for="danger" class="btn btn-danger">Danger <input type="checkbox" id="danger" class="badgebox"><span class="badge">&check;</span></label>
+	</div> -->
+</div>
+<!-- <label for="publish" class="btn btn-info">{{ trans('common.published')	}} <input type="checkbox" id="publish" name="publish" class="badgebox"><span class="badge">&check;</span></label>
+<br />
+<label for="isFree" class="btn btn-warning">{{ trans('common.isFree')	}} <input type="checkbox" id="isFree" name="isFree" class="badgebox"><span class="badge">&check;</span></label>
+<br />
+<label for="isHot" class="btn btn-primary"> {{ trans('common.isFront')	}}<input type="checkbox" id="isHot" name="isHot" class="badgebox"><span class="badge">&check;</span></label> -->
+			<i class="glyphicon glyphicon-ok-circle"></i><label> {!! Form::checkbox('publish') !!} {{ trans('common.published')	}} </label> <br/> 
+			<i class="glyphicon glyphicon-usd"></i>  <label> {!! Form::checkbox('isFree') !!} {{ trans('common.isFree')	}} </label> <br/>
+			<i class="glyphicon glyphicon-home"></i> <label> {!! Form::checkbox('isHot') !!} {{ trans('common.isFront')	}} </label>
 		</div>
 		<div class="form-group">
 			{!! Form::date('name22', \Carbon\Carbon::now()); !!}
+			
 		</div>
+		{!! Form::text('date', '', array('id' => 'datepicker')) !!}
+		{!! Form::label('running_time', 'Thời lượng', null) !!}
+		{!!Form::number('running_time', '3')!!}
+		{!! Form::control('text', 0, 'director', $errors, trans('back/film.director'))	!!}
+		{!! Form::control('text', 0, 'actor', $errors, trans('back/film.actor'))	!!}
+		{!! Form::control('text', 0, 'language', $errors, trans('back/film.language'))	!!}
+{!! Form::selection('nation', [], null, trans('back/film.language')) !!} 
+		
+	  </div>	  
+	 </div>
+	 
+	 <div class="panel panel-default">
+	  <div class="panel-heading"><b>Tập phim</b></div>
+	  <div class="panel-body">
+	  	{!! Form::control('number', 0, 'num', $errors, trans('back.film.number'))	!!}
+	  {!! Form::control('number', 0, 'episode', $errors, trans('back.film.episode'))	!!}
+	  {!! Form::control('number', 0, 'star', $errors, trans('back.film.star'))	!!}
+		
 	  </div>	  
 	 </div>
 </div>
@@ -178,7 +244,7 @@ input[type="file"]{
      }
 
 </script>
-
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js" ></script>
 {!! HTML::script('ckeditor/ckeditor.js') !!}
 
 <script>
@@ -207,7 +273,7 @@ input[type="file"]{
 	CKEDITOR.replace( 'summary', config);
 
 	config['height'] = 400;		
-
+	   
 	 $("#title").keyup(function(){
 			var str = sansAccent($(this).val());
 			str = str.replace(/[^a-zA-Z0-9\s]/g,"");
@@ -216,11 +282,57 @@ input[type="file"]{
 			$("#permalien").val(str);        
 		});
 
-	$(document).ready(function(){
-		
+	 /* $(function(){
+
+		  var items="";
+		  var check="";
+		  $.getJSON("{!! url('ajax/nation') !!}",function(data){
+
+		    $.each(data,function(index,item) 
+		    {
+			    check = "";
+			    if(item.code === "VN")
+				    check = "selected='true'"
+		      items+="<option value='"+item.code+"'" + check + " >"+item.name+"</option>";
+		    });
+		    $("#nation").html(items); 
+		  });
+
+		}); */
+	 
+		/*  $(function() {
+		        $( "#activitynamebox" ).autocomplete({
+		            source: '{{URL('getactivitydata')}}',
+		            minlength: 1, //search after 1 character
+		            select:function(event,ui){
+		                $('#response').val(ui.item.value);
+		            }
+
+		        });
+		    });
+ */
+
+ $('#language').autocomplete({
+     type: "get",
+     source: "{!! url('ajax/nation') !!}",
+     dataType: "json",
+     minLength: 1,
+ select:function(e,ui){
+ $('#language').val(ui.item.value);
+}
+});
+	/* $(document).ready(function(){
+		$("#language").autocomplete({
+            minLength:2,
+            source: "{!! url('ajax/nation') !!}",
+            	select:function(event,ui){
+                    $('#response').val(ui.item.value);
+                }
+        });
+
 		  //$("#btnImage1").html("abcn");
 		 
-		}); 
+		});  */
 				
   </script>
 

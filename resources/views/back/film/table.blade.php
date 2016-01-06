@@ -4,7 +4,7 @@ $counter = 1;
  @foreach ($posts as $film)
 <tr {!! session('statut') == 'admin'? 'class="even"' : '' !!}>
 	<td align="center">{{ ($posts->currentPage() - 1) * config('constants.LIMIT') + $counter++ }}</td>
-	<td class="text-primary"><strong>{{ $film->title }}</strong></td>
+	<td class="text-primary"><strong><a href={!! url('film/' . $film->slug)  !!}>{{ $film->title }}</a></strong></td>
 	<td>{{ date(config('constants.DATE_FORMAT'),
 		strtotime($film->created_at)) }} GMT </td>
 		

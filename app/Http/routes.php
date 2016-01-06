@@ -73,6 +73,10 @@ Route::resource('comment', 'CommentController', [
 	'except' => ['create', 'show']
 ]);
 
+/* AJAX */
+Route::get('ajax/{action}', ['uses' => 'AjaxController@helpers', 'as' => 'ajax.helpers'])
+    ->where('action', '.*');
+
 Route::put('commentseen/{id}', 'CommentController@updateSeen');
 Route::put('uservalid/{id}', 'CommentController@valid');
 

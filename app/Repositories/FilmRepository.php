@@ -39,11 +39,43 @@ class FilmRepository extends BaseRepository {
 		$film->summary = $inputs ['summary'];
 		$film->slug = $inputs ['slug'];
 		$film->sub_cat_id = $inputs ['sub_cat_id'];
+		/* phim duoc su dung hay ko */
 		$film->publish = isset ( $inputs ['publish'] );
+		/* la phim noi bat hay ko */
 		$film->isHot = isset ( $inputs ['isHot'] );
-		if(isset($inputs ['btnImage']))			
-			$film->poster_path = str_replace("/filemanager", "", $inputs ['btnImage']);
-		
+		/* phim mien phi hay ko */
+		$film->isFree = isset ( $inputs ['isFree'] );
+		/* poster image */
+		if(isset($inputs ['poster_path']))			
+			$film->poster_path = str_replace("/filemanager", "", $inputs ['poster_path']);
+		/* film path */
+		if(isset($inputs ['film_path']))
+			$film->film_path = str_replace("/filemanager", "", $inputs ['film_path']);
+		/* dao dien */
+		if(isset($inputs ['director']))
+			$film->director = $inputs ['director'];
+		/* Dien vien */
+		if(isset($inputs ['actor']))
+			$film->actor = $inputs ['actor'];
+		/* Ngay phat hanh */
+		/*if(isset($inputs ['release_date']))
+			$film->release_date = str_replace("/filemanager", "", $inputs ['release_date']);
+			*/
+		/* thoi luong phim */
+		if(isset($inputs ['running_time']))
+			$film->running_time = $inputs ['running_time'];
+		/* so luong tap phim */
+		if(isset($inputs ['num']))
+			$film->num =  $inputs ['num'];
+		/* tap thu may */
+		if(isset($inputs ['episode']))
+			$film->episode = $inputs ['episode'];
+		/* ngon ngu  */
+		if(isset($inputs ['language']))
+			$film->language = $inputs ['language'];
+		/* so diem cham */
+		if(isset($inputs ['star']))
+			$film->star = $inputs ['star'];
 		
 		//$cat->cat_id = $inputs ['cat_id'];
 		if ($user_id) {

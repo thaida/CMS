@@ -128,7 +128,7 @@
     </div>
     <!-- /.wrapper -->
 
-    	{!! HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js') !!}
+    	{!! HTML::script('js/vendor/jquery-1.10.2.min.js') !!}
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
     	{!! HTML::script('js/plugins.js') !!}
     	{!! HTML::script('js/main.js') !!}
