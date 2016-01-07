@@ -13,6 +13,7 @@ class CreateFilmsTable extends Migration {
 			$table->string ( 'title', 100 );
 			$table->string ( 'film_path', 1000 );
 			$table->string ( 'poster_path', 1000 );
+			$table->string ( 'subtitle_path', 1000 );
 			$table->string ( 'slug', 255 )->unique ();
 			$table->string ( 'short_summary', 500 );
 			$table->string ( 'summary', 1000 );

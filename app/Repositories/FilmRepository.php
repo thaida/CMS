@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Film;
 use App\Models\SubCategory;
+use Log;
 
 
 class FilmRepository extends BaseRepository {
@@ -46,11 +47,15 @@ class FilmRepository extends BaseRepository {
 		/* phim mien phi hay ko */
 		$film->isFree = isset ( $inputs ['isFree'] );
 		/* poster image */
-		if(isset($inputs ['poster_path']))			
+		if(!empty($inputs ['poster_path']))			
 			$film->poster_path = str_replace("/filemanager", "", $inputs ['poster_path']);
 		/* film path */
-		if(isset($inputs ['film_path']))
+		if(!empty($inputs ['film_path']))
 			$film->film_path = str_replace("/filemanager", "", $inputs ['film_path']);
+		
+		/* subtitle path */
+		if(!empty($inputs ['subtitle_path']))
+			$film->subtitle_path = str_replace("/filemanager", "", $inputs ['subtitle_path']);
 		/* dao dien */
 		if(isset($inputs ['director']))
 			$film->director = $inputs ['director'];
@@ -58,9 +63,9 @@ class FilmRepository extends BaseRepository {
 		if(isset($inputs ['actor']))
 			$film->actor = $inputs ['actor'];
 		/* Ngay phat hanh */
-		/*if(isset($inputs ['release_date']))
-			$film->release_date = str_replace("/filemanager", "", $inputs ['release_date']);
-			*/
+		if(isset($inputs ['release_date']))
+			$film->release_date = $inputs ['release_date'];
+		
 		/* thoi luong phim */
 		if(isset($inputs ['running_time']))
 			$film->running_time = $inputs ['running_time'];
@@ -266,7 +271,7 @@ class FilmRepository extends BaseRepository {
 		->where('episode', '<', '2')
 		->orderBy('counter', 'desc')
 		->orderBy('created_at', 'desc')
-		->take(15);
+	;
 		//->get();
 	
 		return $films_most_view->paginate(5);//compact('films_most_view');
@@ -349,6 +354,11 @@ class FilmRepository extends BaseRepository {
 	 */
 	public function filmBySubCatSlug($slug)
 	{
+		Log::info('This is some useful information.');
+		
+		Log::warning('Something could be going wrong.');
+		
+		Log::error('Something is really going wrong.');
 		//$subCat = $this->subCat->whereSlug($slug)->firstOrFail();
 		
 		$condition = array('publish' => '1');
@@ -361,7 +371,7 @@ class FilmRepository extends BaseRepository {
 		->orderBy('counter', 'desc')
 		->take(16);
 		//->get();
-	
+	  
 		/* $links = $films -> append([]);
 		
 		$links->setPath ( '' )->render (); */

@@ -28,5 +28,6 @@ return [
 	'destroyed' => 'Xóa chuyên mục thành công',
 	'uri' => 'Link',
 	'sublocation' => 'Chuyên mục con',
-	'sub_dashboard' => 'Chuyên mục con'
+	'sub_dashboard' => 'Chuyên mục con',
+	'subcat' => 'Thể loại'
 ];

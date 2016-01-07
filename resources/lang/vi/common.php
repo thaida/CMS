@@ -25,5 +25,6 @@ return [
 	'destroyed' => 'Đã xóa thành công.',
 	'save' => 'Lưu',
 	'register' => 'Đăng ký',
-	'isFront' => 'Trang chủ'
+	'isFront' => 'Trang chủ',
+	'isFree' => 'Miễn phí'
 ];

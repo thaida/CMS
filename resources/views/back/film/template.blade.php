@@ -5,11 +5,9 @@
 @stop 
 @section('main')
 
-<!-- Entête de page -->
-@include('back.partials.entete', ['title' =>
-trans('back/film.dashboard'), 'icone' => 'pencil', 'fil' =>
-link_to('film', trans('back/film.location')) . ' / ' .
-trans('common.add')])
+<!-- enter  page -->
+@include('back.partials.entete', ['title' => trans('back/film.dashboard'), 'icone' => 'pencil', 
+								'fil' =>link_to('film', trans('back/film.location')) . ' / ' .trans('common.add')])
 <style>
 .nopadding {
    padding: 0 !important;
@@ -59,120 +57,107 @@ input[type="file"]{
     /* Move the check mark back when checked */
 	text-indent: 0;
 }
-
+/* autocomplete */
+.ui-autocomplete 
+{ 
+	cursor:pointer; 
+	height:120px; 
+	overflow-y:scroll;	
+}    
 </style>
+<!-- LEFT COLUM -->
 <div class="col-sm-9 nopadding">
 	@yield('form')
 	<div class="panel panel-default">
 	  <div class="panel-heading"><b>Thông tin phim</b></div>
 	  <div class="panel-body">
-	
 		{!! Form::control('text', 0, 'title', $errors, trans('common.title'))	!!}
 		<div class="form-group {!! $errors->has('slug') ? 'has-error' : '' !!}">
 			{!! Form::label('slug', trans('back/blog.permalink'), ['class' => 'control-label']) !!} 
 			{!! url('/') . '/film/' . Form::text('slug', null, ['id' => 'permalien']) !!} 
 			<small class="text-danger">	{!!	$errors->first('slug') !!}</small>
 		</div>
-		{!! Form::selection('sub_cat_id', $select, null, trans('back/cat.subcat')) !!} 
+		{!! Form::selection('sub_cat_id', $select, null, trans('back/category.subcat')) !!} 
 		{!! Form::control('textarea', 0, 'summary', $errors, trans('common.summary')) !!} 
-		
 	  </div>
 	</div>
 
 	<div class="panel panel-default">
-	  <div class="panel-heading"><b>Nội dung media</b></div>
+
+	  <div class="panel-heading"><b>Nội dung media</b>
+	  </div>
 	  <div class="panel-body">
-	  <div class="form-group">
-	  <!-- choose poster -->
-		<div style="position:relative;">
-		<div class=" col-sm-2">
-	        <a class='btn btn-primary wrap'  href="javascript:BrowseServer('poster_path', 'info-poster');">
-	            poster...
-	            <!-- <input type="file" name="file_poster" size="40"  onchange='$("#btnImage1").html($(this).val());'> -->
-	       </a>
-	       </div>
-	        <div class=" col-sm-10">
-	        <span class='label label-info' id="info-poster"></span> 
-	        <input type="hidden" name="poster_path" id="poster_path" />
-	        </div>
-		</div>
-	<!-- end choose poster -->
-	</div>
-	
-	<!-- 	<input name="multi_url" type="text" id="multi_url" maxlength="255" value="" /> -->
-		
-	<!-- <a id="browse_server" href="{!! url($url) !!}?langCode=vi&field_name=multi_url"><span>Browse server</span></a> -->
-	
-		<div class="form-group">						
-			{!! isset($post) ? "<img src='$img_host_url$post->poster_path?w=100&h=100' width='100' height='100' />" : "" !!}
-		</div>
-	
+	  	<div class="form-group">
+  		<!-- choose poster -->
+			<div style="position:relative;">
+				<div class=" col-sm-2">
+			        <a class='btn btn-primary wrap'  href="javascript:BrowseServer('poster_path', 'info-poster');">
+			            poster...
+			            <!-- <input type="file" name="file_poster" size="40"  onchange='$("#btnImage1").html($(this).val());'> -->
+			       </a>
+	       		</div>
+	        	<div class=" col-sm-7">
+			        <span class='label label-info' id="info-poster"></span> 
+			        <input type="hidden" name="poster_path" id="poster_path" />
+		        </div>
+	        	<div class="col-sm-3">
+	        		{!! isset($post) ? "<img src='$img_host_url$post->poster_path?w=100&h=100' width='100' height='100' />" : "" !!}
+	        	</div>
+			</div>
+		<!-- end choose poster -->
+		</div>	
 		<div class="form-group">
 		<!-- choose subtitle -->
-		<div style="position:relative;">
-		<div class=" col-sm-2">
-	        <a class='btn btn-primary wrap' href="javascript:BrowseServer('btnSubTitle', 'info-subtitle');">
-	            subtitle...
-	            <!-- <input type="file" name="file_subtile" size="40"  onchange='$("#btnSubTitle").html($(this).val());'> -->
-	        </a>
-	        </div>
+			<div style="position:relative;">
+				<div class=" col-sm-2">
+			        <a class='btn btn-primary wrap' href="javascript:BrowseServer('subtitle_path', 'info-subtitle');">
+			            subtitle...
+			            <!-- <input type="file" name="file_subtile" size="40"  onchange='$("#btnSubTitle").html($(this).val());'> -->
+			        </a>
+	        	</div>
 	        
-	        <div class=" col-sm-10">
-		        <span class='label label-info' id="info-subtitle"></span>
-		        <input type="hidden" name="btnSubTitle" id="btnSubTitle" />
-	        </div>
+		        <div class=" col-sm-10">
+			        <span class='label label-info' id="info-subtitle">{{isset($post) ? $post->subtitle_path : ""}}</span>
+			        @if(isset($post))
+			        	<span class="glyphicon glyphicon-download-alt"><a href="">Download</a></span>
+			        @endif
+			        <input type="hidden" name="subtitle_path" id="subtitle_path" />
+		        </div>
 		</div>
-	<!-- end choose subtitle -->
-			
-			
+		<!-- end choose subtitle -->
 		</div>
 	
 		<div class="form-group">
 		<!-- choose film -->
-		<div style="position:relative;">
-			<div class="col-sm-2">
-		        <a class='btn btn-primary wrap' href="javascript:BrowseServer('film_path', 'info-film');">
-		            film...
-		           <!--  <input type="file" name="file_film" size="40"  onchange='$("#btnfilm").html($(this).val());'> -->
-		        </a>
-	        </div>
+			<div style="position:relative;">
+				<div class="col-sm-2">
+			        <a class='btn btn-primary wrap' href="javascript:BrowseServer('film_path', 'info-film');">
+			            film...
+			           <!--  <input type="file" name="file_film" size="40"  onchange='$("#btnfilm").html($(this).val());'> -->
+			        </a>
+		        </div>
 	        
-	        <div class=" col-sm-10">
-		        <span class='label label-info' id="info-film"></span>		        
-		         <input type="hidden" name="film_path" id="film_path" />
-	         </div>
-		</div>
+		        <div class=" col-sm-10">
+			        <span class='label label-info' id="info-film">{{isset($post) ? $post->film_path : ""}}</span>		        
+			         <input type="hidden" name="film_path" id="film_path" />
+		         </div>
+			</div>
 		<!-- end choose film -->
 
-		</div> 
-			<div class="form-group">
-			<label class="control-label" for="sub_cat_id">Phim</label> 
-			<input type="text" id="btnfilm1" name="btnfilm1" />
-			<button type="button" onclick="BrowseServer('btnfilm1');">Pick film</button>
-			</div>	
-		</div>
 	</div>
-
 	
+	</div>
 </div>
 
-<!-- LEFT COLUMN -->
-<div class="col-sm-3 nopadding">
-	<div class="panel panel-default">
-	  <div class="panel-heading"><b>Thông tin khác</b></div>
-	  <div class="panel-body">
-	  	<div class="form-group checkbox pull-left">
-	  <div class="container">
-	<!-- <div class="row text-center">
-        
-		<label for="default" class="btn btn-default">Default <input type="checkbox" id="default" class="badgebox"><span class="badge">&check;</span></label>
-        <label for="primary" class="btn btn-primary">Primary <input type="checkbox" id="primary" class="badgebox"><span class="badge">&check;</span></label>
-        
-        <label for="success" class="btn btn-success">Success <input type="checkbox" id="success" class="badgebox"><span class="badge">&check;</span></label>
-        <label for="warning" class="btn btn-warning">Warning <input type="checkbox" id="warning" class="badgebox"><span class="badge">&check;</span></label>
-        <label for="danger" class="btn btn-danger">Danger <input type="checkbox" id="danger" class="badgebox"><span class="badge">&check;</span></label>
-	</div> -->
 </div>
+<!-- RIGHT COLUMN -->
+	<div class="col-sm-3 nopadding">
+		<div class="panel panel-default">
+		  <div class="panel-heading"><b>Thông tin khác</b></div>
+		  <div class="panel-body">
+		  	<div class="form-group checkbox pull-left">
+			  	<div class="container">
+				</div>
 <!-- <label for="publish" class="btn btn-info">{{ trans('common.published')	}} <input type="checkbox" id="publish" name="publish" class="badgebox"><span class="badge">&check;</span></label>
 <br />
 <label for="isFree" class="btn btn-warning">{{ trans('common.isFree')	}} <input type="checkbox" id="isFree" name="isFree" class="badgebox"><span class="badge">&check;</span></label>
@@ -181,29 +166,30 @@ input[type="file"]{
 			<i class="glyphicon glyphicon-ok-circle"></i><label> {!! Form::checkbox('publish') !!} {{ trans('common.published')	}} </label> <br/> 
 			<i class="glyphicon glyphicon-usd"></i>  <label> {!! Form::checkbox('isFree') !!} {{ trans('common.isFree')	}} </label> <br/>
 			<i class="glyphicon glyphicon-home"></i> <label> {!! Form::checkbox('isHot') !!} {{ trans('common.isFront')	}} </label>
-		</div>
-		<div class="form-group">
-			{!! Form::date('name22', \Carbon\Carbon::now()); !!}
-			
-		</div>
-		{!! Form::text('date', '', array('id' => 'datepicker')) !!}
-		{!! Form::label('running_time', 'Thời lượng', null) !!}
-		{!!Form::number('running_time', '3')!!}
+			</div>
+					
+		<!-- ngay phat hanh -->
+		{!! Form::control('text', 0, 'release_date', $errors, trans('back/film.release_date'))	!!}
+		<!-- thoi luong phim -->
+		{!! Form::control('number', 0, 'running_time', $errors, trans('back/film.running'))	!!}
+		<!-- dao dien -->
 		{!! Form::control('text', 0, 'director', $errors, trans('back/film.director'))	!!}
+		<!-- Dien vien -->
 		{!! Form::control('text', 0, 'actor', $errors, trans('back/film.actor'))	!!}
+		<!-- Ngon ngu -->
 		{!! Form::control('text', 0, 'language', $errors, trans('back/film.language'))	!!}
-{!! Form::selection('nation', [], null, trans('back/film.language')) !!} 
-		
 	  </div>	  
 	 </div>
 	 
 	 <div class="panel panel-default">
 	  <div class="panel-heading"><b>Tập phim</b></div>
 	  <div class="panel-body">
-	  	{!! Form::control('number', 0, 'num', $errors, trans('back.film.number'))	!!}
-	  {!! Form::control('number', 0, 'episode', $errors, trans('back.film.episode'))	!!}
-	  {!! Form::control('number', 0, 'star', $errors, trans('back.film.star'))	!!}
-		
+	  <!-- So tap phim -->
+	  {!! Form::control('number', 0, 'num', $errors, trans('back/film.number'))	!!}
+	  <!-- la tap may -->
+	  {!! Form::control('number', 0, 'episode', $errors, trans('back/film.episode'))	!!}
+	  <!-- so diem cho phim -->
+	  {!! Form::control('number', 0, 'star', $errors, trans('back/film.star'))	!!}
 	  </div>	  
 	 </div>
 </div>
@@ -247,7 +233,7 @@ input[type="file"]{
      }
 
 </script>
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js" ></script>
+{!! HTML::script('js/jquery-ui.min.js') !!}
 {!! HTML::script('ckeditor/ckeditor.js') !!}
 
 <script>
@@ -315,15 +301,88 @@ input[type="file"]{
 		    });
  */
 
- $('#language').autocomplete({
+ $(function() {
+		
+		function split( val ) {
+			return val.split( /,\s*/ );
+		}
+		function extractLast( term ) {
+			return split( term ).pop();
+		}
+
+		
+		$( "#language" )
+			// don't navigate away from the field on tab when selecting an item
+			.bind( "keydown", function( event ) {
+				if ( event.keyCode === $.ui.keyCode.TAB &&
+						$( this ).autocomplete( "instance" ).menu.active ) {
+					event.preventDefault();
+				}
+			})
+			.autocomplete({
+				minLength: 0,
+				scroll: true,
+				source: function( request, response ) {
+					// delegate back to autocomplete, but extract the last term
+					$.getJSON( "{!! url('ajax/nation') !!}", {
+             			term: extractLast( request.term )
+         				}, response);},
+				/* focus: function() {
+					// prevent value inserted on focus
+					return false;					
+				}, */
+				select: function( event, ui ) {
+					var terms = split( this.value );
+					// remove the current input
+					terms.pop();
+					// add the selected item
+					terms.push( ui.item.value );
+					// add placeholder to get the comma-and-space at the end
+					terms.push( "" );
+					this.value = terms.join( ", " );
+					return false;
+				}
+			})
+			.focus(function() {
+                $(this).autocomplete("search", "");
+            })
+			;
+
+	
+		 
+		$( "#release_date" ).datepicker({ 
+			dateFormat: 'dd/mm/yy',
+			startDate: '01/01/1970',
+			//showOn: 'button', 
+		})
+		//.val(new Date('01/01/1970').toLocaleDateString("en-US"))
+		/* .next('button').button({
+		    icons: {
+		        primary: 'ui-icon-calendar'
+		    }, text:false
+		}) */
+		;
+	});
+ /* $('#language').autocomplete({
      type: "get",
-     source: "{!! url('ajax/nation') !!}",
+     source: function( request, response ) {
+         $.getJSON( "{!! url('ajax/nation') !!}", {
+             term: extractLast( request.term )
+         }, response );},//"{!! url('ajax/nation') !!}",
      dataType: "json",
      minLength: 1,
- select:function(e,ui){
- $('#language').val(ui.item.value);
-}
-});
+     select: function( event, ui ) {
+			var terms = split( this.value );
+			// remove the current input
+			terms.pop();
+			// add the selected item
+			terms.push( ui.item.value );
+			// add placeholder to get the comma-and-space at the end
+			terms.push( "" );
+			this.value = terms.join( ", " );
+			return false;
+		}
+	}); */
 	/* $(document).ready(function(){
 		$("#language").autocomplete({
             minLength:2,
