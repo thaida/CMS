@@ -1,6 +1,9 @@
-@extends('back.template') @section('head') {!!
-HTML::style('ckeditor/plugins/codesnippet/lib/highlight/styles/default.css')
-!!} @stop @section('main')
+@extends('back.template') 
+@section('head') 
+	{!! HTML::style('ckeditor/plugins/codesnippet/lib/highlight/styles/default.css') !!}
+	{!! HTML::style('css/jquery-ui.css') !!} 
+@stop 
+@section('main')
 
 <!-- Entête de page -->
 @include('back.partials.entete', ['title' =>

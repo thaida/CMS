@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 @yield('head') 
-{!! HTML::style('css/main_front.css') !!}
+{!! HTML::style('css/common.css') !!}
 
 <!--[if (lt IE 9) & (!IEMobile)]>
 			{!! HTML::script('js/vendor/respond.min.js') !!}
@@ -31,188 +31,106 @@
 </head>
 
 <body>
-
-	<!--[if lt IE 8]>
+<!--[if lt IE 8]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
+<div id="wrapper"> 
+  <div id="header">
+  		<div class="header-top">   
+        	  <div class="wrap-header-top">
+                <a class="logo-cj" href="{{url('/') }}">
+                	<img src="{{ url('img/cj_logo.png')}}" />
+                </a>
+                <p class="p-login">
+                	<a class="lnk-login" href="{{url('auth/login') }}">Đăng nhập</a>
+                	&nbsp;&nbsp;|&nbsp;&nbsp;<a class="lnk-login">Đăng ký</a>
+                </p> 
+                <div class="clear"></div>
+              </div>  
+        </div>
+        <div class="header-bottom">
+        	<div class="wrap-header-bottom">
+        	<div class="header-menu">
+            	<ul class="header-ul-parent">
+                	<li class="header-li-parent active">
+                    	<a class="header-lnk-parent" href="{{url('/') }}">HOME</a>
+                    </li>
+                    <li class="header-li-parent">
+                    	<a class="header-lnk-parent" href="{{url('phim') }}">PHIM</a>
+                    </li>
+                     <li class="header-li-parent">
+                    	<a class="header-lnk-parent" href="{{url('music') }}">NHẠC</a>
+                    </li>
+                     <li class="header-li-parent">
+                    	<a class="header-lnk-parent" href="{{url('tv-show') }}">TV SHOW</a>
+                    </li>
+                     <li class="header-li-parent">
+                    	<a class="header-lnk-parent" href="{{url('news') }}">TIN GIẢI TRÍ</a>
+                    </li>
+                </ul>
+            </div>
+            
+                  <form method="get" action="tim-kiem" class="header-search" id="frmSearch">
+	                  <input type="text" id="search_keyword" class="search-input" placeholder="Tìm kiếm...">
+	                  <input type="submit" value="" id="btnSearch" class="search-btn">
+                  </form>
+            
+                <div class="clear"></div>
+           </div>
+        </div>
+  </div>
+  <!--end-header-->
+  <div id="body">
+@if(session()->has('ok'))
+	@include('partials/error', ['type' => 'success', 'message' => session('ok')]) 
+@endif 
+@if(isset($info))
+	@include('partials/error',['type' => 'info', 'message' => $info])
+@endif
 
-	<header role="banner">
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button aria-controls="navbar" aria-expanded="false"
-						data-target="#navbar" data-toggle="collapse"
-						class="navbar-toggle collapsed" type="button">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a href="{!! url('/') !!}" class="navbar-brand">{{
-						trans('front/site.title') }}</a>
-				</div>
-				
-				<div class="navbar-collapse collapse" id="navbar">
-					<div class="col-sm-4 col-lg-6">
-						<ul class="nav navbar-nav">
-							<!-- <li{!! classActivePath('/') !!}>
-								{!! link_to('/', trans('front/site.home')) !!}
-							</li> -->
-							<!-- DROPDOWN MENU FILM -->
-							<li class="dropdown">
-								<a data-toggle="dropdown" class="dropdown-toggle disabled" href="{!! url('phim') !!}">
-								Phim</a>
-								<ul class="dropdown-menu">
-									<li>
-									{!! link_to('film/phim-bo', trans('front/site.series')) !!}
-									</li>									
-									<li>
-									{!! link_to('film/phim-le', trans('front/site.single')) !!}
-									</li>
-								</ul>
-							</li>
-							
-							<!-- @if(session('statut') == 'visitor' || session('statut') == 'user')
-							<li{!! classActivePath('contact/create') !!}>
-								{!!	link_to('contact/create', trans('front/site.contact')) !!}
-							</li>
-							@endif -->
-							<li {!! classActiveSegment(1, ['music']) !!}>
-								{!!	link_to('music', trans('front/site.music')) !!}
-							</li>
-							
-							<li {!! classActiveSegment(1, ['tvshow']) !!}>
-								{!!	link_to('tvshow', trans('front/site.tvshow')) !!}
-							</li>
-							
-							<li {!! classActiveSegment(1, ['news']) !!}>
-								{!!	link_to('news', trans('front/site.news')) !!}
-							</li>
-							<!-- <li{!! classActiveSegment(1, ['articles', 'blog']) !!}>
-								{!!	link_to('articles', trans('front/site.blog')) !!}
-							</li> -->
-							@if(Request::is('auth/register'))
-							<li class="active">
-								{!! link_to('auth/register', trans('front/site.register')) !!}
-							</li>
-							@elseif(Request::is('password/email'))
-							<li class="active">
-								{!! link_to('password/email', trans('front/site.forget-password')) !!}
-							</li> 
-							@else
-							
-							@endif
-							<li class="dropdown">
-								<a data-toggle="dropdown" class="dropdown-toggle" href="#"> 
-									<img width="32" height="32"	alt="{{ session('locale') }}" src="{!! asset('img/' . session('locale') . '-flag.png') !!}" />&nbsp;
-									<b class="caret"></b>
-								</a>
-								<ul class="dropdown-menu">
-									@foreach ( config('app.languages') as $user) 
-										@if($user !== config('app.locale'))
-										<li>
-											<a href="{!! url('language') !!}/{{ $user }}" title="Vietnamese">
-												<img width="32" height="32"	alt="{{ $user }}" src="{!! asset('img/' . $user . '-flag.png') !!}">
-											</a>
-										</li>
-										@endif
-									@endforeach
-								</ul>
-							</li>
-						</ul>
-					</div>
-					<div class="col-sm-4 col-lg-2">
-
-						<form method="get" action="tim-kiem" class="search" id="frmSearch">
-							<input type="text" name="keywork" id="search_keyword"
-								placeholder="Tìm Kiếm" class="form-control"> <a
-								class="icon_search" href="#" id="btnSearch"></a>
-						</form>
-
-					</div>
-					<div class="col-sm-2 col-lg-2">
-						<div class="auth">
-							<div class="">
-								<a class="login" onclick="showLogin('auth/login')"
-									href="javascript:void(0)">
-									@if(session('statut') == 'visitor')
-									<li{!! classActivePath('auth/login') !!}>
-										{!!	link_to('auth/login', trans('front/site.connection')) !!}
-									</li>
-									@else @if(session('statut') == 'admin')
-									<li>
-										{!! link_to_route('admin',	trans('front/site.administration')) !!}
-									</li>
-									@elseif(session('statut') == 'redac')
-									<li>
-										{!! link_to('blog', trans('front/site.redaction')) !!}
-									</li>
-									@endif
-									<li>
-										{!! link_to('auth/logout', trans('front/site.logout')) !!}
-									</li>
-									@endif 
-								</a>
-							</div>
-							<div class="">
-								<a class="register" href="{!! url('signup') !!}">Đăng ký </a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--/.nav-collapse -->
-			</div>
-		</nav>
-
-		@yield('header')
-
-	</header>
-
-
-
-	<main role="main" class="container"> 
-		@if(session()->has('ok'))
-			@include('partials/error', ['type' => 'success', 'message' => session('ok')]) 
-		@endif 
-		@if(isset($info))
-			@include('partials/error',['type' => 'info', 'message' => $info])
-		@endif
 	 @yield('slide') 
 	 @yield('main') 
 	 @yield('tooltip')
-	 
-	 
-	 </main>
-
-	<footer role="contentinfo">
-		@yield('footer')
-		<p class="text-center">
-			<small>Copyright &copy; 2016 by VIETTEL CORP</small>
-		</p>
-	</footer>
+       
+        
+ </div>
+  <div id="footer">
+  <div class="wrap-footer">
+  	@yield('footer')
+        <a class="logo-footer">
+            <img src="{{ url('img/cj_logo_footer.png')}}" />
+        </a>
+        <p class="content-footer">
+            Tầng 8, Tòa  nhà ngân hàng công đoàn, ngõ 72 Trần Thái Tông, Cầu Giấy, Hầ Nội<br />
+            <a href="www.emotv.vn">www.emotv.vn</a> Hotline 19008198
+        </p>
+   </div>     
+  </div>
+  <!--end-footer--> 
+</div>
+<!--end-wrapper-->
 
 	{!!	HTML::script('js/jquery.min.js')	!!}
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 	{!! HTML::script('js/plugins.js') !!} 
 	{!! HTML::script('js/main.js')	!!}
 	<script>
-  	$(document).ready(function(){
-             $("#btnSearch").click(function(){
-                         var keyword_s = $("#search_keyword").val();
-                                            if(keyword_s.length > 3){
-                                                window.location.href = '/tim-kiem/' + keyword_s;
-                                            }                                            
-                                        });
-                                    });
-
-                                    function popupwindow(url, title, w, h) {
-                                        var left = (screen.width/2)-(w/2);
-                                        var top = (screen.height/2)-(h/2);
-                                        return window.open(url, title, 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no, width='+w+', height='+h+', top='+top+', left='+left);
-                                    } 
-                                </script>
+	$(document).ready(function(){
+		$("#btnSearch").click(function(){
+			var keyword_s = $("#search_keyword").val();
+			if(keyword_s.length > 3){
+				window.location.href = '/tim-kiem/' + keyword_s;
+			}                                            
+		});
+	});
+	function popupwindow(url, title, w, h) {
+		var left = (screen.width/2)-(w/2);
+		var top = (screen.height/2)-(h/2);
+		return window.open(url, title, 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no, width='+w+', height='+h+', top='+top+', left='+left);
+	}                  
 
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-	<script>
+	
 		(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
 		function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
 		e=o.createElement(i);r=o.getElementsByTagName(i)[0];

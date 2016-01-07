@@ -34,7 +34,7 @@ class AjaxController extends Controller {
 		}
 		foreach ($data as $e)
 		{
-			$temp[][$e->code]= $e->name;
+			$temp[]= $e->name;
 		}
 		return json_encode($temp);
 	}

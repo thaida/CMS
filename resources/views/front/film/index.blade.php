@@ -27,60 +27,60 @@
 @stop
 
 @section('main')
-@if(isset($films))
-<div class="row rowbox">
-	<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
-		<a class="category_title" title="{{ $films->get(0)->subCat}}" href="{!! url('phim/'. $films->get(0)->catSlug) !!}">
-			<span class="pull-left">{{ $films->get(0)->subCat}}</span>
-		</a> 
-		<a class="pull-left btn_arrow_right" title="{{ $films->get(0)->subCat}}" href="{!! url('phim/'.$films->get(0)->catSlug) !!}"></a>
+	@if(isset($films) && count($films) >0)
+	<div class="row rowbox">
+		<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
+			<a class="category_title" title="{{ $films->get(0)->subCat}}" href="{!! url('phim/'. $films->get(0)->catSlug) !!}">
+				<span class="pull-left">{{ $films->get(0)->subCat}}</span>
+			</a> 
+			<a class="pull-left btn_arrow_right" title="{{ $films->get(0)->subCat}}" href="{!! url('phim/'.$films->get(0)->catSlug) !!}"></a>
+		</div>
+		<div style="padding-top: 30px;">
+		   @foreach ($films as $film)
+			 <div class="col-xs-6 col-sm-3">
+			 	<div class="boxTitle">
+		  			<a href="{{$film_url . $film->slug }}">
+						<div class="caption" style="display: none;">
+							<h4> {{ $film->title}}</h4>
+							<p>Đạo diễn:  {{ $film->director}}<br>
+							Diễn viên: {{ $film->actor}}<br>
+							Thể loại: <br>
+							</p><p>Thời lượng: {{ $film->running_time}}</p>
+							<p class=""></p>
+							<p>dá</p>
+						</div>
+						<!-- IMAGE -->
+				  		<div class="img">
+				  			<img src="{{$img_url . $film->poster_path}}?w=250&amp;h=350&amp;crop-to-fit" title="{{ $film->title}}">
+						</div>
+			  			<!-- end IMAGE -->
+			  		</a>
+		  		</div>
+		  		<div>
+		  		<p>
+		  		 <span class=""><h5>{{ $film->title}}</h5></span>
+		  		 <span>{{ date('Y', strtotime($film->release_date)) }}</span>
+		  		</p>
+		  		<p>
+		  		 <span>Ghi chú</span>
+		  		 <span>{{ $film-> running_time}}</span>
+		  		</p>
+		  		</div>
+				  		
+		       <br/>
+		        {{ $film->counter}}
+		      </div>
+		      
+	     
+		@endforeach
+		</div>
+	 
+	<div class="row col-lg-12">
+		<div class="pull-right link">{!! $links !!}</div>
 	</div>
-	<div style="padding-top: 30px;">
-	   @foreach ($films as $film)
-		 <div class="col-xs-6 col-sm-3">
-		 	<div class="boxTitle">
-	  			<a href="{{$film_url . $film->slug }}">
-					<div class="caption" style="display: none;">
-						<h4> {{ $film->title}}</h4>
-						<p>Đạo diễn:  {{ $film->director}}<br>
-						Diễn viên: {{ $film->actor}}<br>
-						Thể loại: <br>
-						</p><p>Thời lượng: {{ $film->running_time}}</p>
-						<p class=""></p>
-						<p>dá</p>
-					</div>
-					<!-- IMAGE -->
-			  		<div class="img">
-			  			<img src="{{$img_url . $film->poster_path}}?w=250&amp;h=350&amp;crop-to-fit" title="{{ $film->title}}">
-					</div>
-		  			<!-- end IMAGE -->
-		  		</a>
-	  		</div>
-	  		<div>
-	  		<p>
-	  		 <span class=""><h5>{{ $film->title}}</h5></span>
-	  		 <span>{{ date('Y', strtotime($film->release_date)) }}</span>
-	  		</p>
-	  		<p>
-	  		 <span>Ghi chú</span>
-	  		 <span>{{ $film-> running_time}}</span>
-	  		</p>
-	  		</div>
-			  		
-	       <br/>
-	        {{ $film->counter}}
-	      </div>
-	      
-     
-	@endforeach
+		
 	</div>
- 
-<div class="row col-lg-12">
-	<div class="pull-right link">{!! $links !!}</div>
-</div>
-	
-</div>
-@endif
+	@endif
 @stop
 
 

@@ -59,41 +59,42 @@
 		</div>
 	</div>
 	<!-- END XEM NHIEU NHAT -->
-@if(isset($films))
-	<!-- PHIM TAM LY -->
-	<div class="row rowbox">
-		<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
-			<a class="category_title" title="{{ $films->get(0)->subCat}}"	href="{!! url('phim/'. $films->get(0)->catSlug) !!}">
-				<span class="pull-left">{{ $films->get(0)->subCat}}</span>
-			</a>
-			<a class="pull-left btn_arrow_right" title="{{ $films->get(0)->subCat}}" href="{!! url('film/'.$films->get(0)->catSlug) !!}"></a>
-		</div>
-		<div class="contentbox">
-			<ul class="bxslider">
-			 @foreach ($films as $film)
-		  		<li>
-		  			<div class="boxTitle">
-		  			<a href="{{$film_url.$film->slug}}">
-						<div class="caption">
-							<h4>{{$film->title}}</h4>
-							<p>Đạo diễn: <br/>
-							Diễn viên: <br/>
-							Thể loại: <br />
-							<p>Thời lượng: </p>
-							<p class="">{!! $film->summary !!}</p>
-						</div>
-			  		
-			  			<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=250&h=350&crop-to-fit" />
-			  		</a>
-			  		</div>
-		  		</li>
-			
-		  	@endforeach
-			</ul>
-		</div>
-	</div>
-	<!-- END TAM LY -->
-@endif
+
+		@if(isset($films))
+			<!-- PHIM TAM LY -->
+			<div class="row rowbox">
+				<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
+					<a class="category_title" title="{{ $films->get(0)->subCat}}"	href="{!! url('phim/'. $films->get(0)->catSlug) !!}">
+						<span class="pull-left">{{ $films->get(0)->subCat}}</span>
+					</a>
+					<a class="pull-left btn_arrow_right" title="{{ $films->get(0)->subCat}}" href="{!! url('film/'.$films->get(0)->catSlug) !!}"></a>
+				</div>
+				<div class="contentbox">
+					<ul class="bxslider">
+					 @foreach ($films as $film)
+				  		<li>
+				  			<div class="boxTitle">
+				  			<a href="{{$film_url.$film->slug}}">
+								<div class="caption">
+									<h4>{{$film->title}}</h4>
+									<p>Đạo diễn: <br/>
+									Diễn viên: <br/>
+									Thể loại: <br />
+									<p>Thời lượng: </p>
+									<p class="">{!! $film->summary !!}</p>
+								</div>
+					  		
+					  			<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=250&h=350&crop-to-fit" />
+					  		</a>
+					  		</div>
+				  		</li>
+					
+				  	@endforeach
+					</ul>
+				</div>
+			</div>
+			<!-- END TAM LY -->
+		@endif
 @stop
 
 

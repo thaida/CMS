@@ -1,0 +1,260 @@
+a{outline:none;color:#303030;text-decoration: none;}
+img {border: 0 none;}
+object{outline:0;}
+embed
+{
+outline:0;
+}
+ul {
+    list-style: outside none none;
+}
+div, h1, h2, h3, h3, h4, h5, h6, p, a, span, ul, input, table, td,body {
+margin: 0;
+padding: 0;
+}
+body{font-family:arial;color:#303030;font-size:13px;}
+#wrapper{position:relative;margin:0px auto;}
+.clear{clear:both;}
+.f-left{float:left;}
+.bold{font-weight:bold;}
+.hidden{display:none;}
+a.under:hover{text-decoration:underline;}
+#body{position:relative;width:1000px;margin:0px auto;}
+#header {
+    width: 100%;
+}
+.header-top {
+    background: #ed1c24 none repeat scroll 0 0;
+    height: 50px;
+}
+.wrap-header-top{width:1000px; margin:0px auto;}
+.wrap-header-bottom{width:1000px; margin:0px auto;}
+.wrap-footer{width:1000px; margin:0px auto;}
+.header-top .logo-cj {
+    float: left;
+}
+.header-top .logo-cj img {
+}
+.p-login {
+    color: #ffffff;
+    float: right;
+    font-size: 14px;
+    margin-top: 15px;
+}
+.p-login .lnk-login {
+    color: #ffffff;
+}
+.header-bottom {
+    border-bottom: 1px solid #e4e4e4;
+    border-top: 1px solid #e4e4e4;
+    height: 70px;
+}
+.header-menu {
+    float: left;
+    margin-top: 25px;
+}
+.header-ul-parent {
+    float: left;
+}
+.header-li-parent {
+    float: left;
+    margin-right: 30px;
+}
+.header-lnk-parent {
+    color: #6a6a6a;
+    font-size: 16px;
+}
+.header-li-parent.active .header-lnk-parent {
+    color: #ed1c24;
+}
+.header-search {
+    background: #f3f3f3 none repeat scroll 0 0;
+    border-radius: 5px;
+    float: right;
+    height: 40px;
+    margin-top: 15px;
+    position: relative;
+    width: 340px;
+}
+.search-input {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0 none;
+    color: #8495a6;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 10px;
+    width: 277px;
+}
+.search-btn {
+    background: rgba(0, 0, 0, 0) url("../images/cj_01.png") no-repeat scroll left top;
+    border: 0 none;
+    color: #d5005a;
+    cursor: pointer;
+    float: right;
+    font-family: Arial;
+    height: 40px;
+    margin-top: 0;
+    position: relative;
+    text-indent: -1000px;
+    width: 40px;
+    z-index: 999;
+}
+.slider-banner .owl-controls {
+    bottom: 40px;
+    left: 10px;
+    position: absolute;
+}
+.slider-banner .owl-controls .owl-dots {
+}
+.slider-banner .owl-controls .owl-dot {
+    border: 1px solid #7f7f7f;
+    border-radius: 5px;
+    display: inline-block;
+    height: 8px;
+    margin-right: 5px;
+    width: 8px;
+}
+.slider-banner .owl-controls .owl-dot.active {
+    background: #ed1c24 none repeat scroll 0 0;
+    border: 0 none;
+    height: 10px;
+    width: 10px;
+}
+.slider-banner .owl-controls .owl-nav {
+    display: none;
+}
+.banner-top{width:100%;margin-bottom:25px;}
+			.slider-banner{width:100%;}
+			.slider-lnk{width:100%;}
+			.slider-lnk img{display:block;width:100%;}
+.show-cj {
+	margin-bottom:25px;	
+    overflow: hidden;
+}
+.show-h3 a {
+    font-size: 16px;
+    font-weight: bold;
+}
+.wrap-show-cj {
+}
+.show-cj-slider {
+    width: 1200px;
+}
+.show-cj-item {
+    float: left;
+    margin-right: 26px;
+    width: 230px;
+}
+.cj-item-lnk {
+    width: 100%;
+}
+.cj-item-lnk img {
+    display: block;
+    width: 100%;
+	height:129px;
+}
+.show-cj-film .cj-item-lnk img{height:320px;}
+.cj-info {
+    border: 1px solid #d2d1cf;
+    border-radius: 0 0 5px 5px;
+    font-size: 14px;
+    padding: 10px;
+}
+.cj-info .cj-h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+	overflow:hidden;
+}
+.cj-info .cj-h3 a {
+	float: left;
+    overflow: hidden;
+	height:34px;
+}
+.show-cj-film .cj-info .cj-h3 a {
+	float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 170px;
+	height:auto;
+}
+.cj-info .cj-h3 .sp-right {
+	 color: #848484;
+    float: right;
+    font-weight: normal;
+}
+.cj-p-film {
+    font-weight: bold;
+    margin-bottom: 5px;
+	overflow:hidden;
+}
+ .cj-p-film .sp-left {
+	float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 170px;
+}
+.cj-p-film .sp-right {
+    color: #848484;
+    float: right;
+    font-weight: normal;
+}
+.cj-p-type {
+	overflow:hidden;
+}
+.cj-p-type .sp-left {
+    color: #848484;
+}	
+.cj-p-type .sp-right {
+    background: rgba(0, 0, 0, 0) url("../images/cj_03.png") no-repeat scroll left center;
+    color: #848484;
+    float: right;
+    padding-left: 17px;
+}			
+.cj-h3 .sp-right {}
+.cj-h3 a{}
+.show-h3 {
+    margin-bottom: 10px;
+}
+
+
+.show-cj .owl-controls {
+    top: -25px;
+    right: 0px;
+    position: absolute;
+}
+.show-cj .owl-controls .owl-dot {
+    border: 1px solid #7f7f7f;
+    border-radius: 5px;
+    display: inline-block;
+    height: 8px;
+    margin-right: 5px;
+    width: 8px;
+}
+.show-cj .owl-controls .owl-dot.active {
+    background: #ed1c24 none repeat scroll 0 0;
+    border: 0 none;
+    height: 10px;
+    width: 10px;
+}
+.show-cj .owl-controls .owl-nav {
+    display: none;
+}
+#footer {
+    background: #f3f3f3 none repeat scroll 0 0;
+    border-top: 1px solid #d7d7d7;
+    height: 72px;
+}
+.logo-footer {
+    float: left;
+    margin-top: 12px;
+}
+.content-footer {
+    float: right;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 15px;
+    text-align: right;
+}
