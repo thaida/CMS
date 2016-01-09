@@ -10,7 +10,7 @@
 <!-- SlidesJS Required: -->
 <!-- SlidesJS Required: Start Slides -->
 <!-- The container is used to define the width of the slideshow -->
-{!! HTML::style('css/owl.carousel.css') !!}
+
 <div class="banner-top">
 	<div class="slider-banner">
 		<a class="slider-lnk">
@@ -46,7 +46,7 @@
 				</a>
 				<div class="cj-info">
 					<h3 class="cj-h3">
-						<a>{{$film->title}}</a>
+						<a href="{{$film_url.$film->slug}}">{{$film->title}}</a>
 						<span class="sp-right">2001</span>
 					</h3>
 					<p class="cj-p-film">

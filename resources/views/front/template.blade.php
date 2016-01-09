@@ -2,7 +2,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js">
+<html class="">
 <!--<![endif]-->
 
 <head>
@@ -114,6 +114,7 @@
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 	{!! HTML::script('js/plugins.js') !!} 
 	{!! HTML::script('js/main.js')	!!}
+	
 	<script>
 	$(document).ready(function(){
 		$("#btnSearch").click(function(){

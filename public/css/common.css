@@ -87,7 +87,7 @@ a.under:hover{text-decoration:underline;}
     width: 277px;
 }
 .search-btn {
-    background: rgba(0, 0, 0, 0) url("../images/cj_01.png") no-repeat scroll left top;
+    background: rgba(0, 0, 0, 0) url("../img/cj_01.png") no-repeat scroll left top;
     border: 0 none;
     color: #d5005a;
     cursor: pointer;
@@ -208,7 +208,7 @@ a.under:hover{text-decoration:underline;}
     color: #848484;
 }	
 .cj-p-type .sp-right {
-    background: rgba(0, 0, 0, 0) url("../images/cj_03.png") no-repeat scroll left center;
+    background: rgba(0, 0, 0, 0) url("../img/cj_03.png") no-repeat scroll left center;
     color: #848484;
     float: right;
     padding-left: 17px;
@@ -258,3 +258,25 @@ a.under:hover{text-decoration:underline;}
     margin-top: 15px;
     text-align: right;
 }
+.player-video{margin-bottom:20px;}
+.info-music {
+    border: 1px solid #ebebeb;
+	margin-bottom:25px;
+}
+.p-info-top {
+    border-bottom: 1px solid #ebebeb;
+    font-size: 14px;
+    line-height: 22px;
+    padding: 20px;
+}
+.p-info-top strong {
+    font-size: 16px;
+}
+.p-info-bottom {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 20px;
+}
+.p-info-bottom strong {
+}
+.show-cj-tv .cj-p-type .sp-right{background:url(../img/cj_02.png) no-repeat left center;float:left;}

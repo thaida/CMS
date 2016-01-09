@@ -18,22 +18,12 @@
 	</script>
 	
 	{!! HTML::style('css/jquery.bxslider.css') !!}
+	
+	{!! HTML::style('css/owl.carousel.css') !!}
 @stop 
 @section('main')
-<div class="row">
-	<div class="box">
-		<div class="col-lg-12">
-			<hr>
-			<!-- <h2 class="text-center">
-				{{ $post->title }} <br> <small>{{ $post->user->username }} {{
-					trans('front/blog.on') }} {!! $post->created_at .
-					($post->created_at != $post->updated_at ?
-					trans('front/blog.updated') . $post->updated_at : '') !!}</small>
-			</h2>
-			<hr>
-			{!! $post->summary !!}<br> {!! $post->content !!}
-			<hr> -->
-			<div align="center">
+ <div class="player-video">
+  		<div align="center">
 				<!-- Player -->
 				<video id="example_video_1"
 					class="video-js vjs-default-skin  vjs-big-play-centered" controls
@@ -61,7 +51,7 @@
 			videojs('example_video_1', {
 			      controls: true,
 			      muted: true,
-			      width: 800,
+			      width: 1000,
 			      height: 480,
 			     
 			      plugins: {
@@ -77,122 +67,162 @@
 			    
 			</script>
 			<!-- end Player -->
-			
-		</div>
-	</div>
+  </div>  	
+<!-- Cac tap phim khác -->
+@if($post->num > 1)
+<div id="cj-slider02" class="show-cj show-cj-music">
+            <div class="wrap-show-cj">
+            	<div class="show-cj-slider">
+                	<div class="show-cj-item">
+                    	<a class="cj-item-lnk">
+                        	<img src="../images/template/temp_08.jpg" />
+                        </a>
+                        <div class="cj-info">
+                        	<h3 class="cj-h3">
+                            	<a>Ở Nhà một mình 1</a>
+                                </h3>
+                            <p class="cj-p-type">
+                            	<span class="sp-left">Nam cường ft. Sơn ca</span>
+                                <span class="sp-right">123</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="show-cj-item">
+                    	<a class="cj-item-lnk">
+                        	<img src="../images/template/temp_09.jpg" />
+                        </a>
+                        <div class="cj-info">
+                        	<h3 class="cj-h3">
+                            	<a>Ở Nhà một mình 1</a>
+                            </h3>
+                            <p class="cj-p-type">
+                            	<span class="sp-left">Nam cường ft. Sơn ca</span>
+                                <span class="sp-right">123</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="show-cj-item">
+                    	<a class="cj-item-lnk">
+                        	<img src="../images/template/temp_10.jpg" />
+                        </a>
+                        <div class="cj-info">
+                        	<h3 class="cj-h3">
+                            	<a>Ở Nhà một mình 1</a>
+                            </h3>
+                            <p class="cj-p-type">
+                            	<span class="sp-left">Nam cường ft. Sơn ca</span>
+                                <span class="sp-right">123</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="show-cj-item">
+                    	<a class="cj-item-lnk">
+                        	<img src="../images/template/temp_12.png" />
+                        </a>
+                        <div class="cj-info">
+                        	<h3 class="cj-h3">
+                            	<a>Ở Nhà một mình 1 Ở Nhà một mình 1</a>
+                            </h3>
+                            <p class="cj-p-type">
+                            	<span class="sp-left">Nam cường ft. Sơn ca</span>
+                                <span class="sp-right">123</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  @endif
+<!-- end cac tap phim khac -->
+<!-- Thong tin phim -->
+ <div class="info-music">
+	<p class="p-info-top">
+		<strong>{{ $post->title }}
+		<!-- Neu la phim dai tap thi hien thi so tap -->
+		@if($post->num > 1)
+			- Tập {{$post->episode }}
+		@endif
+		</strong><br />
+		Thể loại: {{ $post->subCat}} <br />
+		Ngôn ngữ: {{ $post->language}}<br />
+		Đã phát hành: {{ date('Y',strtotime($post->release_date ))}}
+				
+	</p>
+	<p class="p-info-bottom">
+		<strong>
+			Mô tả phim
+		</strong><br />
+		{!! $post->summary !!}
+	</p>
 </div>
-<div class="row">
-	<!--Tập phim-->
-	<div class="video_detail fix_padding box">
-		<div class="video_top_title col-xs-12 col-sm-12 col-md-12">
-			<h1 style="color: #fd9604; font-size: 24px;"
-				class="col-xs-8 col-sm-8 col-md-8">
-				{{ $post->title }} - Tập <span next="2" class="_chap">1</span>
-
-			</h1>
-		</div>
-		<!--<p class="title_details_count pull-right"> <span class="num_view">694,050</span> lượt xem </p>    -->
-
-		<div class="wrap_desc_content">
-			<p style="display: inline;">
-				<span class="desc_header">Thể loại</span>:
-			</p>
-			<h2 style="font-size: 14px; margin: 0px; display: inline;">Anime Nổi
-				Bật, Tổng Hợp</h2>
-			<p></p>
-			<p>
-				<span class="desc_header">Ngày phát hành</span>: 1986
-			</p>
-			<p>
-				<span class="desc_header">Đạo diễn</span>: Daisuke Nishio
-			</p>
-			<p>
-				<span class="desc_header">Diễn viên</span>: Masako Nozawa, Jôji
-				Yanami, Doug Parker
-			</p>
-			<p>
-				<span class="desc_header">Số tập</span>: 349 tập
-			</p>
-			<p>
-				<span class="desc_header">Upload bởi</span>: kimchisuck
-			</p>
-			<p>
-				<span class="desc_header">Mô tả: </span>
-			</p>
-			<pre>
-			{!! $post->summary !!}<!-- <br> {!! $post->content !!} -->
-			Phim mô tả cuộc hành trình của Sôn Gôku từ lúc bé đến trưởng thành, qua các lần tầm sư học võ và khám phá thế giới để truy tìm các viên ngọc rồng với điều ước từ rồng thiên. Xuyên suốt hành trình của Songuku, cậu đã gặp được nhiều bạn bè và chống lại những kẻ hung ác có ý định dùng điều ước từ rồng thiên để làm bá chủ thế giới.</pre>
-		</div>
+<!-- end thong tin phim -->
 
 		<!-- Giá  -->
 		
 		
 		<!-- PHIM DE XUAT -->
-		<div class="row rowbox">
-			<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
-				<a class="category_title" title="Phim đề xuất"	href="{!! url('free') !!}">
-					<span class="pull-left">Phim đề xuất</span>
+<div id="cj-slider01" class="show-cj show-cj-film">
+	<h3 class="show-h3">
+		<a>PHIM ĐỀ XUẤT</a>
+	</h3>
+	<div class="wrap-show-cj">
+		<div class="show-cj-slider">
+		 @foreach ($films as $film)
+			<div class="show-cj-item">
+				<a class="cj-item-lnk" href="{{$film_url.$film->slug}}">
+					<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=250&h=350&crop-to-fit" />
 				</a>
-				<a class="pull-left btn_arrow_right" title="Phim đề xuất" href="{!! url('free') !!}"></a>
+				<div class="cj-info">
+					<h3 class="cj-h3">
+						<a  href="{{$film_url.$film->slug}}" title="{{$film->title}}">{{$film->title}}</a>
+						<span class="sp-right"> {{ date('Y',strtotime($film->release_date ))}}</span>
+					</h3>
+					<p class="cj-p-film">
+						<span class="sp-left">Fire With Fire</span>
+						<span class="sp-right">{{$film->running_time}}</span>                                
+					</p>
+					<p class="cj-p-type">
+						<span class="sp-left">Bản đẹp&nbsp;|&nbsp;Thuyết minh</span>
+					</p>
+				</div>
 			</div>
-			<div class="contentbox">
-				<ul class="bxslider">
-				 @foreach ($films as $film)
-			  		<li>
-			  			<div class="boxTitle">
-			  			<a href="{{$film_url.$film->slug}}">
-							<div class="caption">
-								<h4>{{$film->title}}</h4>
-								<p>Đạo diễn: <br/>
-								Diễn viên: <br/>
-								Thể loại: <br />
-								<p>Thời lượng: </p>
-								<p class="">{!! $film->summary !!}</p>
-							</div>
-				  		
-				  			<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=250&h=350&crop-to-fit" />
-				  		</a>
-				  		</div>
-			  		</li>
-				
-			  	@endforeach
-				</ul>
-			</div>
+		@endforeach
 		</div>
+	</div>
+</div>
 		<!-- END PHIM DE XUAT -->
 		
 		<!-- PHIM MIEN PHI -->
-		<div class="row rowbox">
-			<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
-				<a class="category_title" title="Phim đề xuất"	href="{!! url('articles') !!}">
-					<span class="pull-left">Phim miễn phí</span>
+<div id="cj-slider01" class="show-cj show-cj-film">
+	<h3 class="show-h3">
+		<a>PHIM MIỄN PHÍ</a>
+	</h3>
+	<div class="wrap-show-cj">
+		<div class="show-cj-slider">
+		 @foreach ($films_free as $film)
+			<div class="show-cj-item">
+				<a class="cj-item-lnk" href="{{$film_url.$film->slug}}">
+					<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=250&h=350&crop-to-fit" />
 				</a>
-				<a class="pull-left btn_arrow_right" title="Phim đề xuất" href="{!! url('articles') !!}"></a>
+				<div class="cj-info">
+					<h3 class="cj-h3">
+						<a  href="{{$film_url.$film->slug}}" title="{{$film->title}}">{{$film->title}}</a>
+						<span class="sp-right"> {{ date('Y',strtotime($film->release_date ))}}</span>
+					</h3>
+					<p class="cj-p-film">
+						<span class="sp-left">Fire With Fire</span>
+						<span class="sp-right">{{$film->running_time}}</span>                                
+					</p>
+					<p class="cj-p-type">
+						<span class="sp-left">Bản đẹp&nbsp;|&nbsp;Thuyết minh</span>
+					</p>
+				</div>
 			</div>
-			<div class="contentbox">
-				<ul class="bxslider">
-				 @foreach ($films_free as $film)
-			  		<li>
-			  			<div class="boxTitle">
-			  			<a href="{{$film_url.$film->slug}}">
-							<div class="caption">
-								<h4>{{$film->title}}</h4>
-								<p>Đạo diễn: <br/>
-								Diễn viên: <br/>
-								Thể loại: <br />
-								<p>Thời lượng: </p>
-								<p class="">{!! $film->summary !!}</p>
-							</div>
-				  		
-				  			<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=250&h=350&crop-to-fit" />
-				  		</a>
-				  		</div>
-			  		</li>
-				
-			  	@endforeach
-				</ul>
-			</div>
+		@endforeach
 		</div>
+	</div>
+</div>
+		
 		<!-- END PHIM MIEN PHI -->
 	
 	</div>
@@ -237,6 +267,9 @@
 @endif
 
 {!!	HTML::script('js/jquery.bxslider.min.js') !!}
+
+	{!!	HTML::script('js/owl.carousel.min.js') !!}
+	{!! HTML::script('js/common.js')	!!}
 <script>
 
 /* SLIDER */

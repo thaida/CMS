@@ -117,7 +117,7 @@ input[type="file"]{
 	        	</div>
 	        
 		        <div class=" col-sm-10">
-			        <span class='label label-info' id="info-subtitle">{{isset($post) ? $post->subtitle_path : ""}}</span>
+			        <span class='label label-info' id="info-subtitle">{{isset($post) ? basename($post->subtitle_path) : ""}}</span>
 			        @if(isset($post))
 			        	<span class="glyphicon glyphicon-download-alt"><a href="">Download</a></span>
 			        @endif
@@ -138,7 +138,7 @@ input[type="file"]{
 		        </div>
 	        
 		        <div class=" col-sm-10">
-			        <span class='label label-info' id="info-film">{{isset($post) ? $post->film_path : ""}}</span>		        
+			        <span class='label label-info' id="info-film">{{isset($post) ? basename($post->film_path) : ""}}</span>		        
 			         <input type="hidden" name="film_path" id="film_path" />
 		         </div>
 			</div>

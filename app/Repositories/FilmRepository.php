@@ -325,7 +325,13 @@ class FilmRepository extends BaseRepository {
 	 */
 	public function show($slug)
 	{
-		$post = $this->model->with('user')->whereSlug($slug)->firstOrFail();
+				
+		$post = $this->model->with('user')->select(config ( "constants.FILM_TABLE" ) . '.id', config ( "constants.FILM_TABLE" ) . '.created_at as created_at', config ( "constants.FILM_TABLE" ) . '.title as title', config ( "constants.FILM_TABLE" ) . '.summary',
+				'sub_categories.title as subCat', 'sub_categories.slug as catSlug', 'films.release_date','films.running_time',
+				 config ( "constants.FILM_TABLE" ) . '.poster_path', config ( "constants.FILM_TABLE" ) . '.slug', config ( "constants.FILM_TABLE" ) . '.publish', 'isHot', 'num','episode', 'language', 'release_date' )
+				->leftjoin('sub_categories', 'sub_categories.id' ,'=', 'films.sub_cat_id')
+				->where('films.slug', $slug)
+				->firstOrFail();
 	
 		/*$comments = $this->comment
 		->wherePost_id($post->id)

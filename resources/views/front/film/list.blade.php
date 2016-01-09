@@ -1,6 +1,9 @@
 @extends('front.template')
 @section('head')
-{!! HTML::style('css/jquery.bxslider.css') !!} 
+
+	{!! HTML::style('css/owl.carousel.css') !!}
+
+	{!! HTML::style('css/jquery.bxslider.css') !!} 
 @stop
 @section('slide')
 
@@ -25,83 +28,81 @@
 
 @section('main')
     <!-- PHIM XEM NHIEU NHAT -->
-	<div class="row rowbox">
-		<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
-			<a class="category_title" title="Phim xem nhiều nhất"	href="{!! url('film/phim-bo') !!}">
-				<span class="pull-left">{{ 'Phim bộ xem nhiều nhất' }}</span>
-			</a>
-			<a class="pull-left btn_arrow_right" title="Phim xem nhiều nhất" href="{!! url('film/phim-bo') !!}"></a>
-		</div>
-		
-		<div class="contentbox">
-			<ul class="bxslider">
-			
-			 @foreach ($films_most_view as $film)
-		  		<li>
-		  			<div class="boxTitle">
-		  			<a href="{{$film_url.$film->slug}}">
-						<div class="caption">
-							<h4>{{$film->title}}</h4>
-							<p>Đạo diễn: <br/>
-							Diễn viên: <br/>
-							Thể loại: <br />
-							<p>Thời lượng: </p>
-							<p class="">{!! $film->summary !!}</p>
-						</div>
-			  		
-			  			<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=250&h=350&crop-to-fit" />
-			  		</a>
-			  		</div>
-		  		</li>
-			
-		  	@endforeach
-			</ul>
-		</div>
-	</div>
-	<!-- END XEM NHIEU NHAT -->
+    <div id="cj-slider01" class="show-cj show-cj-film">
+        	<h3 class="show-h3">
+            	<a>PHIM XEM NHIỀU NHẤT</a>
+            </h3>
+            <div class="wrap-show-cj">
+            	<div class="show-cj-slider">
+            	  @foreach ($films_most_view as $film)
+                	<div class="show-cj-item">
+                    	<a class="cj-item-lnk" href="{{$film_url.$film->slug}}">
+                        	<img src="{{$img_url . $film->poster_path}}?w=250&amp;h=430&amp;crop-to-fit" title="{{ $film->title}}">
+                        </a>
+                        <div class="cj-info">
+                        	<h3 class="cj-h3">
+                            	<a href="{{$film_url.$film->slug}}"> {{ $film->title}}</a>
+                                <span class="sp-right">2001</span>
+                            </h3>
+                            <p class="cj-p-film">
+                            	<span class="sp-left">Fire With Fire</span>
+                                <span class="sp-right">{{ $film->running_time}}</span>                                
+                            </p>
+                            <p class="cj-p-type">
+                            	<span class="sp-left">Bản đẹp&nbsp;|&nbsp;Thuyết minh</span>
+                            </p>
+                        </div>
+                    </div>  
+                    @endforeach                  
+                </div>
+            </div>
+     </div>
+        
+        
 
-		@if(isset($films))
-			<!-- PHIM TAM LY -->
-			<div class="row rowbox">
-				<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
-					<a class="category_title" title="{{ $films->get(0)->subCat}}"	href="{!! url('phim/'. $films->get(0)->catSlug) !!}">
-						<span class="pull-left">{{ $films->get(0)->subCat}}</span>
-					</a>
-					<a class="pull-left btn_arrow_right" title="{{ $films->get(0)->subCat}}" href="{!! url('film/'.$films->get(0)->catSlug) !!}"></a>
-				</div>
-				<div class="contentbox">
-					<ul class="bxslider">
-					 @foreach ($films as $film)
-				  		<li>
-				  			<div class="boxTitle">
-				  			<a href="{{$film_url.$film->slug}}">
-								<div class="caption">
-									<h4>{{$film->title}}</h4>
-									<p>Đạo diễn: <br/>
-									Diễn viên: <br/>
-									Thể loại: <br />
-									<p>Thời lượng: </p>
-									<p class="">{!! $film->summary !!}</p>
-								</div>
-					  		
-					  			<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=250&h=350&crop-to-fit" />
-					  		</a>
-					  		</div>
-				  		</li>
-					
-				  	@endforeach
-					</ul>
-				</div>
-			</div>
-			<!-- END TAM LY -->
-		@endif
+@if(isset($films))
+	<!-- PHIM BY CAT -->
+	<div id="cj-slider02" class="show-cj show-cj-film">
+        	<h3 class="show-h3" >
+            	<a title="{{ $films->get(0)->subCat}}"	href="{!! url('phim/'. $films->get(0)->catSlug) !!}">{{ $films->get(0)->subCat}}</a>
+            </h3>
+            <div class="wrap-show-cj">
+            	<div class="show-cj-slider">
+            	 @foreach ($films as $film)
+                	<div class="show-cj-item">
+                    	<a class="cj-item-lnk" href="{{$film_url.$film->slug}}">
+                        	<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=250&h=350&crop-to-fit" />
+                        </a>
+                        <div class="cj-info">
+                        	<h3 class="cj-h3">
+                            	<a href="{{$film_url.$film->slug}}">{{$film->title}}</a>
+                                <span class="sp-right">2001</span>
+                            </h3>
+                            <p class="cj-p-film">
+                            	<span class="sp-left">Fire With Fire</span>
+                                <span class="sp-right">{!! $film->running_time !!}</span>                                
+                            </p>
+                            <p class="cj-p-type">
+                            	<span class="sp-left">Bản đẹp&nbsp;|&nbsp;Thuyết minh</span>
+                            </p>
+                        </div>
+                    </div>
+                 @endforeach
+                 </div>
+            </div>
+    </div>
+@endif
+
+
 @stop
 
 
 @section('scripts')
 <!-- SlidesJS Required: Link to jquery.slides.js -->
-<script src="{{ url('js/jquery.bxslider.min.js')}}"></script>
-<script src="{{ url('js/jquery.slides.min.js') }}"></script>
+{!! HTML::script('js/jquery.bxslider.min.js')	!!}
+{!! HTML::script('js/jquery.slides.min.js')	!!}
+	{!!	HTML::script('js/owl.carousel.min.js') !!}
+	{!! HTML::script('js/common.js')	!!}
 <!-- End SlidesJS Required -->
 <!-- SlidesJS Required: Initialize SlidesJS with a jQuery doc ready -->
 <script>
@@ -128,4 +129,6 @@
     	});
   </script>
 <!-- End SlidesJS Required -->
+
+
 @stop

@@ -1,4 +1,7 @@
 @extends('front.template')
+@section('head')
+	{!! HTML::style('css/owl.carousel.css') !!}
+@stop
 
 @section('slide')
 
@@ -28,6 +31,8 @@
 
 @section('main')
 	@if(isset($films) && count($films) >0)
+	
+	
 	<div class="row rowbox">
 		<div class="col-xs-6 col-sm-5 col-md-4 box_header Regular">
 			<a class="category_title" title="{{ $films->get(0)->subCat}}" href="{!! url('phim/'. $films->get(0)->catSlug) !!}">
