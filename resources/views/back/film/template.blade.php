@@ -77,7 +77,11 @@ input[type="file"]{
 			{!! url('/') . '/film/' . Form::text('slug', null, ['id' => 'permalien']) !!} 
 			<small class="text-danger">	{!!	$errors->first('slug') !!}</small>
 		</div>
+		<!-- the loai phim -->
 		{!! Form::selection('sub_cat_id', $select, null, trans('back/category.subcat')) !!} 
+		<!-- Tập phim liên quan(tới tập 1 của phim nếu là phim bộ) -->
+		{!! Form::control('text', 0, 'first_episode_id', $errors, trans('back/film.firstfilm'))	!!}
+		<!-- ghi chu -->
 		{!! Form::control('textarea', 0, 'summary', $errors, trans('common.summary')) !!} 
 	  </div>
 	</div>
@@ -271,35 +275,7 @@ input[type="file"]{
 			$("#permalien").val(str);        
 		});
 
-	 /* $(function(){
-
-		  var items="";
-		  var check="";
-		  $.getJSON("{!! url('ajax/nation') !!}",function(data){
-
-		    $.each(data,function(index,item) 
-		    {
-			    check = "";
-			    if(item.code === "VN")
-				    check = "selected='true'"
-		      items+="<option value='"+item.code+"'" + check + " >"+item.name+"</option>";
-		    });
-		    $("#nation").html(items); 
-		  });
-
-		}); */
-	 
-		/*  $(function() {
-		        $( "#activitynamebox" ).autocomplete({
-		            source: '{{URL('getactivitydata')}}',
-		            minlength: 1, //search after 1 character
-		            select:function(event,ui){
-		                $('#response').val(ui.item.value);
-		            }
-
-		        });
-		    });
- */
+	
 
  $(function() {
 		
@@ -383,10 +359,11 @@ input[type="file"]{
 			return false;
 		}
 	}); */
-	/* $(document).ready(function(){
-		$("#language").autocomplete({
+	 $(document).ready(function(){
+		$("#first_episode_id").autocomplete({
             minLength:2,
-            source: "{!! url('ajax/nation') !!}",
+			scroll: true,
+            source: "{!! url('ajax/films') !!}",
             	select:function(event,ui){
                     $('#response').val(ui.item.value);
                 }
@@ -394,7 +371,7 @@ input[type="file"]{
 
 		  //$("#btnImage1").html("abcn");
 		 
-		});  */
+		});  
 				
   </script>
 

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Input;
+use DB;
 use App\Repositories\NationRepository;
+use App\Repositories\FilmRepository;
 
 class AjaxController extends Controller {
 	
@@ -18,6 +20,7 @@ class AjaxController extends Controller {
 	
 	public function helpers($action) {
 		$data = [ ];
+		$returnData = array ();
 		$keyword = "";
 		if (Input::get ( 'term' ) != null)
 			$keyword = Input::get ( 'term' );
@@ -25,20 +28,37 @@ class AjaxController extends Controller {
 		switch ($action) {
 			case 'nation' :
 				$data = $this->getAllNations ( $keyword );
+				foreach ( $data as $e ) {
+					$returnData [] = $e->name;
+				}
+				break;
+			case 'films' :
+				$data = $this->getAllFirstFilms ( $keyword );
+				foreach ( $data as $e ) {
+					$returnData [] = $e->title;
+				}
 				break;
 			default :
 				return [ ];
 		}
-		$returnData = array ();
-		foreach ( $data as $e ) {
-			$returnData [] = $e->name;
-		}
-		return json_encode ( $returnData );
+		
+		
+		return json_encode ( $returnData, JSON_UNESCAPED_UNICODE );
 	}
 	
 	private function getAllNations($keyword) {
 		$nations = new NationRepository ();
 		$data = $nations->queryNationWithKeyword ( $keyword );
+		return $data;
+	}
+	
+	private function getAllFirstFilms($keyword) {
+		$films = DB::table("films");
+		
+		if(isset($keyword))
+			$films = $films->where('title', 'LIKE', '%'.$keyword.'%');
+		
+		$data = $films->get();
 		return $data;
 	}
 }

@@ -18,8 +18,6 @@
 	</script>
 	
 	{!! HTML::style('css/jquery.bxslider.css') !!}
-	
-	{!! HTML::style('css/owl.carousel.css') !!}
 @stop 
 @section('main')
  <div class="player-video">
@@ -70,12 +68,12 @@
   </div>  	
 <!-- Cac tap phim khác -->
 @if($post->num > 1)
-<div id="cj-slider02" class="show-cj show-cj-music">
+	<div id="cj-slider" class="show-cj show-cj-music">
             <div class="wrap-show-cj">
             	<div class="show-cj-slider">
                 	<div class="show-cj-item">
                     	<a class="cj-item-lnk">
-                        	<img src="../images/template/temp_08.jpg" />
+                        	<img src="https://static.fptplay.net/static/img/share/video/21_12_2015/mi-nguyet21-12-2015_16g39-47.jpg?w=400&h=225&mode=scale" />
                         </a>
                         <div class="cj-info">
                         	<h3 class="cj-h3">
@@ -89,7 +87,7 @@
                     </div>
                     <div class="show-cj-item">
                     	<a class="cj-item-lnk">
-                        	<img src="../images/template/temp_09.jpg" />
+                        	<img src="https://static.fptplay.net/static/img/share/video/08_01_2016/imgpsh_fullsize-108-01-2016_11g20-37.jpg?w=400&h=225&mode=scale" />
                         </a>
                         <div class="cj-info">
                         	<h3 class="cj-h3">
@@ -103,7 +101,7 @@
                     </div>
                     <div class="show-cj-item">
                     	<a class="cj-item-lnk">
-                        	<img src="../images/template/temp_10.jpg" />
+                        	<img src="https://static.fptplay.net/static/img/share/video/24_12_2015/l1et64wm24-12-2015_16g47-58.jpg?w=400&h=225&mode=scale" />
                         </a>
                         <div class="cj-info">
                         	<h3 class="cj-h3">
@@ -117,7 +115,7 @@
                     </div>
                     <div class="show-cj-item">
                     	<a class="cj-item-lnk">
-                        	<img src="../images/template/temp_12.png" />
+                        	<img src="https://static.fptplay.net/static/img/share/video/03_12_2015/images1591869_img_599703-12-2015_09g25-00.JPG?w=400&h=225&mode=scale" />
                         </a>
                         <div class="cj-info">
                         	<h3 class="cj-h3">
@@ -133,6 +131,13 @@
             </div>
         </div>
   @endif
+<style>
+	.info-music p{
+		font-size: 14px;
+	    line-height: 22px;
+	    padding: 0 20px;
+	}
+</style> 
 <!-- end cac tap phim khac -->
 <!-- Thong tin phim -->
  <div class="info-music">
@@ -142,10 +147,11 @@
 		@if($post->num > 1)
 			- Tập {{$post->episode }}
 		@endif
-		</strong><br />
+		</strong>
+		<br />
 		Thể loại: {{ $post->subCat}} <br />
 		Ngôn ngữ: {{ $post->language}}<br />
-		Đã phát hành: {{ date('Y',strtotime($post->release_date ))}}
+		Năm phát hành: {{ date('Y',strtotime($post->release_date ))}} <br />
 				
 	</p>
 	<p class="p-info-bottom">
@@ -153,6 +159,7 @@
 			Mô tả phim
 		</strong><br />
 		{!! $post->summary !!}
+		<br/>
 	</p>
 </div>
 <!-- end thong tin phim -->
@@ -165,62 +172,59 @@
 	<h3 class="show-h3">
 		<a>PHIM ĐỀ XUẤT</a>
 	</h3>
-	<div class="wrap-show-cj">
-		<div class="show-cj-slider">
+	<ul class="bxslider-01">	
 		 @foreach ($films as $film)
-			<div class="show-cj-item">
-				<a class="cj-item-lnk" href="{{$film_url.$film->slug}}">
-					<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=250&h=350&crop-to-fit" />
-				</a>
-				<div class="cj-info">
-					<h3 class="cj-h3">
-						<a  href="{{$film_url.$film->slug}}" title="{{$film->title}}">{{$film->title}}</a>
-						<span class="sp-right"> {{ date('Y',strtotime($film->release_date ))}}</span>
-					</h3>
-					<p class="cj-p-film">
-						<span class="sp-left">Fire With Fire</span>
-						<span class="sp-right">{{$film->running_time}}</span>                                
-					</p>
-					<p class="cj-p-type">
-						<span class="sp-left">Bản đẹp&nbsp;|&nbsp;Thuyết minh</span>
-					</p>
-				</div>
+		 <li>		
+			<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">
+				<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=300&h=430&crop-to-fit" />
+			</a>
+			<div class="cj-info">
+				<h3 class="cj-h3">
+					<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">{{$film->title}}</a>
+					<span class="sp-right">{{ date('Y', strtotime($film->release_date)) }}</span>
+				</h3>
+				<p class="cj-p-film">
+					<span class="sp-left">Fire With Fire</span>
+					<span class="sp-right">{{$film->running_time}}</span>                                
+				</p>
+				<p class="cj-p-type">
+					<span class="sp-left">Bản đẹp&nbsp;|&nbsp;Thuyết minh</span>
+				</p>
 			</div>
+		</li>
 		@endforeach
-		</div>
-	</div>
+	</ul>
 </div>
 		<!-- END PHIM DE XUAT -->
 		
 		<!-- PHIM MIEN PHI -->
-<div id="cj-slider01" class="show-cj show-cj-film">
+<div id="cj-slider02" class="show-cj show-cj-film">
 	<h3 class="show-h3">
 		<a>PHIM MIỄN PHÍ</a>
 	</h3>
-	<div class="wrap-show-cj">
-		<div class="show-cj-slider">
+	<ul class="bxslider-02">
+	
 		 @foreach ($films_free as $film)
-			<div class="show-cj-item">
-				<a class="cj-item-lnk" href="{{$film_url.$film->slug}}">
-					<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=250&h=350&crop-to-fit" />
-				</a>
-				<div class="cj-info">
-					<h3 class="cj-h3">
-						<a  href="{{$film_url.$film->slug}}" title="{{$film->title}}">{{$film->title}}</a>
-						<span class="sp-right"> {{ date('Y',strtotime($film->release_date ))}}</span>
-					</h3>
-					<p class="cj-p-film">
-						<span class="sp-left">Fire With Fire</span>
-						<span class="sp-right">{{$film->running_time}}</span>                                
-					</p>
-					<p class="cj-p-type">
-						<span class="sp-left">Bản đẹp&nbsp;|&nbsp;Thuyết minh</span>
-					</p>
-				</div>
+			<li>		
+			<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">
+				<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=300&h=230&crop-to-fit" />
+			</a>
+			<div class="cj-info">
+				<h3 class="cj-h3">
+					<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">{{$film->title}}</a>
+					<span class="sp-right">{{ date('Y', strtotime($film->release_date)) }}</span>
+				</h3>
+				<p class="cj-p-film">
+					<span class="sp-left">Fire With Fire</span>
+					<span class="sp-right">{{ $film->running_time }}</span>                                
+				</p>
+				<p class="cj-p-type">
+					<span class="sp-left">Bản đẹp&nbsp;|&nbsp;Thuyết minh</span>
+				</p>
 			</div>
+		</li>
 		@endforeach
-		</div>
-	</div>
+		</ul>
 </div>
 		
 		<!-- END PHIM MIEN PHI -->
@@ -261,6 +265,7 @@
 
 @stop 
 @section('scripts') 
+
 {!! HTML::script('ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js') !!} 
 @if(session('statut') != 'visitor') 
 {!! HTML::script('ckeditor/ckeditor.js') !!} 
@@ -268,20 +273,9 @@
 
 {!!	HTML::script('js/jquery.bxslider.min.js') !!}
 
-	{!!	HTML::script('js/owl.carousel.min.js') !!}
-	{!! HTML::script('js/common.js')	!!}
 <script>
 
-/* SLIDER */
-$('.bxslider').bxSlider({
-  	 autoControls: true,
-  	 captions: true,
-  	  minSlides: 2,
-  	  maxSlides: 4,
-  	  slideWidth: 250,
-  	  
-  	  slideMargin: 20
-  	});
+
 
 $(document).ready(function() {
 	$('.boxTitle').hover(function(){
@@ -404,8 +398,24 @@ $(document).ready(function() {
 
 			});
 
-		@endif
 
+		 
+
+		@endif
+		$('.bxslider-01').bxSlider({
+		  	minSlides: 2,
+		  	maxSlides: 4,
+		  	slideWidth: 240,
+		    slideMargin: 10,
+		    touchEnabled: true
+	  	});
+    $('.bxslider-02').bxSlider({
+	  	minSlides: 2,
+	  	maxSlides: 4,
+	  	slideWidth: 240,
+	    slideMargin: 10,
+	    touchEnabled: true
+  	});
 		hljs.initHighlightingOnLoad();
 
 	</script>

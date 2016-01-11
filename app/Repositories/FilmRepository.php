@@ -264,7 +264,7 @@ class FilmRepository extends BaseRepository {
 	 *
 	 * @return array
 	 */
-	public function allFilm()
+	public function allFilm($keyword = null)
 	{
 		$condition = array('publish' => '1');
 		$films_most_view = $this->model->where($condition)
@@ -272,10 +272,31 @@ class FilmRepository extends BaseRepository {
 		->orderBy('counter', 'desc')
 		->orderBy('created_at', 'desc')
 	;
+		if(!empty($keyword))
+			$films_most_view = $films_most_view->where('title', 'LIKE', '%'.$keyword.'%');
 		//->get();
 	
 		return $films_most_view->paginate(5);//compact('films_most_view');
 	}
+	
+	/**
+	 * lay toan bo film la tap 1 va co title trung voi keyword.
+	 *
+	 * @return array of nation
+	 */
+	public function allFilmWithKeyword($keyword)
+	{
+		$films = DB::table("films");
+	
+		if(isset($keyword))
+			$films = $films->where('name', 'LIKE', '%'.$keyword.'%');
+		
+		return $films->get();
+	}
+	
+	
+	
+	
 	
 	/**
 	 * Get series film most view.(film bo la nhung film co so tap > 1, 

@@ -26,7 +26,10 @@ class CreateFilmsTable extends Migration {
 			//tap so may
 			$table->integer ( 'episode')->unsigned();
 			//ngon ngu
-			$table->string ( 'language', 300);			
+			$table->string ( 'language', 300);		
+			//link toi tap 1 cua film
+			$table->integer ( 'first_episode_id')->unsigned();
+			
 			$table->integer ( 'star')->unsigned();
 			//quoc gia
 			$table->integer ( 'nation_id')->unsigned();

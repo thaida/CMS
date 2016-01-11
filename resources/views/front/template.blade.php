@@ -42,8 +42,24 @@
                 	<img src="{{ url('img/cj_logo.png')}}" />
                 </a>
                 <p class="p-login">
-                	<a class="lnk-login" href="{{url('auth/login') }}">Đăng nhập</a>
-                	&nbsp;&nbsp;|&nbsp;&nbsp;<a class="lnk-login">Đăng ký</a>
+                <!-- 	<a class="lnk-login" href="{{url('auth/login') }}">Đăng nhập</a>
+                	&nbsp;&nbsp;|&nbsp;&nbsp;<a class="lnk-login">Đăng ký</a> -->
+					@if(session('statut') == 'visitor')
+						{!!	link_to('auth/login', trans('front/site.connection'), ['class' => 'lnk-login']) !!}
+					@else 
+						@if(session('statut') == 'admin')
+						
+							{!! link_to_route('admin',	trans('front/site.administration'), [], ['class' => 'lnk-login']) !!}
+						
+						@elseif(session('statut') == 'redac')
+						
+							{!! link_to('blog', trans('front/site.redaction'), ['class' => 'lnk-login']) !!}
+						
+						@endif
+						&nbsp;&nbsp;|&nbsp;&nbsp;
+							{!! link_to('auth/logout', trans('front/site.logout'), ['class' => 'lnk-login']) !!}
+						
+					@endif  
                 </p> 
                 <div class="clear"></div>
               </div>  
