@@ -64,15 +64,20 @@
                 <div class="clear"></div>
               </div>  
         </div>
+      
         <div class="header-bottom">
         	<div class="wrap-header-bottom">
-        	<div class="header-menu">
+        	<div class="header-menu" id="top-nav">
             	<ul class="header-ul-parent">
                 	<li class="header-li-parent active">
                     	<a class="header-lnk-parent" href="{{url('/') }}">HOME</a>
                     </li>
                     <li class="header-li-parent">
                     	<a class="header-lnk-parent" href="{{url('phim') }}">PHIM</a>
+                    	<ul>
+                    		<li><a class="header-lnk-parent" href="{{url('film/phim-bo') }}">PHIM BỘ</a></li>
+                    		<li><a class="header-lnk-parent" href="{{url('film/phim-le') }}">PHIM LẺ</a></li>
+                    	</ul>
                     </li>
                      <li class="header-li-parent">
                     	<a class="header-lnk-parent" href="{{url('music') }}">NHẠC</a>

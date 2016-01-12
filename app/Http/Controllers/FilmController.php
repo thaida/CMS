@@ -10,6 +10,7 @@ use App\Repositories\FilmRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\SubCategoryRepository;
 use Input;
+use Log;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FilmController extends Controller {
@@ -207,17 +208,20 @@ class FilmController extends Controller {
 		$user = $auth->user ();
 		$img_url = config('medias.image-host');
 		$film_url = config('medias.film-host');
-		$post = $this->film_gestion->show ( $slug );
 		
+		$post = $this->film_gestion->show ( $slug );
+	
+		$films_link = $this->film_gestion->getFilmInSeries($post->first_episode_id)->get();
+
 		//tim nhung film lien quan toi film nay de dua vao muc de xuat
 		//$films = $this->film_gestion->filmRelated($slug);
 		//$films_free = $this->film_gestion->filmFree($slug);
 		
-		return view ( 'front.film.show', array_merge ( $this->film_gestion->show($slug), $this->film_gestion->filmRelated($slug), $this->film_gestion->filmFree($slug), 
-						compact ( 'user' ,'img_url', 'film_url') ) );
+		return view ( 'front.film.show', array_merge ( $this->film_gestion->filmRelated($slug), $this->film_gestion->filmFree($slug), 
+						compact ( 'user' ,'img_url', 'film_url', 'films_link', 'post') ) );
 	}
 	
-	
+		
 	/**
 	 * Hien thi danh sach phim bo
 	 * Phim bo la nhung phim co so tap > 1 (num > 1)
@@ -229,6 +233,7 @@ class FilmController extends Controller {
 		$img_url = config('medias.image-host');
 		$film_url = config('medias.film-host');
 		$films_most_view = $this->film_gestion->series();
+		
 		$films = $this->film_gestion->filmBySubCatSlug('tam-ly');
 		$links = $films->appends ( [] );
 		
@@ -248,7 +253,7 @@ class FilmController extends Controller {
 		$img_url = config('medias.image-host');
 		$film_url = config('medias.film-host');
 		$films_most_view = $this->film_gestion->allFilm();
-		$films = $this->film_gestion->filmBySubCatSlug('tam-ly');
+		$films = $this->film_gestion->filmBySubCatSlug('tinh-cam');
 		$links = $films->appends ( [] );
 	
 		$links->setPath ( '' )->render ();

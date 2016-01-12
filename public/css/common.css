@@ -280,3 +280,53 @@ a.under:hover{text-decoration:underline;}
 .p-info-bottom strong {
 }
 .show-cj-tv .cj-p-type .sp-right{background:url(../img/cj_02.png) no-repeat left center;float:left;}
+
+/* DROP DOWN MENU */
+#top-nav ul
+{
+    font-family: Arial, Verdana;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#top-nav ul li
+{
+    display: block;
+    position: relative;
+    z-index: 999;
+    float: left;
+}
+
+#top-nav li ul
+{
+    display: none;
+}
+
+#top-nav ul li a 
+{
+    display: block;
+    text-decoration: none;
+   	background: #fff;
+   	line-weight: 1.5em;
+    padding: 5px 15px 5px 15px;
+    margin-left: 1px;
+    white-space: nowrap;
+}
+
+#top-nav ul li a:hover 
+{
+    color: red;
+}
+#top-nav li:hover ul 
+{
+    display: block;
+    position: absolute;
+}
+
+#top-nav li:hover li
+{
+    float: none;
+    font-size: 11px;
+}

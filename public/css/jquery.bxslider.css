@@ -46,7 +46,8 @@
 }
 
 #cj-slider01 .bx-wrapper .bx-viewport,
-#cj-slider02 .bx-wrapper .bx-viewport {
+#cj-slider02 .bx-wrapper .bx-viewport,
+#cj-slider03 .bx-wrapper .bx-viewport {
 	-moz-box-shadow: 0 0 5px #ccc;
 	-webkit-box-shadow: 0 0 5px #ccc;
 	box-shadow:none;
@@ -63,7 +64,8 @@
 }
 
 #cj-slider01 .bx-wrapper .bx-pager,
-#cj-slider02 .bx-wrapper .bx-pager
+#cj-slider02 .bx-wrapper .bx-pager,
+#cj-slider03 .bx-wrapper .bx-pager
 {
 	position: absolute;
 	top: -45px;
@@ -117,7 +119,8 @@
 	*display: inline;
 }
 #cj-slider01 .bx-wrapper .bx-pager.bx-default-pager a,
-#cj-slider02 .bx-wrapper .bx-pager.bx-default-pager a {
+#cj-slider02 .bx-wrapper .bx-pager.bx-default-pager a,
+#cj-slider03 .bx-wrapper .bx-pager.bx-default-pager a  {
 	text-indent: 400px;
 }
 

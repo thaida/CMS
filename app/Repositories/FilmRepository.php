@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Models\Film;
 use App\Models\SubCategory;
-use Log;
 
 
 class FilmRepository extends BaseRepository {
@@ -78,6 +77,11 @@ class FilmRepository extends BaseRepository {
 		/* ngon ngu  */
 		if(isset($inputs ['language']))
 			$film->language = $inputs ['language'];
+		
+		/* phim lien quan  */
+		if(isset($inputs ['first_episode_id']))
+			$film->first_episode_id = $inputs ['first_episode_id'];
+		
 		/* so diem cham */
 		if(isset($inputs ['star']))
 			$film->star = $inputs ['star'];
@@ -88,6 +92,9 @@ class FilmRepository extends BaseRepository {
 		}
 		$film->save ();
 		
+		//neu khong nhap phim lien quan, mac dinh phim nay lien quan den chinh no
+		$film->first_episode_id = $film->id;
+		$film->update ();
 		return $film;
 	}
 	
@@ -127,9 +134,9 @@ class FilmRepository extends BaseRepository {
 	 * @return Illuminate\Support\Collection
 	 */
 	public function index($n, $user_id = null, $orderby = 'created_at', $direction = 'desc') {
-		$query = $this->model->select ( config ( "constants.FILM_TABLE" ) . '.id', config ( "constants.FILM_TABLE" ) . '.created_at as created_at', config ( "constants.FILM_TABLE" ) . '.title as title', config ( "constants.FILM_TABLE" ) . '.summary', 
-										config ( "constants.FILM_TABLE" ) . '.slug', 'username', config ( "constants.FILM_TABLE" ) . '.publish', 'isHot' )
-										->join ( 'users', 'users.id', '=', config ( "constants.FILM_TABLE" ) . '.user_id' )
+		$query = $this->model->select ( 'films.id', 'films.created_at as created_at', 'films.title as title', 'films.summary', 
+										'films.slug', 'username', 'films.publish', 'isHot' )
+										->join ( 'users', 'users.id', '=', 'films.user_id' )
 							->orderBy ( $orderby, $direction );
 			
 		if ($user_id) {
@@ -144,13 +151,13 @@ class FilmRepository extends BaseRepository {
 	 * @return Illuminate\Support\Collection
 	 */
 	public function getAllFilmBySubCat($n, $sub_cat_slug, $user_id = null) {
-		$query = $this->model->select ( config ( "constants.FILM_TABLE" ) . '.id', config ( "constants.FILM_TABLE" ) . '.created_at as created_at', config ( "constants.FILM_TABLE" ) . '.title as title', config ( "constants.FILM_TABLE" ) . '.summary',
+		$query = $this->model->select ( 'films.id', 'films.created_at as created_at', 'films.title as title', 'films.summary',
 				'sub_categories.title as subCat', 'sub_categories.slug as catSlug', 'films.release_date','films.running_time',
-				 config ( "constants.FILM_TABLE" ) . '.poster_path', config ( "constants.FILM_TABLE" ) . '.slug', 'username', config ( "constants.FILM_TABLE" ) . '.publish', 'isHot' )
+				 'films.poster_path', 'films.slug', 'username', 'films.publish', 'isHot' )
 				->leftjoin ( 'sub_categories', function ($join) {
 				$join->on('sub_categories.id' ,'=', 'films.sub_cat_id');
 				})
-				->join ( 'users', 'users.id', '=', config ( "constants.FILM_TABLE" ) . '.user_id' )
+				->join ( 'users', 'users.id', '=', 'films.user_id' )
 				->where('sub_categories.slug', '=', $sub_cat_slug);
 					
 		if ($user_id) {
@@ -286,7 +293,8 @@ class FilmRepository extends BaseRepository {
 	 */
 	public function allFilmWithKeyword($keyword)
 	{
-		$films = DB::table("films");
+		$condition = array('publish' => '1');
+		$films = $this->model->where($condition);
 	
 		if(isset($keyword))
 			$films = $films->where('name', 'LIKE', '%'.$keyword.'%');
@@ -313,7 +321,8 @@ class FilmRepository extends BaseRepository {
 							->where('episode', '<', '2')
 							->orderBy('counter', 'desc')
 							->orderBy('created_at', 'desc')
-							->take(15);
+							//->take(15)
+		;
 							//->get();
 	
 		return $films_most_view->paginate(5);//compact('films_most_view');
@@ -332,7 +341,8 @@ class FilmRepository extends BaseRepository {
 		->where('num', '<', '2')
 		->orderBy('counter', 'desc')
 		->orderBy('created_at', 'desc')
-		->take(15);
+		//->take(15)
+		;
 		//->get();
 	
 		return  $films->paginate(5);
@@ -347,9 +357,9 @@ class FilmRepository extends BaseRepository {
 	public function show($slug)
 	{
 				
-		$post = $this->model->with('user')->select(config ( "constants.FILM_TABLE" ) . '.id', config ( "constants.FILM_TABLE" ) . '.created_at as created_at', config ( "constants.FILM_TABLE" ) . '.title as title', config ( "constants.FILM_TABLE" ) . '.summary',
-				'sub_categories.title as subCat', 'sub_categories.slug as catSlug', 'films.release_date','films.running_time',
-				 config ( "constants.FILM_TABLE" ) . '.poster_path', config ( "constants.FILM_TABLE" ) . '.slug', config ( "constants.FILM_TABLE" ) . '.publish', 'isHot', 'num','episode', 'language', 'release_date' )
+		$post = $this->model->with('user')->select('films.id', 'films.created_at as created_at', 'films.title as title', 'films.summary',
+				'sub_categories.title as subCat', 'sub_categories.slug as catSlug', 'films.release_date','films.running_time', 'films.counter',
+				 'films.poster_path', 'films.slug', 'films.publish', 'isHot', 'num','episode', 'language', 'release_date', 'films.first_episode_id' )
 				->leftjoin('sub_categories', 'sub_categories.id' ,'=', 'films.sub_cat_id')
 				->where('films.slug', $slug)
 				->firstOrFail();
@@ -361,16 +371,16 @@ class FilmRepository extends BaseRepository {
 			$q->whereValid(true);
 		})
 		->get();*/
+				
 		//do khi xem phim thi film tu dong chay nen moi lan goi ham nay thi update bien dem luon
 		if(!empty($post))
 		{
 			$post->counter = $post->counter + 1;
 			$post->save();
 		}
-		
-		$comments = [];
+				
 	
-		return compact('post', 'comments');
+		return $post;
 	}
 	
 	/**
@@ -381,17 +391,10 @@ class FilmRepository extends BaseRepository {
 	 */
 	public function filmBySubCatSlug($slug)
 	{
-		Log::info('This is some useful information.');
-		
-		Log::warning('Something could be going wrong.');
-		
-		Log::error('Something is really going wrong.');
-		//$subCat = $this->subCat->whereSlug($slug)->firstOrFail();
-		
 		$condition = array('publish' => '1');
-		$films = $this->model->select( config ( "constants.FILM_TABLE" ) . '.id', config ( "constants.FILM_TABLE" ) . '.created_at as created_at', config ( "constants.FILM_TABLE" ) . '.title as title', config ( "constants.FILM_TABLE" ) . '.summary',
+		$films = $this->model->select( 'films.id', 'films.created_at as created_at', 'films.title as title', 'films.summary',
 				'sub_categories.title as subCat', 'sub_categories.slug as catSlug', 'films.release_date','films.running_time',
-				 config ( "constants.FILM_TABLE" ) . '.poster_path', config ( "constants.FILM_TABLE" ) . '.slug',  config ( "constants.FILM_TABLE" ) . '.publish', 'isHot' )
+				 'films.poster_path', 'films.slug',  'films.publish', 'isHot' )
 		->leftjoin('sub_categories', 'sub_categories.id', '=', 'films.sub_cat_id')
 		->where('sub_categories.slug', $slug)
 		->orderBy('films.created_at', 'desc')
@@ -405,5 +408,18 @@ class FilmRepository extends BaseRepository {
 		return $films->paginate(5);
 	}
 	
+	/**
+	 * Hien thi danh sach phim cung bo voi phim nay
+	 *
+	 * @param $id id cua tap 1 cua bo phim nay
+	 * @return 
+	 */
+	public function getFilmInSeries($id) {
+		$cond = array('publish' => '1', 'first_episode_id' => $id);
+		$films = $this->model->where($cond)
+				->orderBy('episode', 'asc');
+		
+		return $films;
+	}
 	
 }

@@ -9,6 +9,10 @@
 @include('back.partials.entete', ['title' => trans('back/film.dashboard'), 'icone' => 'pencil', 
 								'fil' =>link_to('film', trans('back/film.location')) . ' / ' .trans('common.add')])
 <style>
+
+  .ui-autocomplete-loading {
+    background: white url("../img/bx_loader.gif") right center no-repeat;
+  }
 .nopadding {
    padding: 0 !important;
    margin: 0 !important;
@@ -80,7 +84,8 @@ input[type="file"]{
 		<!-- the loai phim -->
 		{!! Form::selection('sub_cat_id', $select, null, trans('back/category.subcat')) !!} 
 		<!-- Tập phim liên quan(tới tập 1 của phim nếu là phim bộ) -->
-		{!! Form::control('text', 0, 'first_episode_id', $errors, trans('back/film.firstfilm'))	!!}
+		{!! Form::control('text', 0, 'first_episode', $errors, trans('back/film.firstfilm'))	!!}
+		<input type="hidden" id="first_episode_id" name="first_episode_id" value="{{ isset($post) ? $post->first_episode_id : ''}}"/>
 		<!-- ghi chu -->
 		{!! Form::control('textarea', 0, 'summary', $errors, trans('common.summary')) !!} 
 	  </div>
@@ -96,13 +101,13 @@ input[type="file"]{
 			<div style="position:relative;">
 				<div class=" col-sm-2">
 			        <a class='btn btn-primary wrap'  href="javascript:BrowseServer('poster_path', 'info-poster');">
-			            poster...
+			            Poster...
 			            <!-- <input type="file" name="file_poster" size="40"  onchange='$("#btnImage1").html($(this).val());'> -->
 			       </a>
 	       		</div>
 	        	<div class=" col-sm-7">
 			        <span class='label label-info' id="info-poster"></span> 
-			        <input type="hidden" name="poster_path" id="poster_path" />
+			        <input type="hidden" name="poster_path" id="poster_path"  />
 		        </div>
 	        	<div class="col-sm-3">
 	        		{!! isset($post) ? "<img src='$img_host_url$post->poster_path?w=100&h=100' width='100' height='100' />" : "" !!}
@@ -115,7 +120,7 @@ input[type="file"]{
 			<div style="position:relative;">
 				<div class=" col-sm-2">
 			        <a class='btn btn-primary wrap' href="javascript:BrowseServer('subtitle_path', 'info-subtitle');">
-			            subtitle...
+			            Subtitle...
 			            <!-- <input type="file" name="file_subtile" size="40"  onchange='$("#btnSubTitle").html($(this).val());'> -->
 			        </a>
 	        	</div>
@@ -136,7 +141,7 @@ input[type="file"]{
 			<div style="position:relative;">
 				<div class="col-sm-2">
 			        <a class='btn btn-primary wrap' href="javascript:BrowseServer('film_path', 'info-film');">
-			            film...
+			            Phim...
 			           <!--  <input type="file" name="file_film" size="40"  onchange='$("#btnfilm").html($(this).val());'> -->
 			        </a>
 		        </div>
@@ -360,15 +365,23 @@ input[type="file"]{
 		}
 	}); */
 	 $(document).ready(function(){
-		$("#first_episode_id").autocomplete({
-            minLength:2,
-			scroll: true,
-            source: "{!! url('ajax/films') !!}",
-            	select:function(event,ui){
-                    $('#response').val(ui.item.value);
-                }
-        });
-
+	        $("#first_episode").autocomplete({
+            source:"{!! url('ajax/films') !!}", // The source of the AJAX results
+            minLength: 2, // The minimum amount of characters that must be typed before the autocomplete is triggered
+            focus: function( event, ui ) { // What happens when an autocomplete result is focused on
+                $("#first_episode").val( ui.item.label );
+                return false;
+          },
+          select: function ( event, ui ) { // What happens when an autocomplete result is selected
+              $("#first_episode").val( ui.item.label );
+              $('#first_episode_id').val( ui.item.id );
+          }
+      });
+	        
+	       /*  $("#first_episode").on("change", function(){
+		        alert(1);
+	        	$('#first_episode_id').val("");
+	        }); */
 		  //$("#btnImage1").html("abcn");
 		 
 		});  

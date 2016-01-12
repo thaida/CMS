@@ -51,7 +51,8 @@
 	</ul>
 </div>    
 
-@if(isset($films))
+@if(isset($films) && count($films) > 0)
+
 	<!-- PHIM BY CAT -->
 	<div id="cj-slider02" class="show-cj show-cj-film">
         	<h3 class="show-h3" >
@@ -78,7 +79,7 @@
 					</div>
 				</li>
 			@endforeach
-		</ul>
+			</ul>
                  
     </div>
 @endif

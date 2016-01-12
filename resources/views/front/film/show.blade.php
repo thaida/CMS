@@ -45,91 +45,34 @@
 				</video>
 
 			</div>
-			<script type="text/javascript">
-			videojs('example_video_1', {
-			      controls: true,
-			      muted: true,
-			      width: 1000,
-			      height: 480,
-			     
-			      plugins: {
-			        videoJsResolutionSwitcher: {
-			          default: 'low'
-			        }
-			      }
-			    }, function(){
-			      // this is player
-				      
-			    })
-			    
-			    
-			</script>
-			<!-- end Player -->
+			
   </div>  	
 <!-- Cac tap phim khác -->
-@if($post->num > 1)
-	<div id="cj-slider" class="show-cj show-cj-music">
-            <div class="wrap-show-cj">
-            	<div class="show-cj-slider">
-                	<div class="show-cj-item">
-                    	<a class="cj-item-lnk">
-                        	<img src="https://static.fptplay.net/static/img/share/video/21_12_2015/mi-nguyet21-12-2015_16g39-47.jpg?w=400&h=225&mode=scale" />
-                        </a>
-                        <div class="cj-info">
-                        	<h3 class="cj-h3">
-                            	<a>Ở Nhà một mình 1</a>
-                                </h3>
-                            <p class="cj-p-type">
-                            	<span class="sp-left">Nam cường ft. Sơn ca</span>
-                                <span class="sp-right">123</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="show-cj-item">
-                    	<a class="cj-item-lnk">
-                        	<img src="https://static.fptplay.net/static/img/share/video/08_01_2016/imgpsh_fullsize-108-01-2016_11g20-37.jpg?w=400&h=225&mode=scale" />
-                        </a>
-                        <div class="cj-info">
-                        	<h3 class="cj-h3">
-                            	<a>Ở Nhà một mình 1</a>
-                            </h3>
-                            <p class="cj-p-type">
-                            	<span class="sp-left">Nam cường ft. Sơn ca</span>
-                                <span class="sp-right">123</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="show-cj-item">
-                    	<a class="cj-item-lnk">
-                        	<img src="https://static.fptplay.net/static/img/share/video/24_12_2015/l1et64wm24-12-2015_16g47-58.jpg?w=400&h=225&mode=scale" />
-                        </a>
-                        <div class="cj-info">
-                        	<h3 class="cj-h3">
-                            	<a>Ở Nhà một mình 1</a>
-                            </h3>
-                            <p class="cj-p-type">
-                            	<span class="sp-left">Nam cường ft. Sơn ca</span>
-                                <span class="sp-right">123</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="show-cj-item">
-                    	<a class="cj-item-lnk">
-                        	<img src="https://static.fptplay.net/static/img/share/video/03_12_2015/images1591869_img_599703-12-2015_09g25-00.JPG?w=400&h=225&mode=scale" />
-                        </a>
-                        <div class="cj-info">
-                        	<h3 class="cj-h3">
-                            	<a>Ở Nhà một mình 1 Ở Nhà một mình 1</a>
-                            </h3>
-                            <p class="cj-p-type">
-                            	<span class="sp-left">Nam cường ft. Sơn ca</span>
-                                <span class="sp-right">123</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div  style="padding-top: 20px;">
+
+@if($post->num > 1 && isset($films_link))
+	<div id="cj-slider03" class="show-cj show-cj-film">
+		<ul class="bxslider-02">
+		@foreach ($films_link as $film)
+			<li>		
+				<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">
+					<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=300&h=200&crop-to-fit" />
+				</a>
+				<div class="cj-info">
+					<h3 class="cj-h3">
+						<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">{{$film->title}}</a>
+						<span class="sp-right">{{ date('Y', strtotime($film->release_date)) }}</span>
+					</h3>
+	                <p class="cj-p-type">
+						<span class="sp-left">Nam cường ft. Sơn ca</span>
+						<span class="sp-right">{{$film->counter}}</span>
+					</p>       
+				</div>
+			</li>
+		@endforeach
+	                    
+		</ul>
+	</div>
   @endif
 <style>
 	.info-music p{
@@ -139,6 +82,7 @@
 	}
 </style> 
 <!-- end cac tap phim khac -->
+</div>
 <!-- Thong tin phim -->
  <div class="info-music">
 	<p class="p-info-top">
@@ -402,13 +346,21 @@ $(document).ready(function() {
 		 
 
 		@endif
-		$('.bxslider-01').bxSlider({
-		  	minSlides: 2,
-		  	maxSlides: 4,
-		  	slideWidth: 240,
-		    slideMargin: 10,
-		    touchEnabled: true
-	  	});
+		
+	$('.bxslider-03').bxSlider({
+	  	maxSlides: 4,
+	  	slideWidth: 240,
+	    slideMargin: 10,
+	    touchEnabled: true
+  	});
+  	
+	$('.bxslider-01').bxSlider({
+	  	minSlides: 2,
+	  	maxSlides: 4,
+	  	slideWidth: 240,
+	    slideMargin: 10,
+	    touchEnabled: true
+  	});
     $('.bxslider-02').bxSlider({
 	  	minSlides: 2,
 	  	maxSlides: 4,
@@ -418,6 +370,26 @@ $(document).ready(function() {
   	});
 		hljs.initHighlightingOnLoad();
 
+		
+		videojs('example_video_1', {
+		      controls: true,
+		      muted: true,
+		      width: 1000,
+		      height: 480,
+		     
+		      plugins: {
+		        videoJsResolutionSwitcher: {
+		          default: 'low'
+		        }
+		      }
+		    }, function(){
+		      // this is player
+			      
+		    })
+		    
+		    
+		
+		<!-- end Player -->
 	</script>
 
 @stop

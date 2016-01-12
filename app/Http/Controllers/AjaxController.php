@@ -35,7 +35,8 @@ class AjaxController extends Controller {
 			case 'films' :
 				$data = $this->getAllFirstFilms ( $keyword );
 				foreach ( $data as $e ) {
-					$returnData [] = $e->title;
+					$tmp = (object)["id" => $e->id,  "label" => $e->title];
+					$returnData [] = $tmp;
 				}
 				break;
 			default :
@@ -54,6 +55,7 @@ class AjaxController extends Controller {
 	
 	private function getAllFirstFilms($keyword) {
 		$films = DB::table("films");
+		$films = $films->where('publish', 1);
 		
 		if(isset($keyword))
 			$films = $films->where('title', 'LIKE', '%'.$keyword.'%');
