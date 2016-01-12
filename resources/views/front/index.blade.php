@@ -30,8 +30,18 @@
 	<ul class="bxslider-01">
 	@foreach ($films as $film)
 		<li>		
+		<div class="boxTitle">
+		
 			<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">
 				<img title="{{$film->title}}"  src="{{$url.$film->poster_path}}?w=300&h=430&crop-to-fit" />
+				<div class="caption">
+					<h4>{{$film->title}}</h4>
+					<p>Đạo diễn: <br/>
+					Diễn viên: <br/>
+					Thể loại: <br />
+					<p>Thời lượng: </p>
+					<p class="">{!! $film->summary !!}</p>
+				</div>
 			</a>
 			<div class="cj-info">
 				<h3 class="cj-h3">
@@ -46,6 +56,7 @@
 					<span class="sp-left">Bản đẹp&nbsp;|&nbsp;Thuyết minh</span>
 				</p>
 			</div>
+		</div>
 		</li>
 	@endforeach
 	</ul> 	
@@ -277,6 +288,14 @@
 	    slideMargin: 10,
 	    touchEnabled: true
   	});
+
+    $('.boxTitle').hover(function(){
+		$(this).find('.caption').slideDown();
+	},
+	function(){
+		$(this).find('.caption').slideUp();
+	}
+);
   </script>
 	<!-- End SlidesJS Required -->
 	@stop

@@ -118,24 +118,34 @@
 	</h3>
 	<ul class="bxslider-01">	
 		 @foreach ($films as $film)
-		 <li>		
-			<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">
-				<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=300&h=430&crop-to-fit" />
-			</a>
-			<div class="cj-info">
-				<h3 class="cj-h3">
-					<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">{{$film->title}}</a>
-					<span class="sp-right">{{ date('Y', strtotime($film->release_date)) }}</span>
-				</h3>
-				<p class="cj-p-film">
-					<span class="sp-left">Fire With Fire</span>
-					<span class="sp-right">{{$film->running_time}}</span>                                
-				</p>
-				<p class="cj-p-type">
-					<span class="sp-left">Bản đẹp&nbsp;|&nbsp;Thuyết minh</span>
-				</p>
+		 <li>			 
+			<div class="boxTitle">	
+				<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">
+					<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=300&h=430&crop-to-fit" />
+					<div class="caption">
+						<h4>{{$film->title}}</h4>
+						<p>Đạo diễn: <br/>
+						Diễn viên: <br/>
+						Thể loại: <br />
+						<p>Thời lượng: </p>
+						<p class="">{!! $film->summary !!}</p>
+					</div>
+				</a>
+				<div class="cj-info">
+					<h3 class="cj-h3">
+						<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">{{$film->title}}</a>
+						<span class="sp-right">{{ date('Y', strtotime($film->release_date)) }}</span>
+					</h3>
+					<p class="cj-p-film">
+						<span class="sp-left">Fire With Fire</span>
+						<span class="sp-right">{{$film->running_time}}</span>                                
+					</p>
+					<p class="cj-p-type">
+						<span class="sp-left">Bản đẹp&nbsp;|&nbsp;Thuyết minh</span>
+					</p>
+				</div>			
 			</div>
-		</li>
+		 </li>
 		@endforeach
 	</ul>
 </div>
@@ -149,22 +159,32 @@
 	<ul class="bxslider-02">
 	
 		 @foreach ($films_free as $film)
-			<li>		
-			<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">
-				<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=300&h=230&crop-to-fit" />
-			</a>
-			<div class="cj-info">
-				<h3 class="cj-h3">
-					<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">{{$film->title}}</a>
-					<span class="sp-right">{{ date('Y', strtotime($film->release_date)) }}</span>
-				</h3>
-				<p class="cj-p-film">
-					<span class="sp-left">Fire With Fire</span>
-					<span class="sp-right">{{ $film->running_time }}</span>                                
-				</p>
-				<p class="cj-p-type">
-					<span class="sp-left">Bản đẹp&nbsp;|&nbsp;Thuyết minh</span>
-				</p>
+			<li>	
+			<div class="boxTitle">		
+				<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">
+					<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=300&h=230&crop-to-fit" />
+					<div class="caption">
+						<h4>{{$film->title}}</h4>
+						<p>Đạo diễn: <br/>
+						Diễn viên: <br/>
+						Thể loại: <br />
+						<p>Thời lượng: </p>
+						<p class="">{!! $film->summary !!}</p>
+					</div>
+				</a>
+				<div class="cj-info">
+					<h3 class="cj-h3">
+						<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">{{$film->title}}</a>
+						<span class="sp-right">{{ date('Y', strtotime($film->release_date)) }}</span>
+					</h3>
+					<p class="cj-p-film">
+						<span class="sp-left">Fire With Fire</span>
+						<span class="sp-right">{{ $film->running_time }}</span>                                
+					</p>
+					<p class="cj-p-type">
+						<span class="sp-left">Bản đẹp&nbsp;|&nbsp;Thuyết minh</span>
+					</p>
+				</div>
 			</div>
 		</li>
 		@endforeach
