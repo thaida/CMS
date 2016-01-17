@@ -104,6 +104,7 @@
                             <li><a href="{!! url('cat') !!}" ><i class="glyphicon glyphicon-list-alt">&nbsp; </i>{{ trans('back/admin.categorys') }}</a></li>
                             <li><a href="{!! url('subcat') !!}"><i class="glyphicon glyphicon-tasks">&nbsp;</i>{{ trans('back/admin.child-category') }}</a></li>
                             <li><a href="{!! url('film') !!}"><i class="glyphicon glyphicon-facetime-video">&nbsp;</i>{{ trans('back/admin.film') }}</a></li>
+                            <li><a href="{!! url('music') !!}">{{ trans('back/admin.music') }}</a></li>
                             <li><a href="{!! url('banner') !!}">{{ trans('back/admin.banner') }}</a></li>
                             <li><a href="{!! url('category/create') !!}">{{ trans('back/admin.child-category') }}</a></li>
                         </ul>

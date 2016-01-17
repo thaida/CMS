@@ -59,8 +59,17 @@ Route::put('filmpublish/{id}', 'FilmController@updatePublish');
 Route::put('filmhot/{id}', 'FilmController@updateFront');
 Route::get('phim', ['uses' => 'FilmController@allfilm', 'as' => 'film.allphim']);
 Route::get('phim/{cat}', ['uses' => 'FilmController@filmbycat', 'as' => 'film.filmbycat']);
-
 Route::resource('film', 'FilmController');
+// MUSIC
+Route::get('music/order', ['uses' => 'MusicController@indexOrder', 'as' => 'music.order']);
+Route::get('music/phim-bo', ['uses' => 'MusicController@series', 'as' => 'music.series']);
+Route::get('music/phim-le', ['uses' => 'MusicController@single', 'as' => 'music.single']);
+
+Route::put('musicpublish/{id}', 'MusicController@updatePublish');
+Route::put('musichot/{id}', 'MusicController@updateFront');
+Route::get('nhac', ['uses' => 'MusicController@allfilm', 'as' => 'music.allmusic']);
+Route::get('nhac/{cat}', ['uses' => 'MusicController@filmbycat', 'as' => 'music.musicbycat']);
+Route::resource('music', 'MusicController');
 
 // Banner
 Route::get('banner/order', ['uses' => 'BannerController@indexOrder', 'as' => 'banner.order']);
@@ -73,7 +82,7 @@ Route::resource('comment', 'CommentController', [
 	'except' => ['create', 'show']
 ]);
 
-/* AJAX */
+//AJAX 
 Route::get('ajax/{action}', ['uses' => 'AjaxController@helpers', 'as' => 'ajax.helpers'])
     ->where('action', '.*');
 

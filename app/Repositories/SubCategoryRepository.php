@@ -186,4 +186,13 @@ class SubCategoryRepository extends BaseRepository {
 	
 		return compact('select');
 	}
+	
+	public function getAllByMusicSelect()
+	{
+		$select = $this->model->select('id', 'created_at', 'updated_at', 'title', 'slug', 'user_id', 'summary')
+						->where('cat_id', config('constants.MUSIC_CAT_ID'))
+		->lists('title', 'id');
+	
+		return compact('select');
+	}
 }

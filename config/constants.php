@@ -2,6 +2,7 @@
 return [ 
 		'CATEGORY_TABLE' => 'categories',
 		'FILM_CAT_ID' => 1, //category id of Film
+		'MUSIC_CAT_ID' => 5, //category id of Film
 		'SUB_CATEGORY_TABLE' => 'sub_categories',
 		'FILM_TABLE' => 'films',
 		'BANNER_TABLE' => 'banners',
