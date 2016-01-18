@@ -106,7 +106,7 @@ class MusicController extends Controller {
 	 * @return Response
 	 */
 	public function edit($id) {
-		$Music = $this->music_gestion->getById ( $id );
+		$music = $this->music_gestion->getById ( $id );
 		
 		// $this->authorize('change', $post);
 		
@@ -123,7 +123,7 @@ class MusicController extends Controller {
 	 * @return Response
 	 */
 	public function update(MusicRequest $request, $id) {
-		$Music = $this->music_gestion->getById ( $id );
+		$music = $this->music_gestion->getById ( $id );
 		
 		// $this->authorize('change', $post);
 		
@@ -211,7 +211,7 @@ class MusicController extends Controller {
 		
 		$post = $this->music_gestion->show ( $slug );
 	
-		$musics_link = $this->music_gestion->getMusicInSeries($post->first_episode_id)->get();
+		$musics_link = [];//$this->music_gestion->getMusicInSeries($post->first_episode_id)->get();
 
 		//tim nhung Music lien quan toi Music nay de dua vao muc de xuat
 		//$Musics = $this->Music_gestion->MusicRelated($slug);
@@ -239,7 +239,7 @@ class MusicController extends Controller {
 		
 		$links->setPath ( '' )->render ();
 		//return "hello";		
-		return view ( 'front.Music.list', compact('Musics_most_view','img_url','Music_url', 'Musics', 'links'));
+		return view ( 'front.music.list', compact('Musics_most_view','img_url','Music_url', 'Musics', 'links'));
 		//return view ( 'front.Music.list', array_merge ( $this->Music_gestion->series(),compact($this->Music_gestion->MusicBySubCatSlug(4, 'tam-ly', null)),  compact('img_url','Music_url') ) );
 	}
 	/**
@@ -251,14 +251,14 @@ class MusicController extends Controller {
 	 */
 	public function allMusic() {
 		$img_url = config('medias.image-host');
-		$Music_url = config('medias.Music-host');
-		$Musics_most_view = $this->Music_gestion->allMusic();
-		$Musics = $this->Music_gestion->MusicBySubCatSlug('tinh-cam');
-		$links = $Musics->appends ( [] );
+		$music_url = config('medias.music-host');
+		$musics_most_view = $this->music_gestion->allMusic();
+		$musics = $this->music_gestion->MusicBySubCatSlug('tinh-cam');
+		$links = $musics->appends ( [] );
 	
 		$links->setPath ( '' )->render ();
 		//return "hello";
-		return view ( 'front.Music.list', compact('Musics_most_view','img_url','Music_url', 'Musics', 'links'));
+		return view ( 'front.music.list', compact('musics_most_view','img_url','music_url', 'musics', 'links'));
 		//return view ( 'front.Music.list', array_merge ( $this->Music_gestion->series(),compact($this->Music_gestion->MusicBySubCatSlug(4, 'tam-ly', null)),  compact('img_url','Music_url') ) );
 	}
 	
@@ -266,15 +266,15 @@ class MusicController extends Controller {
 	/* Hien thi danh sach phim theo subcat */
 	public function Musicbycat($cat) {
 		$img_url = config('medias.image-host');
-		$Music_url = config('medias.Music-host');
+		$music_url = config('medias.music-host');
 		
-		$Musics = $this->Music_gestion->getAllMusicBySubCat ( 4, $cat, null);
+		$musics = $this->music_gestion->getAllMusicBySubCat ( 4, $cat, null);
 		
-		$links = $Musics->appends ( [] );
+		$links = $musics->appends ( [] );
 						
 		$links->setPath ( '' )->render ();
 			//return view ( 'back.Music.index', compact ( 'posts', 'links', 'order' ) );
-		return view ( 'front.Music.index', ( compact('img_url', 'Music_url', 'Musics', 'links') ) );
+		return view ( 'front.Music.index', ( compact('img_url', 'music_url', 'musics', 'links') ) );
 	}
 	/**
 	 * Hien thi danh sach phim bo
@@ -285,7 +285,7 @@ class MusicController extends Controller {
 	 */
 	public function single() {
 		$img_url = config('medias.image-host');
-		$Music_url = config('medias.Music-host');
+		$Music_url = config('medias.music-host');
 		//return "hello";
 		$Musics_most_view = $this->Music_gestion->single();
 		$Musics = $this->Music_gestion->MusicBySubCatSlug('tinh-cam');

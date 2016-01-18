@@ -50,10 +50,10 @@
 <!-- Cac tap phim khác -->
 <div  style="padding-top: 20px;">
 
-@if($post->num > 1 && isset($films_link))
+@if($post->num > 1 && isset($musics_link))
 	<div id="cj-slider03" class="show-cj show-cj-film">
 		<ul class="bxslider-02">
-		@foreach ($films_link as $film)
+		@foreach ($musics_link as $film)
 			<li>		
 				<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">
 					<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=300&h=200&crop-to-fit" />
@@ -114,10 +114,10 @@
 		<!-- PHIM DE XUAT -->
 <div id="cj-slider01" class="show-cj show-cj-film">
 	<h3 class="show-h3">
-		<a>PHIM ĐỀ XUẤT</a>
+		<a>VIDEO ĐỀ XUẤT</a>
 	</h3>
 	<ul class="bxslider-01">	
-		 @foreach ($films as $film)
+		 @foreach ($musics as $film)
 		 <li>			 
 			<div class="boxTitle">	
 				<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">
@@ -154,11 +154,11 @@
 		<!-- PHIM MIEN PHI -->
 <div id="cj-slider02" class="show-cj show-cj-film">
 	<h3 class="show-h3">
-		<a>PHIM MIỄN PHÍ</a>
+		<a>VIDEO MIỄN PHÍ</a>
 	</h3>
 	<ul class="bxslider-02">
 	
-		 @foreach ($films_free as $film)
+		 @foreach ($musics_free as $film)
 			<li>	
 			<div class="boxTitle">		
 				<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">

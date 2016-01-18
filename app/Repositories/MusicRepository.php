@@ -85,8 +85,7 @@ class MusicRepository extends BaseRepository {
 		$film->save ();
 		
 		//neu khong nhap phim lien quan, mac dinh phim nay lien quan den chinh no
-		$film->first_episode_id = $film->id;
-		$film->update ();
+		
 		return $film;
 	}
 	
@@ -196,10 +195,10 @@ class MusicRepository extends BaseRepository {
 	 * @param App\Models\Post $post        	
 	 * @return array
 	 */
-	public function edit($post) {
+	public function edit($music) {
 		$tags = [ ];
 		
-		return compact ( 'post', 'tags' );
+		return compact ( 'music', 'tags' );
 	}
 	
 	/**
@@ -219,7 +218,7 @@ class MusicRepository extends BaseRepository {
 	 * @param  string  $slug
 	 * @return array
 	 */
-	public function filmRelated($slug)
+	public function musicRelated($slug)
 	{
 		$post = $this->model->whereSlug($slug)->firstOrFail();
 	
@@ -241,7 +240,7 @@ class MusicRepository extends BaseRepository {
 	 * @param  string  $slug
 	 * @return array
 	 */
-	public function filmFree($slug)
+	public function musicFree($slug)
 	{
 		$post = $this->model->whereSlug($slug)->firstOrFail();
 	
@@ -263,11 +262,11 @@ class MusicRepository extends BaseRepository {
 	 *
 	 * @return array
 	 */
-	public function allFilm($keyword = null)
+	public function allMusic($keyword = null)
 	{
 		$condition = array('publish' => '1');
 		$musics_most_view = $this->model->where($condition)
-		->where('episode', '<', '2')
+		
 		->orderBy('counter', 'desc')
 		->orderBy('created_at', 'desc')
 	;
@@ -351,7 +350,7 @@ class MusicRepository extends BaseRepository {
 				
 		$post = $this->model->with('user')->select('musics.id', 'musics.created_at as created_at', 'musics.title as title', 'musics.summary',
 				'sub_categories.title as subCat', 'sub_categories.slug as catSlug', 'musics.release_date','musics.running_time', 'musics.counter',
-				 'musics.poster_path', 'musics.slug', 'musics.publish', 'isHot', 'num','episode', 'language', 'release_date', 'musics.first_episode_id' )
+				 'musics.poster_path', 'musics.slug', 'musics.publish', 'isHot', 'language', 'release_date' )
 				->leftjoin('sub_categories', 'sub_categories.id' ,'=', 'musics.sub_cat_id')
 				->where('musics.slug', $slug)
 				->firstOrFail();
@@ -381,7 +380,7 @@ class MusicRepository extends BaseRepository {
 	 * @param string $slug
 	 * @return array
 	 */
-	public function filmBySubCatSlug($slug)
+	public function musicBySubCatSlug($slug)
 	{
 		$condition = array('publish' => '1');
 		$musics = $this->model->select( 'musics.id', 'musics.created_at as created_at', 'musics.title as title', 'musics.summary',

@@ -105,7 +105,7 @@ input[type="file"]{
 			        <input type="hidden" name="poster_path" id="poster_path" />
 		        </div>
 	        	<div class="col-sm-3">
-	        		{!! isset($post) ? "<img src='$img_host_url$post->poster_path?w=100&h=100' width='100' height='100' />" : "" !!}
+	        		{!! isset($music) ? "<img src='$img_host_url$music->poster_path?w=100&h=100' width='100' height='100' />" : "" !!}
 	        	</div>
 			</div>
 		<!-- end choose poster -->
@@ -121,8 +121,8 @@ input[type="file"]{
 	        	</div>
 	        
 		        <div class=" col-sm-10">
-			        <span class='label label-info' id="info-subtitle">{{isset($post) ? basename($post->subtitle_path) : ""}}</span>
-			        @if(isset($post))
+			        <span class='label label-info' id="info-subtitle">{{isset($music) ? basename($music->subtitle_path) : ""}}</span>
+			        @if(isset($music))
 			        	<span class="glyphicon glyphicon-download-alt"><a href="">Download</a></span>
 			        @endif
 			        <input type="hidden" name="subtitle_path" id="subtitle_path" />
@@ -142,7 +142,7 @@ input[type="file"]{
 		        </div>
 	        
 		        <div class=" col-sm-10">
-			        <span class='label label-info' id="info-film">{{isset($post) ? basename($post->film_path) : ""}}</span>		        
+			        <span class='label label-info' id="info-film">{{isset($music) ? basename($music->film_path) : ""}}</span>		        
 			         <input type="hidden" name="film_path" id="film_path" />
 		         </div>
 			</div>

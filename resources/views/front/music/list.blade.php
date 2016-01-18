@@ -22,25 +22,25 @@
 @stop 
 
 @section('main')
-    <!-- PHIM XEM NHIEU NHAT -->
+    <!-- NGHE NHIỀU NHẤT -->
 <div id="cj-slider01" class="show-cj show-cj-film">
 	<h3 class="show-h3">
-		<a>PHIM XEM NHIỀU NHẤT</a>
+		<a>NGHE NHIỀU NHẤT</a>
 	</h3>
 	<ul class="bxslider-01">
-	  @foreach ($films_most_view as $film)
+	  @foreach ($musics_most_view as $music)
 		<li>		
-			<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">
-				<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=300&h=430&crop-to-fit" />
+			<a href="{{$music_url.$music->slug}}" title="{{$music->title}}">
+				<img title="{{$music->title}}"  src="{{$img_url.$music->poster_path}}?w=300&h=129&crop-to-fit" />
 			</a>
 			<div class="cj-info">
 				<h3 class="cj-h3">
-					<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">{{$film->title}}</a>
-					<span class="sp-right">{{ date('Y', strtotime($film->release_date)) }}</span>
+					<a href="{{$music_url.$music->slug}}" title="{{$music->title}}">{{$music->title}}</a>
+					<span class="sp-right">{{ date('Y', strtotime($music->release_date)) }}</span>
 				</h3>
 				<p class="cj-p-film">
 					<span class="sp-left">Fire With Fire</span>
-					<span class="sp-right">{{$film->running_time}}</span>                                
+					<span class="sp-right">{{$music->running_time}}</span>                                
 				</p>
 				<p class="cj-p-type">
 					<span class="sp-left">Bản đẹp&nbsp;|&nbsp;Thuyết minh</span>
@@ -51,7 +51,7 @@
 	</ul>
 </div>    
 
-@if(isset($films) && count($films) > 0)
+@if(isset($musics) && count($musics) > 0)
 
 	<!-- PHIM BY CAT -->
 	<div id="cj-slider02" class="show-cj show-cj-film">
@@ -59,14 +59,14 @@
             	<a title="{{ $films->get(0)->subCat}}"	href="{!! url('phim/'. $films->get(0)->catSlug) !!}">{{ $films->get(0)->subCat}}</a>
             </h3>
            <ul class="bxslider-02">
-           	@foreach ($films as $film)
+           	@foreach ($musics as $film)
 				<li>
-					<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">
+					<a href="{{$music_url.$film->slug}}" title="{{$film->title}}">
 						<img title="{{$film->title}}"  src="{{$img_url.$film->poster_path}}?w=300&h=430&crop-to-fit" />
 					</a>
 					<div class="cj-info">
 						<h3 class="cj-h3">
-							<a href="{{$film_url.$film->slug}}" title="{{$film->title}}">{{$film->title}}</a>
+							<a href="{{$music_url.$film->slug}}" title="{{$film->title}}">{{$film->title}}</a>
 							<span class="sp-right">{{ date('Y', strtotime($film->release_date)) }}</span>
 						</h3>
 						<p class="cj-p-film">

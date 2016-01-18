@@ -67,7 +67,7 @@ Route::get('music/phim-le', ['uses' => 'MusicController@single', 'as' => 'music.
 
 Route::put('musicpublish/{id}', 'MusicController@updatePublish');
 Route::put('musichot/{id}', 'MusicController@updateFront');
-Route::get('nhac', ['uses' => 'MusicController@allfilm', 'as' => 'music.allmusic']);
+Route::get('nhac', ['uses' => 'MusicController@allmusic', 'as' => 'music.allmusic']);
 Route::get('nhac/{cat}', ['uses' => 'MusicController@filmbycat', 'as' => 'music.musicbycat']);
 Route::resource('music', 'MusicController');
 

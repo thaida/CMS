@@ -84,7 +84,7 @@
         $(this).hide().parent().append('<i class="fa fa-refresh fa-spin"></i>');
         var token = $('input[name="_token"]').val();
         $.ajax({
-          url: '{{ url('filmpublish') }}' + '/' + this.value,
+          url: '{{ url('musicpublish') }}' + '/' + this.value,
           type: 'PUT',
           data: "publish=" + this.checked + "&_token=" + token
         })
@@ -104,7 +104,7 @@
           $(this).hide().parent().append('<i class="fa fa-refresh fa-spin"></i>');
           var token = $('input[name="_token"]').val();
           $.ajax({
-            url: '{{ url('filmhot') }}' + '/' + this.value,
+            url: '{{ url('musichot') }}' + '/' + this.value,
             type: 'PUT',
             data: "ishot=" + this.checked + "&_token=" + token
           })
@@ -144,7 +144,7 @@
         $('.breadcrumb li').append('<span id="tempo" class="fa fa-refresh fa-spin"></span>');       
         // Send ajax
         $.ajax({
-          url: '{{ url('film/order') }}',
+          url: '{{ url('music/order') }}',
           type: 'GET',
           dataType: 'json',
           data: "name=" + $(this).attr('name') + "&sort=" + tri

@@ -182,7 +182,8 @@ class SubCategoryRepository extends BaseRepository {
 	{
 		$select = $this->model->select('id', 'created_at', 'updated_at', 'title', 'slug', 'user_id', 'summary')
 						->where('cat_id', config('constants.FILM_CAT_ID'))
-		->lists('title', 'id');
+						->where('active', 1)
+						->lists('title', 'id');
 	
 		return compact('select');
 	}
@@ -191,6 +192,7 @@ class SubCategoryRepository extends BaseRepository {
 	{
 		$select = $this->model->select('id', 'created_at', 'updated_at', 'title', 'slug', 'user_id', 'summary')
 						->where('cat_id', config('constants.MUSIC_CAT_ID'))
+						->where('active', 1)
 		->lists('title', 'id');
 	
 		return compact('select');

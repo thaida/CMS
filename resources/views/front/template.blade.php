@@ -80,7 +80,7 @@
                     	</ul>
                     </li>
                      <li class="header-li-parent">
-                    	<a class="header-lnk-parent" href="{{url('music') }}">NHẠC</a>
+                    	<a class="header-lnk-parent" href="{{url('nhac') }}">NHẠC</a>
                     </li>
                      <li class="header-li-parent">
                     	<a class="header-lnk-parent" href="{{url('tv-show') }}">TV SHOW</a>
