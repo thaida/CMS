@@ -4,19 +4,13 @@
 @stop
 @section('slide')
 <!-- The container is used to define the width of the slideshow -->
-<ul class="bxslider">
-	  <li><img
-		src="https://static.fptplay.net/static/img/share/video/06_01_2016/imgpsh_fullsize06-01-2016_15g48-43.jpg?w=1000&h=400&mode=scale"
-		alt="Photo by: Missy S Link: http://www.flickr.com/photos/listenmissy/5087404401/">
-		</li>
-	  <li><img src="https://static.fptplay.net/static/img/share/video/30_12_2015/x19qj3tu30-12-2015_22g27-52.jpg?w=1000&h=400&mode=scale"></li>
-		<li>
-		<img src="https://static.fptplay.net/static/img/share/video/30_12_2015/hxq787qa30-12-2015_22g21-52.jpg?w=1000&h=400&mode=scale">
-		</li>
-		<li>
-		<img src="https://static.fptplay.net/static/img/share/video/30_12_2015/0i0x4kly30-12-2015_22g17-56.jpg?w=1000&h=400&mode=scale" >
-		</li>
-</ul>
+@if(isset($banners))
+		<ul class="bxslider">
+		@foreach($banners as $banner)
+		  <li><img src="{{ $img_url.$banner->poster_path }}" title="{{$banner->title}}" /></li>
+		@endforeach
+		</ul>
+	@endif
 	
 
 @stop 

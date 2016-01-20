@@ -10,7 +10,7 @@ use App\Repositories\FilmRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\SubCategoryRepository;
 use Input;
-use Log;
+use App\Models\Banner;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FilmController extends Controller {
@@ -238,8 +238,12 @@ class FilmController extends Controller {
 		$links = $films->appends ( [] );
 		
 		$links->setPath ( '' )->render ();
+		
+		$cond = ['publish' => 1, 'sub_cat_id' => 3];
+		$banners = Banner::where($cond)->get();
+		
 		//return "hello";		
-		return view ( 'front.film.list', compact('films_most_view','img_url','film_url', 'films', 'links'));
+		return view ( 'front.film.list', compact('films_most_view','img_url','film_url', 'films', 'links', 'banners'));
 		//return view ( 'front.film.list', array_merge ( $this->film_gestion->series(),compact($this->film_gestion->filmBySubCatSlug(4, 'tam-ly', null)),  compact('img_url','film_url') ) );
 	}
 	/**
@@ -255,10 +259,13 @@ class FilmController extends Controller {
 		$films_most_view = $this->film_gestion->allFilm();
 		$films = $this->film_gestion->filmBySubCatSlug('tinh-cam');
 		$links = $films->appends ( [] );
-	
+		
+		$cond = ['publish' => 1, 'sub_cat_id' => 3];
+		$banners = Banner::where($cond)->get();
+		
 		$links->setPath ( '' )->render ();
 		//return "hello";
-		return view ( 'front.film.list', compact('films_most_view','img_url','film_url', 'films', 'links'));
+		return view ( 'front.film.list', compact('films_most_view','img_url','film_url', 'films', 'links', 'banners'));
 		//return view ( 'front.film.list', array_merge ( $this->film_gestion->series(),compact($this->film_gestion->filmBySubCatSlug(4, 'tam-ly', null)),  compact('img_url','film_url') ) );
 	}
 	
@@ -291,8 +298,11 @@ class FilmController extends Controller {
 		$films = $this->film_gestion->filmBySubCatSlug('tinh-cam');
 		$links = $films->appends ( [] );
 		
+		$cond = ['publish' => 1, 'sub_cat_id' => 6];
+		$banners = Banner::where($cond)->get();
+		
 		$links->setPath ( '' )->render ();
-		return view ( 'front.film.list', compact('img_url','film_url', 'links', 'films_most_view', 'films') );
+		return view ( 'front.film.list', compact('img_url','film_url', 'links', 'films_most_view', 'films', 'banners') );
 	}
 }
 

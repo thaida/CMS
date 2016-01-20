@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\ChangeLocale;
-use App\Repositories\BannerRepository;
-use Log;
 use App\Models\Film;
+use App\Models\Banner;
 use App\Models\Tag;
+use DB;
 
 class HomeController extends Controller
 {
@@ -16,8 +16,7 @@ class HomeController extends Controller
 	 * @var App\Models\Tag
 	 */
 	protected $film;
-	public function __construct(
-			Film $film)
+	public function __construct(Film $film)
 	{
 		$this->film = $film;
 	}
@@ -37,9 +36,13 @@ class HomeController extends Controller
 		$films = $this->film->where($filmCondition)
 						->orderBy('created_at', 'desc')
 						->get();
+		//$banners = $this->getBanner();
+		$cond = ['publish' => 1, 'sub_cat_id' => 5];
+		$banners = Banner::where($cond)->get();
 		
-		return view('front.index', array_merge(compact('films'), compact('url'), compact('film_url')));
+		return view('front.index', compact('films','url','film_url', 'banners'));
 	}
+		
 
 	/**
 	 * Change language.
@@ -57,5 +60,6 @@ class HomeController extends Controller
 
 		return redirect()->back();
 	}
+	
 
 }

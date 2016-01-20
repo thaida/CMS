@@ -12,10 +12,13 @@
 <!-- SlidesJS Required: Start Slides -->
 <!-- The container is used to define the width of the slideshow -->
 <div class="banner-top">
-	<ul class="bxslider">
-	  <li><img src="{{ url('img/temp_01.jpg') }}" title="Funky roots" /></li>
-	  <li><img src="{{ url('img/temp_02.jpg') }}" title="The long and winding road" /></li>
-	</ul>
+	@if(isset($banners))
+		<ul class="bxslider">
+		@foreach($banners as $banner)
+		  <li><img src="{{ $url.$banner->poster_path }}" title="{{$banner->title}}" /></li>
+		@endforeach
+		</ul>
+	@endif
 </div>
 
 @stop
