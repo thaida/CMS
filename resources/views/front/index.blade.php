@@ -1,7 +1,4 @@
 @extends('front.template') 
-@section('head')
-{!! HTML::style('css/owl.carousel.css') !!}
-@stop
 
 @section('slide')
 

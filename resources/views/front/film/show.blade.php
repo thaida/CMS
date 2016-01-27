@@ -7,14 +7,18 @@
 	<!-- Include ES5 shim, sham and html5 shiv for ie8 support  -->
 	
 	<!-- video.js must be in the <head> for older IEs to work. -->
-	{!! HTML::script('js/video/video.min.js') !!} 
+	{!! HTML::script('js/video/video.min.js') !!}
+	{!! HTML::script('js/video/videojs-media-sources.js') !!}  
+	{!! HTML::script('js/video/videojs.hls.js') !!} 
+		
+	
 	<!-- Exclude this if you don't need ie8 support -->
 	{!! HTML::script('js/video/ie8/videojs-ie8.min.js') !!}
 	{!! HTML::script('js/video/videojs-resolution-switcher.js') !!} 
 	{!! HTML::style('js/video/videojs-resolution-switcher.css') !!}
 	<!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
 	<script>
-	    videojs.options.flash.swf = "js/video/video-js.swf";
+	    videojs.options.flash.swf = "http://192.168.202.87/laravel5/public/js/video/video-js.swf";
 	</script>
 	
 	{!! HTML::style('css/jquery.bxslider.css') !!}
@@ -27,11 +31,9 @@
 					class="video-js vjs-default-skin  vjs-big-play-centered" controls
 					preload="auto" width="600" height="264" data-setup="{ }" autoplay  poster="{{$img_url.$post->poster_path}}?w=600&h=264">
 					<source
-						src="http://192.168.202.87/film/Mission.Impossible.Rogue.Nation.2015.m720p.HDTV.X264.ACC-TiN(1).mp4"
-						type='video/mp4' label="SD" />
-					<source
-						src="http://192.168.202.87/film/Transformers.Age.of.Extinction.2014.1080p.BluRay.x264.YIFY.mp4"
-						type='video/mp4' label="HD" />
+						src="http://10.30.149.73/hls/myvideo.m3u8"
+						type='application/x-mpegURL' label="SD" />
+
 
 					<track kind="captions"
 						src="http://192.168.202.87/film/video-subtitles-en.vtt" srclang="en" label="English" default></track>
