@@ -330,3 +330,5 @@ a.under:hover{text-decoration:underline;}
     float: none;
     font-size: 11px;
 }
+
+.video-js.vjs-default-skin.vjs-paused .vjs-big-play-button {display:block !important;}
