@@ -88,7 +88,7 @@
 <!-- End SlidesJS Required -->
 <!-- SlidesJS Required: Initialize SlidesJS with a jQuery doc ready -->
 <script>
-    $(function() {
+   /*  $(function() {
       $('#slides').slidesjs({
         width: 940,
         height: 400,
@@ -99,7 +99,7 @@
           swap: true
         }
       });
-    });
+    }); */
 
     $('.bxslider').bxSlider({
   	  mode: 'fade',

@@ -5,6 +5,11 @@ namespace App\Repositories;
 use App\Models\Film;
 use App\Models\SubCategory;
 
+use Spatie\SearchIndex\SearchIndexFacade;
+use Spatie\SearchIndex\Searchable;
+use Spatie\SearchIndex\SearchIndexHandler;
+use Spatie\SearchIndex\SearchIndexServiceProvider;
+
 
 class FilmRepository extends BaseRepository {
 	
@@ -95,6 +100,7 @@ class FilmRepository extends BaseRepository {
 		//neu khong nhap phim lien quan, mac dinh phim nay lien quan den chinh no
 		$film->first_episode_id = $film->id;
 		$film->update ();
+		SearchIndexFacade::upsertToIndex($film);
 		return $film;
 	}
 	
@@ -184,6 +190,7 @@ class FilmRepository extends BaseRepository {
 	 */
 	public function destroy($post) {
 		$post->delete ();
+		SearchIndexFacade::removeFromIndex($post);
 	}
 	/**
 	 * Create a post.
@@ -420,6 +427,61 @@ class FilmRepository extends BaseRepository {
 				->orderBy('episode', 'asc');
 		
 		return $films;
+	}
+	
+	/**
+	 * Tim kiem danh sach phim phu hop voi tu khoa
+	 * Su dung ElasticSearch Engine
+	 * @param $keyword tu khoa muon tim kiem
+	 * @return 
+	 */
+	public function search($keyword) {
+	
+		$client = SearchIndexFacade::getClient();
+		
+		//tim kiem tat ca cac cot trong index voi tu khoa trong query_string 
+		//và điều kiện lọc bổ sung là name = "trò"
+		/* "query": {
+			"filtered": {
+				"query": {
+					"query_string": {
+						"query": "vời"
+					}
+				},
+				"filter": {
+					"term": { "name": "trò" }
+				}
+			}
+		} */
+		$params = [
+		    //"search_type" => "scan",    // use search_type=scan
+		    //"scroll" => "30s",          // how long between scroll requests. should be small!
+		    "size" => 50,               // how many results *per shard* you want back
+		    "index" => "main",
+			"type"=> "film",
+		    "body" => [
+		        "query" => [
+		        	 /* 'filtered' => [
+		                'filter' => [
+		                		"or" => [
+		                			'term' => [ 'summary' => 'vời1' ],
+		                			'term' => [ 'name' => 'vờ' ]
+		                		]
+		                    
+		                ], */
+		                'query' => [
+		                    'match' => [ 'name' => $keyword]
+		                ]
+            		]
+				
+		    ]
+		];
+		
+		$results = $client->search($params);   // Execute the search
+		
+		//var_dump($doc["name"]);
+		//echo $milliseconds. " " . $score . " " ;
+		return $results;
 	}
 	
 }

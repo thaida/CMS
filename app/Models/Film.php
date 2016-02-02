@@ -5,8 +5,51 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Elasticquent\ElasticquentTrait;
 use Log;
+use Spatie\SearchIndex\Searchable;
 
-class Film extends Model {
+class Film extends Model implements Searchable {
+	
+	/**
+	 * Returns an array with properties which must be indexed
+	 *
+	 * @return array
+	 */
+	public function getSearchableBody()
+	{
+		$searchableProperties = [
+				'title' => $this->title,
+				'summary' => $this->summary,
+				'actor' => $this->actor,
+				'publish' => $this->publish,
+				'slug' => $this->slug,
+				'director' => $this->director,
+				'poster' => $this->poster_path
+		];
+	
+		return $searchableProperties;
+	
+	}
+	
+	/**
+	 * Return the type of the searchable subject
+	 *
+	 * @return string
+	 */
+	public function getSearchableType()
+	{
+		return 'film';
+	}
+	
+	/**
+	 * Return the id of the searchable subject
+	 *
+	 * @return string
+	 */
+	public function getSearchableId()
+	{
+		return $this->id;
+	}
+	
 	
 	/**
 	 * The table associated with the model.

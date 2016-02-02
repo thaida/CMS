@@ -54,6 +54,7 @@ Route::resource('subcat', 'SubCatController');
 Route::get('film/order', ['uses' => 'FilmController@indexOrder', 'as' => 'film.order']);
 Route::get('film/phim-bo', ['uses' => 'FilmController@series', 'as' => 'film.series']);
 Route::get('film/phim-le', ['uses' => 'FilmController@single', 'as' => 'film.single']);
+Route::get('film/tim-kiem/{keyword?}', ['uses' => 'FilmController@search', 'as' => 'film.search']);
 
 Route::put('filmpublish/{id}', 'FilmController@updatePublish');
 Route::put('filmhot/{id}', 'FilmController@updateFront');

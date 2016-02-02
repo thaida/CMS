@@ -304,5 +304,19 @@ class FilmController extends Controller {
 		$links->setPath ( '' )->render ();
 		return view ( 'front.film.list', compact('img_url','film_url', 'links', 'films_most_view', 'films', 'banners') );
 	}
+	
+	public function search(Request $request, $keyword = null){
+		
+		$img_url = config('medias.image-host');
+		$film_url = config('medias.film-host');
+		
+		$keyword = $request->input('keyword');
+		
+		$results = [];
+		if(!empty($keyword))
+			$results = $this->film_gestion->search($keyword);
+			
+		return view ( 'front.search', compact('img_url','film_url','results'));
+	}
 }
 

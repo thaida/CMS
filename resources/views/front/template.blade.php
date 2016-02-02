@@ -44,7 +44,8 @@
                 <p class="p-login">
                 <!-- 	<a class="lnk-login" href="{{url('auth/login') }}">Đăng nhập</a>
                 	&nbsp;&nbsp;|&nbsp;&nbsp;<a class="lnk-login">Đăng ký</a> -->
-					@if(session('statut') == 'visitor')
+                	
+					@if(empty(session('statut')) || session('statut') == 'visitor')
 						{!!	link_to('auth/login', trans('front/site.connection'), ['class' => 'lnk-login']) !!}
 					@else 
 						@if(session('statut') == 'admin')
@@ -69,33 +70,34 @@
         	<div class="wrap-header-bottom">
         	<div class="header-menu" id="top-nav">
             	<ul class="header-ul-parent">
-                	<li class="header-li-parent active">
-                    	<a class="header-lnk-parent" href="{{url('/') }}">HOME</a>
-                    </li>
-                    <li class="header-li-parent">
+					<li class="header-li-parent {!! classActivePath('/') !!}" ><a
+						class="header-lnk-parent" href="{{url('/') }}">HOME</a></li>
+					<li class="header-li-parent {!! classActiveSegment(1, ['phim', 'film']) !!}">
                     	<a class="header-lnk-parent" href="{{url('phim') }}">PHIM</a>
                     	<ul>
                     		<li><a class="header-lnk-parent" href="{{url('film/phim-bo') }}">PHIM BỘ</a></li>
                     		<li><a class="header-lnk-parent" href="{{url('film/phim-le') }}">PHIM LẺ</a></li>
                     	</ul>
                     </li>
-                     <li class="header-li-parent">
+                     <li class="header-li-parent {!! classActivePath('nhac') !!}">
                     	<a class="header-lnk-parent" href="{{url('nhac') }}">NHẠC</a>
                     </li>
-                     <li class="header-li-parent">
+                     <li class="header-li-parent {!! classActivePath('tv-show') !!}">
                     	<a class="header-lnk-parent" href="{{url('tv-show') }}">TV SHOW</a>
                     </li>
-                     <li class="header-li-parent">
+                     <li class="header-li-parent {!! classActivePath('news') !!}">
                     	<a class="header-lnk-parent" href="{{url('news') }}">TIN GIẢI TRÍ</a>
                     </li>
                 </ul>
             </div>
             
-                  <form method="get" action="tim-kiem" class="header-search" id="frmSearch">
-	                  <input type="text" id="search_keyword" class="search-input" placeholder="Tìm kiếm...">
+                  <form method="get" action="{{ url('film/tim-kiem')}}" class="header-search" id="frmSearch">
+	                  <input type="text" id="search_keyword" class="search-input" name="keyword" placeholder="Tìm kiếm...">
 	                  <input type="submit" value="" id="btnSearch" class="search-btn">
+	                  <!-- <img id="btnSearch" class="search-btn" > -->
+	                 
                   </form>
-            
+             					
                 <div class="clear"></div>
            </div>
         </div>
@@ -113,7 +115,6 @@
 	 @yield('main') 
 	 @yield('tooltip')
        
-        
  </div>
   <div id="footer">
   <div class="wrap-footer">
@@ -135,13 +136,29 @@
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 	{!! HTML::script('js/plugins.js') !!} 
 	{!! HTML::script('js/main.js')	!!}
-	
+
+<script>
+	/* $(document).ready(function(){
+		$("#btnSearch").click(function(){			
+			$("#btnSearch").parent().toggleClass('active');    
+			$("#search_keyword").focus();    
+		});
+	}); */
+</script>
+
 	<script>
 	$(document).ready(function(){
+		/* $("#btnSearch").click(function(){			
+			$("#btnSearch").parent().toggleClass('active');    
+			$("#search_keyword").focus();    
+		}); */
+		
 		$("#btnSearch").click(function(){
 			var keyword_s = $("#search_keyword").val();
-			if(keyword_s.length > 3){
-				window.location.href = '/tim-kiem/' + keyword_s;
+			if(keyword_s.length >= 3){
+				//window.location.href = "{!! url('film/tim-kiem/') !!}" + "/" + keyword_s;
+				window.location = "{{ URL::to('film/tim-kiem')}}/" + keyword_s;
+				console.log("test");
 			}                                            
 		});
 	});
@@ -160,6 +177,7 @@
 		r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
 		ga('create','UA-XXXXX-X');ga('send','pageview');
 	</script>
+
 
 	@yield('scripts')
 

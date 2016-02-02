@@ -160,6 +160,7 @@ return [
 		App\Services\Html\HtmlServiceProvider::class,
 		Bestmomo\Filemanager\FilemanagerServiceProvider::class,
 		Mews\Captcha\CaptchaServiceProvider::class,
+		Spatie\SearchIndex\SearchIndexServiceProvider::class,
 	],
 
 	/*
@@ -210,6 +211,7 @@ return [
 		'Form'		=> Collective\Html\FormFacade::class,
 		'HTML'		=> Collective\Html\HtmlFacade::class,
 		'Captcha' 	=> Mews\Captcha\Facades\Captcha::class,
+		'SearchIndex' => Spatie\SearchIndex\SearchIndexFacade::class,
 
 	],
 
