@@ -316,7 +316,7 @@ class FilmController extends Controller {
 		if(!empty($keyword))
 			$results = $this->film_gestion->search($keyword);
 			
-		return view ( 'front.search', compact('img_url','film_url','results'));
+		return view ( 'front.search', compact('img_url','film_url','results', 'keyword'));
 	}
 }
 

@@ -123,7 +123,7 @@
             <img src="{{ url('img/cj_logo_footer.png')}}" />
         </a>
         <p class="content-footer">
-            Tầng 8, Tòa  nhà ngân hàng công đoàn, ngõ 72 Trần Thái Tông, Cầu Giấy, Hầ Nội<br />
+            Tầng 8, Tòa  nhà ngân hàng công đoàn, ngõ 72 Trần Thái Tông, Cầu Giấy, Hà Nội<br />
             <a href="www.emotv.vn">www.emotv.vn</a> Hotline 19008198
         </p>
    </div>     

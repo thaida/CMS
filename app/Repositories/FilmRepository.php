@@ -115,7 +115,7 @@ class FilmRepository extends BaseRepository {
 		$film = $this->getById ( $id );
 		
 		$film->publish = $inputs ['publish'] == 'true';
-		
+		SearchIndexFacade::upsertToIndex($film);
 		$film->save ();
 	}
 	
@@ -470,7 +470,7 @@ class FilmRepository extends BaseRepository {
 		                    
 		                ], */
 		                'query' => [
-		                    'match' => [ 'name' => $keyword]
+		                    'match' => [ 'title' => $keyword]
 		                ]
             		]
 				
