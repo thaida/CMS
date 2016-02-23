@@ -461,19 +461,15 @@ class FilmRepository extends BaseRepository {
 			"type"=> "film",
 		    "body" => [
 		        "query" => [
-		        	 /* 'filtered' => [
-		                'filter' => [
-		                		"or" => [
-		                			'term' => [ 'summary' => 'vời1' ],
-		                			'term' => [ 'name' => 'vờ' ]
-		                		]
-		                    
-		                ], */
+		        	 'filtered' => [
+		                'filter' => [		                		
+	                		'term' => [ 'publish' => 'true' ]
+		                ], 
 		                'query' => [
 		                    'match' => [ 'title' => $keyword]
 		                ]
             		]
-				
+		        ]
 		    ]
 		];
 		

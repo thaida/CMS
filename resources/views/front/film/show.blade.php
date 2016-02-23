@@ -30,10 +30,14 @@
 				<video id="example_video_1"
 					class="video-js vjs-default-skin  vjs-big-play-centered" controls
 					preload="auto" width="600" height="264" data-setup="{ }" autoplay  poster="{{$img_url.$post->poster_path}}?w=600&h=264">
+					
+
 					<source
+						src="http://10.30.149.73/hls/out.m3u8"
+						type='application/x-mpegURL' label="HD" />
+						<source
 						src="http://10.30.149.73/hls/myvideo.m3u8"
 						type='application/x-mpegURL' label="SD" />
-
 
 					<track kind="captions"
 						src="http://192.168.202.87/film/video-subtitles-en.vtt" srclang="en" label="English" default></track>

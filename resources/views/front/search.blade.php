@@ -11,7 +11,7 @@
 				
 	           		@foreach($results['hits']['hits'] as $result)
 	           		<li style="float: left; with: 24%; padding: 5px;">
-						<a href="{{$film_url}}" title="{{ $result["_source"]["title"] }}">
+						<a href="{{$film_url.$result["_source"]["slug"]}}" title="{{ $result["_source"]["title"] }}">
 							<img title="{{$result["_source"]["title"]}}"  src="{{$img_url.$result["_source"]["poster"] }}?w=300&h=430&crop-to-fit" />
 						</a>
 						<div class="cj-info">

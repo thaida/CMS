@@ -11,7 +11,6 @@
  *
  */
 
-
 /**
  * Change configuration details in the array below or create a separate file
  * where you store the configuration details.
@@ -33,6 +32,7 @@ $config = array(
     //'password'     => false,                      // "secret-password",
 
 );
+
 
 
 

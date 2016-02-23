@@ -271,7 +271,7 @@ input[type="file"]{
 	CKEDITOR.replace( 'summary', config);
 
 	config['height'] = 400;		
-	   
+		   
 	 $("#title").keyup(function(){
 			var str = sansAccent($(this).val());
 			str = str.replace(/[^a-zA-Z0-9\s]/g,"");

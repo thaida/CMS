@@ -54,10 +54,10 @@ return [
 
 		'mysql' => [
 			'driver'    => 'mysql',
-			'host'      => env('DB_HOST', 'localhost'),
-			'database'  => env('DB_DATABASE', 'laravel5'),
-			'username'  => env('DB_USERNAME', 'root'),
-			'password'  => env('DB_PASSWORD', ''),
+			'host'      => env('DB_HOST', '10.30.149.77'),
+			'database'  => env('DB_DATABASE', 'phimhq'),
+			'username'  => env('DB_USERNAME', 'cjfilm'),
+			'password'  => env('DB_PASSWORD', 'T:YokB+&o15C'),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

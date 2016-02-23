@@ -13,3 +13,15 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# BEGIN ImageResizing
+<ifmodule mod_rewrite.c>
+RewriteEngine on
+
+# scaling small, medium, large
+RewriteRule ^img-small/([A-Za-z0-9/_-]+).(jpg|gif|png)$ images.php?max_width=100&imgfile=$1.$2
+RewriteRule ^img-medium/([A-Za-z0-9/_-]+).(jpg|gif|png)$ images.php?max_width=230&imgfile=$1.$2
+RewriteRule ^img-large/([A-Za-z0-9/_-]+).(jpg|gif|png)$ images.php?max_width=470&imgfile=$1.$2
+
+</ifmodule>
+# END ImageResizing
